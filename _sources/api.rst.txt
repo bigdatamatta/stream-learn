@@ -6,17 +6,17 @@ stream-learn API
 
 This is the full API documentation of the `stream-learn` toolbox.
 
-:mod:`strlearn`: Learner
-==========================
+:mod:`strlearn.learners`: Learners
+==================================
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
-   Learner
+   learners.TestAndTrain
 
 :mod:`strlearn.controllers`: Controllers
-==========================
+========================================
 
 .. autosummary::
    :toctree: generated/
@@ -27,7 +27,7 @@ This is the full API documentation of the `stream-learn` toolbox.
    controllers.BLALC
 
 :mod:`strlearn.ensembles`: Ensembles
-==========================
+====================================
 
 .. autosummary::
    :toctree: generated/

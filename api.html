@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>stream-learn API &mdash; stream-learn 0.3.0 documentation</title>
+  <title>stream-learn API &mdash; stream-learn 0.4 documentation</title>
   
 
   
@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -59,7 +58,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -90,7 +89,7 @@
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">stream-learn API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#strlearn-learner"><code class="docutils literal notranslate"><span class="pre">strlearn</span></code>: Learner</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#strlearn-learners-learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#strlearn-controllers-controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a><ul class="simple">
@@ -172,15 +171,15 @@
   <div class="section" id="stream-learn-api">
 <h1>stream-learn API<a class="headerlink" href="#stream-learn-api" title="Permalink to this headline">¶</a></h1>
 <p>This is the full API documentation of the <cite>stream-learn</cite> toolbox.</p>
-<div class="section" id="strlearn-learner">
-<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn</span></code>: Learner<a class="headerlink" href="#strlearn-learner" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="strlearn-learners-learners">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners<a class="headerlink" href="#strlearn-learners-learners" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Learner</span></code>(X,&nbsp;y[,&nbsp;base_classifier,&nbsp;alpha,&nbsp;…])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">learners.TestAndTrain</span></code>(stream[,&nbsp;…])</td>
 <td>Perform learning procedure on stream.</td>
 </tr>
 </tbody>
@@ -195,13 +194,16 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.Bare</span></code>()</td>
-<td></td>
+<td><p class="rubric">Methods</p>
+</td>
 </tr>
 <tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.Budget</span></code>([budget])</td>
-<td></td>
+<td><p class="rubric">Methods</p>
+</td>
 </tr>
 <tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.BLALC</span></code>([budget,&nbsp;treshold])</td>
-<td></td>
+<td><p class="rubric">Methods</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -215,7 +217,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.WAE</span></code>([ensemble_size,&nbsp;theta,&nbsp;…])</td>
-<td>Weighted Aging Ensemble lorem ipsum</td>
+<td>Weighted Aging Ensemble.</td>
 </tr>
 <tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.Pruner</span></code></td>
 <td></td>
@@ -243,7 +245,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz.
+        &copy; Copyright 2018, PaweÅ Ksieniewicz.
 
     </p>
   </div>
@@ -265,7 +267,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.4',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -279,10 +281,7 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

@@ -11,7 +11,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="">
+    <div class="sphx-glr-thumbcontainer" tooltip="Usage of the WAE algorithm">
 
 .. only:: html
 
@@ -37,6 +37,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 .. only :: html
 
  .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-gallery
 
 
   .. container:: sphx-glr-download
