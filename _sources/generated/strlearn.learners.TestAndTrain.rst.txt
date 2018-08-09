@@ -1,0 +1,16 @@
+:mod:`strlearn.learners`.TestAndTrain
+============================================
+
+.. currentmodule:: strlearn.learners
+
+.. autoclass:: TestAndTrain
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.learners.TestAndTrain.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

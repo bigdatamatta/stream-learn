@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.REA
+====================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: REA
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.REA.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

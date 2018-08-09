@@ -1,0 +1,16 @@
+:mod:`strlearn.controllers`.budget
+=========================================
+
+.. currentmodule:: strlearn.controllers
+
+.. autoclass:: budget
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.controllers.budget.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

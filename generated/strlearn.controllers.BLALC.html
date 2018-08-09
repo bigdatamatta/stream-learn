@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>General examples &mdash; stream-learn 0.4.1 documentation</title>
+  <title>strlearn.controllers.BLALC &mdash; stream-learn 0.4.1 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Usage of the WAE algorithm" href="basic_learning.html" />
-    <link rel="prev" title="strlearn.utils.minority_majority_name" href="../generated/strlearn.utils.minority_majority_name.html" /> 
+    <link rel="next" title="strlearn.ensembles.WAE" href="strlearn.ensembles.WAE.html" />
+    <link rel="prev" title="strlearn.controllers.budget" href="strlearn.controllers.budget.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,15 +88,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Instalation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">stream-learn API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">General examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic_learning.html">Usage of the WAE algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="strlearn.controllers.bare.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.bare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.controllers.budget.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.budget</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.BLALC</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
 </ul>
 
             
@@ -142,13 +150,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>General examples</li>
+          <li><a href="../api.html">stream-learn API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.BLALC</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/auto_examples/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/strlearn.controllers.BLALC.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,23 +171,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="general-examples">
-<span id="id1"></span><h1>General examples<a class="headerlink" href="#general-examples" title="Permalink to this headline">¶</a></h1>
-<p>General-purpose and introductory examples for the <cite>stream-learn</cite> toolbox.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="Usage of the WAE algorithm"><div class="figure" id="id2">
-<img alt="../_images/sphx_glr_basic_learning_thumb.png" src="../_images/sphx_glr_basic_learning_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="basic_learning.html#sphx-glr-auto-examples-basic-learning-py"><span class="std std-ref">Usage of the WAE algorithm</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div style='clear:both'></div><div class="sphx-glr-footer class sphx-glr-footer-gallery docutils container">
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/auto_examples_python.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></div>
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/auto_examples_jupyter.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></div>
-</div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
+  <div class="section" id="strlearn-controllers-blalc">
+<h1><a class="reference internal" href="../api.html#module-strlearn.controllers" title="strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code></a>.BLALC<a class="headerlink" href="#strlearn-controllers-blalc" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="strlearn.controllers.BLALC">
+<em class="property">class </em><code class="descclassname">strlearn.controllers.</code><code class="descname">BLALC</code><span class="sig-paren">(</span><em>budget=0.5</em>, <em>treshold=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/controllers/BLALC.html#BLALC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.controllers.BLALC" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="strlearn.controllers.BLALC.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>budget=0.5</em>, <em>treshold=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/controllers/BLALC.html#BLALC.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.controllers.BLALC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></div>
 
 
            </div>
@@ -187,10 +194,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="basic_learning.html" class="btn btn-neutral float-right" title="Usage of the WAE algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="strlearn.ensembles.WAE.html" class="btn btn-neutral float-right" title="strlearn.ensembles.WAE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../generated/strlearn.utils.minority_majority_name.html" class="btn btn-neutral" title="strlearn.utils.minority_majority_name" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="strlearn.controllers.budget.html" class="btn btn-neutral" title="strlearn.controllers.budget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

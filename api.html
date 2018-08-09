@@ -1,125 +1,332 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>stream-learn API &#8212; stream-learn 0.4.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>stream-learn API &mdash; stream-learn 0.4.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="General examples" href="auto_examples/index.html" />
-    <link rel="prev" title="Instalation" href="install.html" />
+    <link rel="next" title="strlearn.learners.TestAndTrain" href="generated/strlearn.learners.TestAndTrain.html" />
+    <link rel="prev" title="Instalation" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="stream-learn-api">
-<h1>stream-learn API<a class="headerlink" href="#stream-learn-api" title="Permalink to this headline">¶</a></h1>
-<p>This is the full API documentation of the <cite>stream-learn</cite> toolbox.</p>
+            
+              <div class="version">
+                0.4.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
 
-
-          </div>
           
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="index.html">
-    <img class="logo" src="_static/logo.png" alt="Logo"/>
-    
-    <h1 class="logo logo-name">stream-learn</h1>
-    
-  </a>
-</p>
 
-
-
-<p class="blurb">Python package equipped with a procedures to process data streams using estimators with API compatible with scikit-learn.</p>
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=w4k2&repo=stream-learn&type=watch&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Getting Started</span></p>
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Instalation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">stream-learn API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">stream-learn API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.learners.TestAndTrain.html"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>.TestAndTrain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.controllers.bare.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.bare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.controllers.budget.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.budget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.controllers.BLALC.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.BLALC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.WAE.html"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.REA.html"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.REA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.utils.ARFF.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.ARFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.utils.minority_majority_split.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.utils.minority_majority_name.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_name</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="install.html" title="previous chapter">Instalation</a></li>
-      <li>Next: <a href="auto_examples/index.html" title="next chapter">General examples</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+            
+          
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Paweł Ksieniewicz.
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-      |
-      <a href="_sources/api.rst.txt"
-          rel="nofollow">Page source</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>stream-learn API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stream-learn-api">
+<h1>stream-learn API<a class="headerlink" href="#stream-learn-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-strlearn.learners">
+<span id="strlearn-learners-learners"></span><span id="over-sampling-ref"></span><h2><a class="reference internal" href="#module-strlearn.learners" title="strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code></a>: Learners<a class="headerlink" href="#module-strlearn.learners" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.learners.TestAndTrain.html#strlearn.learners.TestAndTrain" title="strlearn.learners.TestAndTrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">learners.TestAndTrain</span></code></a>(stream[,&nbsp;…])</td>
+<td>Perform learning procedure on stream.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-strlearn.controllers">
+<span id="strlearn-controllers-controllers"></span><h2><a class="reference internal" href="#module-strlearn.controllers" title="strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code></a>: Controllers<a class="headerlink" href="#module-strlearn.controllers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.controllers.bare.html#strlearn.controllers.bare" title="strlearn.controllers.bare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.bare</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/strlearn.controllers.budget.html#strlearn.controllers.budget" title="strlearn.controllers.budget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.budget</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.controllers.BLALC.html#strlearn.controllers.BLALC" title="strlearn.controllers.BLALC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.BLALC</span></code></a>([budget,&nbsp;treshold])</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-strlearn.ensembles">
+<span id="strlearn-ensembles-ensembles"></span><h2><a class="reference internal" href="#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>: Ensembles<a class="headerlink" href="#module-strlearn.ensembles" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE" title="strlearn.ensembles.WAE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.WAE</span></code></a>([ensemble_size,&nbsp;theta,&nbsp;…])</td>
+<td>Weighted Aging Ensemble.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/strlearn.ensembles.REA.html#strlearn.ensembles.REA" title="strlearn.ensembles.REA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.REA</span></code></a>([base_classifier,&nbsp;cache_size,&nbsp;…])</td>
+<td>Recursive Ensemble Approach for Nonstationary Imbalanced Data Stream.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-strlearn.utils">
+<span id="strlearn-learners-utils"></span><h2><a class="reference internal" href="#module-strlearn.learners" title="strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code></a>: Utils<a class="headerlink" href="#module-strlearn.utils" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.utils.ARFF.html#strlearn.utils.ARFF" title="strlearn.utils.ARFF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.ARFF</span></code></a>(path)</td>
+<td>Stream-aware parser of datasets in ARFF format.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/strlearn.utils.minority_majority_split.html#strlearn.utils.minority_majority_split" title="strlearn.utils.minority_majority_split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.minority_majority_split</span></code></a>(X,&nbsp;y,&nbsp;…)</td>
+<td>Returns minority and majority data</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/strlearn.utils.minority_majority_name.html#strlearn.utils.minority_majority_name" title="strlearn.utils.minority_majority_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.minority_majority_name</span></code></a>(y)</td>
+<td>Returns the name of minority and majority class</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/strlearn.learners.TestAndTrain.html" class="btn btn-neutral float-right" title="strlearn.learners.TestAndTrain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Instalation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
-    
+  <hr/>
 
-    
-  </body>
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
