@@ -1,0 +1,16 @@
+:mod:`strlearn.utils`.StreamGenerator
+============================================
+
+.. currentmodule:: strlearn.utils
+
+.. autoclass:: StreamGenerator
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.utils.StreamGenerator.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

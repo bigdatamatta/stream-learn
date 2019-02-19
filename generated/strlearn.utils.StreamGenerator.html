@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.controllers.BLALC &mdash; stream-learn 0.5 documentation</title>
+  <title>strlearn.utils.StreamGenerator &mdash; stream-learn 0.5 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="strlearn.ensembles.WAE" href="strlearn.ensembles.WAE.html" />
-    <link rel="prev" title="strlearn.controllers.budget" href="strlearn.controllers.budget.html" /> 
+    <link rel="next" title="strlearn.utils.ARFF" href="strlearn.utils.ARFF.html" />
+    <link rel="prev" title="strlearn.ensembles.REA" href="strlearn.ensembles.REA.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,14 +93,15 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="strlearn.controllers.bare.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.bare</a></li>
-<li class="toctree-l3"><a class="reference internal" href="strlearn.controllers.budget.html"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.budget</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.BLALC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.StreamGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.ARFF.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.ARFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.minority_majority_split.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.minority_majority_name.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_name</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a></li>
 </ul>
 </li>
 </ul>
@@ -154,13 +155,13 @@
         
           <li><a href="../api.html">stream-learn API</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>.BLALC</li>
+      <li><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.StreamGenerator</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/strlearn.controllers.BLALC.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/strlearn.utils.StreamGenerator.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,14 +174,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="strlearn-controllers-blalc">
-<h1><a class="reference internal" href="../api.html#module-strlearn.controllers" title="strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code></a>.BLALC<a class="headerlink" href="#strlearn-controllers-blalc" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="strlearn-utils-streamgenerator">
+<h1><a class="reference internal" href="../api.html#module-strlearn.utils" title="strlearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code></a>.StreamGenerator<a class="headerlink" href="#strlearn-utils-streamgenerator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="strlearn.controllers.BLALC">
-<em class="property">class </em><code class="descclassname">strlearn.controllers.</code><code class="descname">BLALC</code><span class="sig-paren">(</span><em>budget=0.5</em>, <em>treshold=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/controllers/BLALC.html#BLALC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.controllers.BLALC" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="strlearn.controllers.BLALC.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>budget=0.5</em>, <em>treshold=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/controllers/BLALC.html#BLALC.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.controllers.BLALC.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.utils.StreamGenerator">
+<em class="property">class </em><code class="descclassname">strlearn.utils.</code><code class="descname">StreamGenerator</code><span class="sig-paren">(</span><em>chunk_size=500, n_chunks=200, n_features=8, distribution=[0.5, 0.5], n_drifts=5, class_sep=1.0, drift_type='gradual', random_state=0, flip_y=0.01</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/utils/StreamGenerator.html#StreamGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.utils.StreamGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stream generator.</p>
+<dl class="method">
+<dt id="strlearn.utils.StreamGenerator.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>chunk_size=500, n_chunks=200, n_features=8, distribution=[0.5, 0.5], n_drifts=5, class_sep=1.0, drift_type='gradual', random_state=0, flip_y=0.01</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/utils/StreamGenerator.html#StreamGenerator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.utils.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -196,10 +198,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="strlearn.ensembles.WAE.html" class="btn btn-neutral float-right" title="strlearn.ensembles.WAE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="strlearn.utils.ARFF.html" class="btn btn-neutral float-right" title="strlearn.utils.ARFF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="strlearn.controllers.budget.html" class="btn btn-neutral float-left" title="strlearn.controllers.budget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="strlearn.ensembles.REA.html" class="btn btn-neutral float-left" title="strlearn.ensembles.REA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

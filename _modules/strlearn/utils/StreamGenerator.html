@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.utils.StreamGenerator &mdash; stream-learn 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Instalation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">stream-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">General examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>strlearn.utils.StreamGenerator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for strlearn.utils.StreamGenerator</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Stream Generator.</span>
+
+<span class="sd">A class to generate streams.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">DRIFT_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sudden&quot;</span><span class="p">,</span> <span class="s2">&quot;gradual&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="StreamGenerator"><a class="viewcode-back" href="../../../generated/strlearn.utils.StreamGenerator.html#strlearn.utils.StreamGenerator">[docs]</a><span class="k">class</span> <span class="nc">StreamGenerator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Stream generator.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StreamGenerator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.utils.StreamGenerator.html#strlearn.utils.StreamGenerator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+        <span class="n">n_chunks</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">n_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">class_sep</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">drift_type</span><span class="o">=</span><span class="s2">&quot;gradual&quot;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Store stream parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">=</span> <span class="n">chunk_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">=</span> <span class="n">n_chunks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">=</span> <span class="n">n_drifts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span>
+
+        <span class="c1"># Store concept parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_sep</span> <span class="o">=</span> <span class="n">class_sep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_concepts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distribution</span> <span class="o">=</span> <span class="n">distribution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distribution</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="n">n_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drift_type</span> <span class="o">=</span> <span class="n">drift_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distribution</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">samples_per_concept</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream_length</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_concepts</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flip_y</span> <span class="o">=</span> <span class="n">flip_y</span>
+
+        <span class="c1"># Calculate processing variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_prepared</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_rs</span><span class="si">%i</span><span class="s2">_d</span><span class="si">%i</span><span class="s2">_cs</span><span class="si">%i</span><span class="s2">_f</span><span class="si">%i</span><span class="s2">_ln_</span><span class="si">%i</span><span class="s2">_i</span><span class="si">%i</span><span class="s2">_</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="s2">&quot;sd&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">drift_type</span> <span class="o">==</span> <span class="s2">&quot;sudden&quot;</span> <span class="k">else</span> <span class="s2">&quot;gd&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_sep</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flip_y</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distribution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Compatibility reasons</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_dry</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunks_generated</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concept_usages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_concepts</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Prepare random state</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+
+        <span class="c1"># Prepare concepts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">make_classification</span><span class="p">(</span>
+                <span class="n">n_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">samples_per_concept</span><span class="p">,</span>
+                <span class="n">n_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span><span class="p">,</span>
+                <span class="n">n_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
+                <span class="n">n_informative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="n">n_redundant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="n">weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distribution</span><span class="p">,</span>
+                <span class="n">class_sep</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_sep</span><span class="p">,</span>
+                <span class="n">flip_y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flip_y</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">shift</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_concepts</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Establish dominant concept for every chunk</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concept_dominances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Prepare usage curves</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">drift_type</span> <span class="o">==</span> <span class="s2">&quot;gradual&quot;</span><span class="p">:</span>
+            <span class="c1"># Incremental drift</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">usage_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+                                <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">+</span> <span class="mi">1</span>
+                            <span class="p">)</span>
+                            <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                        <span class="p">)</span>
+                        <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">drift_type</span> <span class="o">==</span> <span class="s2">&quot;sudden&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">usage_curve</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_dominances</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_chunk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_prepared</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_prepared</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">dominant</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_dominances</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">chunks_generated</span><span class="p">]</span>
+        <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="p">(</span><span class="n">dominant</span><span class="p">,</span> <span class="n">dominant</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">drift_type</span> <span class="o">==</span> <span class="s2">&quot;sudden&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dominant</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="p">(</span><span class="n">dominant</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dominant</span><span class="p">)</span>
+        <span class="n">amount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usage_curve</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">chunks_generated</span><span class="p">]</span>
+
+        <span class="n">proportion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">amount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">-</span> <span class="n">amount</span><span class="p">])</span>
+
+        <span class="n">address_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_usages</span><span class="p">[[</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">]]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">concept_usages</span><span class="p">[[</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">proportion</span>
+        <span class="n">address_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_usages</span><span class="p">[[</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">]]</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">[</span><span class="n">first</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">address_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">address_b</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">[</span><span class="n">second</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">address_a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="n">address_b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">[</span><span class="n">first</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="n">address_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">address_b</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">[</span><span class="n">second</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="n">address_a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="n">address_b</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunks_generated</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunks_generated</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_dry</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="sd">&quot;&quot;&quot; Chunk plotter</span>
+<span class="sd">        plt.figure(figsize=(4, 4))</span>
+<span class="sd">        plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.5)</span>
+<span class="sd">        plt.xlim((-10, 10))</span>
+<span class="sd">        plt.ylim((-10, 10))</span>
+<span class="sd">        plt.savefig(&quot;foo.png&quot;)</span>
+<span class="sd">        plt.savefig(&quot;chunks/c%04i.png&quot; % self.chunks_generated)</span>
+<span class="sd">        plt.close()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
