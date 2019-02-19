@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="strlearn.controllers.bare" href="strlearn.controllers.bare.html" />
     <link rel="prev" title="stream-learn API" href="../api.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -173,7 +175,7 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.learners" title="strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code></a>.TestAndTrain<a class="headerlink" href="#strlearn-learners-testandtrain" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.learners.TestAndTrain">
-<em class="property">class </em><code class="descclassname">strlearn.learners.</code><code class="descname">TestAndTrain</code><span class="sig-paren">(</span><em>stream</em>, <em>base_classifier=MLPClassifier(activation='relu'</em>, <em>alpha=0.0001</em>, <em>batch_size='auto'</em>, <em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>early_stopping=False</em>, <em>epsilon=1e-08</em>, <em>hidden_layer_sizes=(100</em>, <em>)</em>, <em>learning_rate='constant'</em>, <em>learning_rate_init=0.001</em>, <em>max_iter=200</em>, <em>momentum=0.9</em>, <em>nesterovs_momentum=True</em>, <em>power_t=0.5</em>, <em>random_state=None</em>, <em>shuffle=True</em>, <em>solver='adam'</em>, <em>tol=0.0001</em>, <em>validation_fraction=0.1</em>, <em>verbose=False</em>, <em>warm_start=False)</em>, <em>chunk_size=500</em>, <em>controller=&lt;strlearn.controllers.bare.Bare object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">strlearn.learners.</code><code class="descname">TestAndTrain</code><span class="sig-paren">(</span><em>stream</em>, <em>base_classifier=MLPClassifier(activation='relu'</em>, <em>alpha=0.0001</em>, <em>batch_size='auto'</em>, <em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>early_stopping=False</em>, <em>epsilon=1e-08</em>, <em>hidden_layer_sizes=(100</em>, <em>)</em>, <em>learning_rate='constant'</em>, <em>learning_rate_init=0.001</em>, <em>max_iter=200</em>, <em>momentum=0.9</em>, <em>n_iter_no_change=10</em>, <em>nesterovs_momentum=True</em>, <em>power_t=0.5</em>, <em>random_state=None</em>, <em>shuffle=True</em>, <em>solver='adam'</em>, <em>tol=0.0001</em>, <em>validation_fraction=0.1</em>, <em>verbose=False</em>, <em>warm_start=False)</em>, <em>controller=&lt;strlearn.controllers.bare.Bare object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform learning procedure on stream.</p>
 <p>lorem ipsum of description</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -213,7 +215,7 @@
 </div>
 <dl class="method">
 <dt id="strlearn.learners.TestAndTrain.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>stream</em>, <em>base_classifier=MLPClassifier(activation='relu'</em>, <em>alpha=0.0001</em>, <em>batch_size='auto'</em>, <em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>early_stopping=False</em>, <em>epsilon=1e-08</em>, <em>hidden_layer_sizes=(100</em>, <em>)</em>, <em>learning_rate='constant'</em>, <em>learning_rate_init=0.001</em>, <em>max_iter=200</em>, <em>momentum=0.9</em>, <em>nesterovs_momentum=True</em>, <em>power_t=0.5</em>, <em>random_state=None</em>, <em>shuffle=True</em>, <em>solver='adam'</em>, <em>tol=0.0001</em>, <em>validation_fraction=0.1</em>, <em>verbose=False</em>, <em>warm_start=False)</em>, <em>chunk_size=500</em>, <em>controller=&lt;strlearn.controllers.bare.Bare object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>stream</em>, <em>base_classifier=MLPClassifier(activation='relu'</em>, <em>alpha=0.0001</em>, <em>batch_size='auto'</em>, <em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>early_stopping=False</em>, <em>epsilon=1e-08</em>, <em>hidden_layer_sizes=(100</em>, <em>)</em>, <em>learning_rate='constant'</em>, <em>learning_rate_init=0.001</em>, <em>max_iter=200</em>, <em>momentum=0.9</em>, <em>n_iter_no_change=10</em>, <em>nesterovs_momentum=True</em>, <em>power_t=0.5</em>, <em>random_state=None</em>, <em>shuffle=True</em>, <em>solver='adam'</em>, <em>tol=0.0001</em>, <em>validation_fraction=0.1</em>, <em>verbose=False</em>, <em>warm_start=False)</em>, <em>controller=&lt;strlearn.controllers.bare.Bare object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializer.</p>
 </dd></dl>
 
@@ -268,7 +270,7 @@
         <a href="strlearn.controllers.bare.html" class="btn btn-neutral float-right" title="strlearn.controllers.bare" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../api.html" class="btn btn-neutral" title="stream-learn API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api.html" class="btn btn-neutral float-left" title="stream-learn API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -277,7 +279,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz.
+        &copy; Copyright 2018, Paweł Ksieniewicz
 
     </p>
   </div>
@@ -294,32 +296,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.4.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
