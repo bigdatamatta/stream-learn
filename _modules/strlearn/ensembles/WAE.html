@@ -211,9 +211,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">=</span> <span class="n">aging_method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rejuvenation_power</span> <span class="o">=</span> <span class="n">rejuvenation_power</span></div>
 
-<div class="viewcode-block" id="WAE.set_base_clf"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.set_base_clf">[docs]</a>    <span class="k">def</span> <span class="nf">set_base_clf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_clf</span><span class="o">=</span><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">()):</span>
+    <span class="k">def</span> <span class="nf">set_base_clf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_clf</span><span class="o">=</span><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">()):</span>
         <span class="sd">&quot;&quot;&quot;Establish base classifier.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span> <span class="o">=</span> <span class="n">base_clf</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span> <span class="o">=</span> <span class="n">base_clf</span>
 
     <span class="k">def</span> <span class="nf">_prune</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span>

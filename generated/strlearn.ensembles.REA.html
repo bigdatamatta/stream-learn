@@ -92,14 +92,14 @@
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.WAE.html"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.REA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.WAE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.REA</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a></li>
 </ul>
 </li>
 </ul>
@@ -153,7 +153,7 @@
         
           <li><a href="../api.html">stream-learn API</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.REA</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.REA</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,203 +176,162 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.REA<a class="headerlink" href="#strlearn-ensembles-rea" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.ensembles.REA">
-<em class="property">class </em><code class="descclassname">strlearn.ensembles.</code><code class="descname">REA</code><span class="sig-paren">(</span><em>base_classifier=SVC(C=1.0</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>coef0=0.0</em>, <em>decision_function_shape='ovr'</em>, <em>degree=3</em>, <em>gamma='scale'</em>, <em>kernel='rbf'</em>, <em>max_iter=-1</em>, <em>probability=True</em>, <em>random_state=None</em>, <em>shrinking=True</em>, <em>tol=0.001</em>, <em>verbose=False)</em>, <em>n_classifiers=10</em>, <em>balance_ratio=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">strlearn.ensembles.</code><code class="descname">REA</code><span class="sig-paren">(</span><em>base_classifier=KNeighborsClassifier(algorithm='auto'</em>, <em>leaf_size=30</em>, <em>metric='minkowski'</em>, <em>metric_params=None</em>, <em>n_jobs=None</em>, <em>n_neighbors=5</em>, <em>p=2</em>, <em>weights='uniform')</em>, <em>n_classifiers=10</em>, <em>balance_ratio=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recursive Ensemble Approach for Nonstationary Imbalanced Data Stream.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>base_classifier</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object, optional (default = SVC(probability = True))</span></dt>
-<dd><p class="first last">The base classifier used to create ensemble.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>base_classifier</strong><span class="classifier">object, optional (default = SVC(probability = True))</span></dt><dd><p>The base classifier used to create ensemble.</p>
 </dd>
-<dt><strong>n_classifiers</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional (default=10)</span></dt>
-<dd><p class="first last">The number of base classifier in the ensemble.</p>
+<dt><strong>n_classifiers</strong><span class="classifier">int, optional (default=10)</span></dt><dd><p>The number of base classifier in the ensemble.</p>
 </dd>
-<dt><strong>balance_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional (default = 0.5)</span></dt>
-<dd><p class="first last">Data balance ratio after resampling.</p>
+<dt><strong>balance_ratio</strong><span class="classifier">float, optional (default = 0.5)</span></dt><dd><p>Data balance ratio after resampling.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="rc12cb5540941-1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Sheng Chen, and Haibo He. “Towards incremental learning of
+<dl class="citation">
+<dt class="label" id="rc12cb5540941-1"><span class="brackets">Rc12cb5540941-1</span></dt>
+<dd><p>Sheng Chen, and Haibo He. “Towards incremental learning of
 nonstationary imbalanced data stream: a multiple selectively
-recursive approach.” Evolving Systems 2.1 (2011): 35-50.</td></tr>
-</tbody>
-</table>
+recursive approach.” Evolving Systems 2.1 (2011): 35-50.</p>
+</dd>
+</dl>
 <dl class="method">
-<dt id="strlearn.ensembles.REA.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>base_classifier=SVC(C=1.0</em>, <em>cache_size=200</em>, <em>class_weight=None</em>, <em>coef0=0.0</em>, <em>decision_function_shape='ovr'</em>, <em>degree=3</em>, <em>gamma='scale'</em>, <em>kernel='rbf'</em>, <em>max_iter=-1</em>, <em>probability=True</em>, <em>random_state=None</em>, <em>shrinking=True</em>, <em>tol=0.001</em>, <em>verbose=False)</em>, <em>n_classifiers=10</em>, <em>balance_ratio=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.__init__" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">REA.__init__(self, base_classifier=KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',</code></dt>
+<dt>
+<code class="descname">metric_params=None, n_jobs=None, n_neighbors=5, p=2,</code></dt>
+<dt>
+<code class="descname">weights='uniform'), n_classifiers=10, balance_ratio=0.5)</code></dt>
 <dd><p>Initializer.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.get_params">
-<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.REA.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>self</em>, <em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.REA.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>deep</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
-<dd><p class="first last">If True, will return the parameters for this estimator and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>params</strong> <span class="classifier-delimiter">:</span> <span class="classifier">mapping of string to any</span></dt>
-<dd><p class="first last">Parameter names mapped to their values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.partial_fit">
-<code class="descname">partial_fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>classes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.partial_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.partial_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">partial_fit</code><span class="sig-paren">(</span><em>self</em>, <em>X</em>, <em>y</em>, <em>classes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.partial_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Incremental fit on a batch of samples.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Training vectors, where n_samples is the number of samples and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Training vectors, where n_samples is the number of samples and
 n_features is the number of features.</p>
 </dd>
-<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples,)</span></dt>
-<dd><p class="first last">Target values.</p>
+<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Target values.</p>
 </dd>
-<dt><strong>classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_classes,), optional (default=None)</span></dt>
-<dd><p class="first last">List of all the classes that can possibly appear in the y vector.
+<dt><strong>classes</strong><span class="classifier">array-like, shape (n_classes,), optional (default=None)</span></dt><dd><p>List of all the classes that can possibly appear in the y vector.
 Must be provided at the first call to partial_fit, can be omitted
 in subsequent calls.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>self</em>, <em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform classification on an array of test vectors X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Test vectors, where n_samples is the number of samples and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Test vectors, where n_samples is the number of samples and
 n_features is the number of features.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>C</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples,)</span></dt>
-<dd><p class="first last">Predicted target values for X</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>C</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Predicted target values for X</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.predict_proba">
-<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>self</em>, <em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return probability estimates for the test vector X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Test vectors, where n_samples is the number of samples and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Test vectors, where n_samples is the number of samples and
 n_features is the number of features.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>C</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_classes)</span></dt>
-<dd><p class="first last">Returns the probability of the samples for each class in
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>C</strong><span class="classifier">array-like, shape (n_samples, n_classes)</span></dt><dd><p>Returns the probability of the samples for each class in
 the model. The columns correspond to the classes in sorted
 order, as they appear in the attribute <cite>classes</cite>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.score">
-<code class="descname">score</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">score</code><span class="sig-paren">(</span><em>self</em>, <em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/REA.html#REA.score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.REA.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return accuracy scores for the test vector X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Test vectors, where n_samples is the number of samples and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Test vectors, where n_samples is the number of samples and
 n_features is the number of features.</p>
 </dd>
-<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples,)</span></dt>
-<dd><p class="first last">Target values.</p>
+<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Target values.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>accuracy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples,)</span></dt>
-<dd><p class="first last">Predicted target values for X</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>accuracy</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Predicted target values for X</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.REA.set_params">
-<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.REA.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>self</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.REA.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
 <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
 component of a nested object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>self</strong></dt>
-<dd></dd>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>self</dt><dd></dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -168,25 +168,25 @@
            <div itemprop="articleBody">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-learning-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-learning-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="usage-of-the-wae-algorithm">
 <span id="sphx-glr-auto-examples-basic-learning-py"></span><h1>Usage of the WAE algorithm<a class="headerlink" href="#usage-of-the-wae-algorithm" title="Permalink to this headline">¶</a></h1>
 <p>This example shows a basic stream processing using WAE algorithm.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Paweł Ksieniewicz &lt;pawel.ksieniewicz@pwr.edu.pl&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Paweł Ksieniewicz &lt;pawel.ksieniewicz@pwr.edu.pl&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">naive_bayes</span>
-<span class="kn">from</span> <span class="nn">strlearn</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">ensembles</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">naive_bayes</span>
+<span class="kn">from</span> <span class="nn">strlearn</span> <span class="k">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">ensembles</span>
 <span class="kn">import</span> <span class="nn">arff</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 <div class="section" id="preparing-data-for-learning">
 <h2>Preparing data for learning<a class="headerlink" href="#preparing-data-for-learning" title="Permalink to this headline">¶</a></h2>
 <p>lorem ipsum</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;datasets/toyset.arff&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;datasets/toyset.arff&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">arff</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
@@ -196,9 +196,9 @@
 </pre></div>
 </div>
 <p>lorem ipsum</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">ensembles</span><span class="o">.</span><span class="n">WAE</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">ensembles</span><span class="o">.</span><span class="n">WAE</span><span class="p">(</span>
     <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">theta</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">post_pruning</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">pruning_criterion</span><span class="o">=</span><span class="s1">&#39;diversity&#39;</span><span class="p">,</span>
+    <span class="n">post_pruning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pruning_criterion</span><span class="o">=</span><span class="s1">&#39;diversity&#39;</span><span class="p">,</span>
     <span class="n">weight_calculation_method</span><span class="o">=</span><span class="s1">&#39;kuncheva&#39;</span><span class="p">,</span>
     <span class="n">aging_method</span><span class="o">=</span><span class="s1">&#39;weights_proportional&#39;</span><span class="p">,</span>
     <span class="n">rejuvenation_power</span><span class="o">=.</span><span class="mi">5</span>
@@ -207,16 +207,18 @@
 </pre></div>
 </div>
 <p>lorem ipsum</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
 <span class="n">learner</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-basic-learning-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../_downloads/f02a3bc28df427b74acbdd4b8da6f90b/basic_learning.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">basic_learning.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../_downloads/f02a3bc28df427b74acbdd4b8da6f90b/basic_learning.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">basic_learning.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../_downloads/d06ddd525dfb3d162a03c5abf50bb018/basic_learning.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">basic_learning.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../_downloads/d06ddd525dfb3d162a03c5abf50bb018/basic_learning.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">basic_learning.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

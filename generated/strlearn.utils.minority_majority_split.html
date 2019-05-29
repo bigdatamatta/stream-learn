@@ -92,14 +92,14 @@
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.StreamGenerator.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.StreamGenerator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.ARFF.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.ARFF</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</a></li>
-<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.minority_majority_name.html"><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.StreamGenerator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.StreamGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.ARFF.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.ARFF</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.utils.minority_majority_name.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_name</a></li>
 </ul>
 </li>
 </ul>
@@ -155,7 +155,7 @@
         
           <li><a href="../api.html">stream-learn API</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.utils</span></code>.minority_majority_split</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,32 +180,24 @@
 <dt id="strlearn.utils.minority_majority_split">
 <code class="descclassname">strlearn.utils.</code><code class="descname">minority_majority_split</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>minority_name</em>, <em>majority_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/utils/imbalancedStreams.html#minority_majority_split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.utils.minority_majority_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns minority and majority data</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">The training input samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>The training input samples.</p>
 </dd>
-<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples,)</span></dt>
-<dd><p class="first last">The target values.</p>
+<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>The target values.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>minority</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Minority class samples.</p>
 </dd>
-<dt><strong>majority</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (n_samples, n_features)</span></dt>
-<dd><p class="first last">Majority class samples.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>minority</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Minority class samples.</p>
+</dd>
+<dt><strong>majority</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>Majority class samples.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div style='clear:both'></div></div>
