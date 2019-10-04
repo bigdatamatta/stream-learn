@@ -35,7 +35,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Gradual drift">
+    <div class="sphx-glr-thumbcontainer" tooltip="Incremental drift">
 
 .. only:: html
 
