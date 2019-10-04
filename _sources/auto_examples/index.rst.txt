@@ -19,9 +19,9 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_gradual_drift_thumb.png
+    .. figure:: /auto_examples/images/thumb/sphx_glr_drift_plotter_thumb.png
 
-        :ref:`sphx_glr_auto_examples_gradual_drift.py`
+        :ref:`sphx_glr_auto_examples_drift_plotter.py`
 
 .. raw:: html
 
@@ -31,7 +31,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 .. toctree::
    :hidden:
 
-   /auto_examples/gradual_drift
+   /auto_examples/drift_plotter
 .. raw:: html
 
     <div style='clear:both'></div>
