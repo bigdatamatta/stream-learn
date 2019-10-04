@@ -32,6 +32,26 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
    :hidden:
 
    /auto_examples/basic_learning
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Gradual drift">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_gradual_drift_thumb.png
+
+        :ref:`sphx_glr_auto_examples_gradual_drift.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/gradual_drift
 .. raw:: html
 
     <div style='clear:both'></div>
