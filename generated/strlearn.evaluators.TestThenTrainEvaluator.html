@@ -175,10 +175,30 @@
 <dl class="class">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator">
 <em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrainEvaluator</code><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Test Than Train data stream evaluator.</p>
+<p>Implementation of test-then-train evaluation procedure,
+where each individual data chunk is first used to test
+the classifier and then it is used for training.</p>
+<dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.evaluators.TestThenTrainEvaluator.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">clf</em>, <em class="sig-param">stream</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform learning procedure on data stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+</dd>
+<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

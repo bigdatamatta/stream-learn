@@ -157,20 +157,45 @@
            <div itemprop="articleBody">
             
   <h1>Source code for strlearn.evaluators.TestThenTrainEvaluator</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">importlib.machinery</span> <span class="k">import</span> <span class="n">SourceFileLoader</span>
+<span></span><span class="sd">&quot;&quot;&quot;Test Than Train evaluator.&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
-<span class="c1"># from imblearn.metrics import geometric_mean_score</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">,</span> <span class="n">geometric_mean_score</span>
 
 <span class="n">METRICS</span> <span class="o">=</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">geometric_mean_score</span><span class="p">,</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="TestThenTrainEvaluator"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator">[docs]</a><span class="k">class</span> <span class="nc">TestThenTrainEvaluator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test Than Train data stream evaluator.</span>
+
+<span class="sd">    Implementation of test-then-train evaluation procedure,</span>
+<span class="sd">    where each individual data chunk is first used to test</span>
+<span class="sd">    the classifier and then it is used for training.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+<div class="viewcode-block" id="TestThenTrainEvaluator.process"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform learning procedure on data stream.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        clf : scikit-learn estimator</span>
+<span class="sd">            Classifier implementing a `partial_fit()` method.</span>
+<span class="sd">        stream : object</span>
+<span class="sd">            Data stream as an object.</span>
+
+<span class="sd">        Attributes</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
 
@@ -192,7 +217,7 @@
             <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">is_dry</span><span class="p">():</span>
-                <span class="k">break</span></div>
+                <span class="k">break</span></div></div>
 </pre></div>
 
            </div>

@@ -175,10 +175,36 @@
 <dl class="class">
 <dt id="strlearn.evaluators.PrequentialEvaluator">
 <em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">PrequentialEvaluator</code><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Prequential data stream evaluator.</p>
+<p>Implementation of prequential evaluation procedure, based
+on sliding windows instead of separate data chunks. Window
+moves by a fixed number of instances in order to preserve
+some of the already processed ones. After each step, samples
+that are currently in the window are used to test the classifier
+and then for training.</p>
+<dl class="method">
 <dt id="strlearn.evaluators.PrequentialEvaluator.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.evaluators.PrequentialEvaluator.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">clf</em>, <em class="sig-param">stream</em>, <em class="sig-param">interval=100</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform learning procedure on data stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+</dd>
+<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
+</dd>
+<dt><strong>interval: integer, optional (default=100)</strong></dt><dd><p>The number of instances by which the sliding window
+moves before the next evaluation and training steps.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
