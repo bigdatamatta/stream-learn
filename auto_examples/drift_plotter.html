@@ -181,45 +181,24 @@
 <span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="k">import</span> <span class="n">GridSpec</span>
 
 
+<span class="n">mcargs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;n_classes&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;n_chunks&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;chunk_size&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+    <span class="s2">&quot;n_features&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;n_informative&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;n_redundant&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;n_repeated&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;n_features&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;n_clusters_per_class&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span>
+
 <span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;0_stationary&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
+    <span class="s2">&quot;2_sudden_drift&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
     <span class="s2">&quot;1_incremental_drift&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
-        <span class="n">n_chunks</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
-        <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="p">),</span>
-    <span class="s2">&quot;2_sudden_drift&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
-        <span class="n">n_chunks</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
-        <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span>
-        <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="p">),</span>
-    <span class="s2">&quot;0_stationary&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
-        <span class="n">n_chunks</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
-        <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
     <span class="p">),</span>
 <span class="p">}</span>
 
@@ -239,9 +218,13 @@
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
 
         <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">)</span>
-        <span class="n">cs</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
-        <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="s2">&quot;concept_selector&quot;</span><span class="p">):</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">checkpoints</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">checkpoints</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -262,11 +245,17 @@
 
     <span class="c1"># Periodical sigmoid</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
-        <span class="s2">&quot;Concept sigmoid (ss=</span><span class="si">%.1f</span><span class="s2">, n_drifts=</span><span class="si">%i</span><span class="s2">)&quot;</span>
-        <span class="o">%</span> <span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">concept_sigmoid_spacing</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">concept_sigmoid</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="s2">&quot;concept_sigmoid&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">concept_sigmoid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+                <span class="s2">&quot;Concept sigmoid (ss=</span><span class="si">%.1f</span><span class="s2">, n_drifts=</span><span class="si">%i</span><span class="s2">)&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">concept_sigmoid_spacing</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Concept sigmoid (n_drifts=</span><span class="si">%i</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">concept_sigmoid</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;No concept sigmoid&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/</span><span class="si">%s</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">stream_name</span><span class="p">)</span>
