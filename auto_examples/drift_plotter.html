@@ -182,9 +182,9 @@
 
 
 <span class="n">mcargs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;n_classes&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;n_classes&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
     <span class="s2">&quot;n_chunks&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s2">&quot;chunk_size&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;chunk_size&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
     <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
     <span class="s2">&quot;n_features&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="s2">&quot;n_informative&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -196,8 +196,12 @@
 
 <span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;0_stationary&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
-    <span class="s2">&quot;2_sudden_drift&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
-    <span class="s2">&quot;1_incremental_drift&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
+    <span class="s2">&quot;1_sudden&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
+    <span class="s2">&quot;2_incremental&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
+    <span class="s2">&quot;3_reocurring&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
+        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;4_nonreocurring&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
         <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
     <span class="p">),</span>
 <span class="p">}</span>
