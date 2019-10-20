@@ -19,6 +19,26 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
+    .. figure:: /auto_examples/images/thumb/sphx_glr_same_stream_thumb.png
+
+        :ref:`sphx_glr_auto_examples_same_stream.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/same_stream
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Incremental drift">
+
+.. only:: html
+
     .. figure:: /auto_examples/images/thumb/sphx_glr_drift_plotter_thumb.png
 
         :ref:`sphx_glr_auto_examples_drift_plotter.py`
