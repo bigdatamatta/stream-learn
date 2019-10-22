@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.evaluators.TestThenTrainEvaluator &mdash; stream-learn 0.6 documentation</title>
+  <title>strlearn.evaluators.TestThenTrainEvaluator &mdash; stream-learn 0.7 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.6
+                0.7
               </div>
             
           
@@ -178,6 +178,7 @@
 <span class="sd">    ----------</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
@@ -204,17 +205,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
 
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
+            <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">previous_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">previous_chunk</span>
-                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">scores</span><span class="p">[</span><span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-                    <span class="n">metric</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">METRICS</span>
+                    <span class="n">metric</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">METRICS</span>
                 <span class="p">]</span>
 
-            <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
+            <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">is_dry</span><span class="p">():</span>
                 <span class="k">break</span></div></div>
