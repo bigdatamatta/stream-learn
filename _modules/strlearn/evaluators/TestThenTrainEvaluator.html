@@ -164,6 +164,7 @@
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">,</span> <span class="n">geometric_mean_score</span>
 
 <span class="n">METRICS</span> <span class="o">=</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">geometric_mean_score</span><span class="p">,</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">)</span>
+<span class="n">METRICS</span> <span class="o">=</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">bac</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="TestThenTrainEvaluator"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator">[docs]</a><span class="k">class</span> <span class="nc">TestThenTrainEvaluator</span><span class="p">:</span>
@@ -179,8 +180,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+<div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">=</span> <span class="n">cut</span></div>
 
 <div class="viewcode-block" id="TestThenTrainEvaluator.process"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -200,12 +201,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">stream</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">METRICS</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(((</span><span class="n">stream</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">METRICS</span><span class="p">))</span>
+        <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
 
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CHUNK </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">previous_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -215,6 +219,9 @@
                 <span class="p">]</span>
 
             <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span><span class="p">:</span>
+                <span class="k">break</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">is_dry</span><span class="p">():</span>
                 <span class="k">break</span></div></div>
