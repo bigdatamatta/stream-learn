@@ -198,9 +198,9 @@
 <span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;0_stationary&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
     <span class="s2">&quot;1_sudden&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
-    <span class="s2">&quot;2_incremental&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
-    <span class="s2">&quot;3_gradual&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
-        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gradual</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
+    <span class="s2">&quot;2_gradual&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span><span class="p">),</span>
+    <span class="s2">&quot;3_incremental&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
+        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
     <span class="p">),</span>
     <span class="s2">&quot;4_reocurring&quot;</span><span class="p">:</span> <span class="n">StreamGenerator</span><span class="p">(</span>
         <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">mcargs</span>
@@ -222,7 +222,7 @@
             <span class="n">n_drifts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
             <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
             <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">gradual</span><span class="o">=</span><span class="kc">True</span>
+            <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">),</span>
     <span class="p">}</span>
 <span class="p">)</span>
@@ -285,7 +285,7 @@
         <span class="k">pass</span>
     <span class="k">elif</span> <span class="n">sid</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="o">.</span><span class="n">gradual</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="o">.</span><span class="n">incremental</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Concept presence&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -298,7 +298,7 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Gradual drift&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Incremental drift&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
             <span class="c1"># ax.plot(stream.a_ind)</span>
             <span class="c1"># ax.plot(stream.b_ind)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mcargs</span><span class="p">[</span><span class="s2">&quot;n_chunks&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">mcargs</span><span class="p">[</span><span class="s2">&quot;chunk_size&quot;</span><span class="p">])</span>
@@ -380,7 +380,7 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/</span><span class="si">%s</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">stream_name</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../plots/</span><span class="si">%s</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">stream_name</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
