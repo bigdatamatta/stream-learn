@@ -188,13 +188,44 @@ the classifier and then it is used for training.</p>
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.process">
 <code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">clf</em>, <em class="sig-param">stream</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform learning procedure on data stream.</p>
-<dl class="field-list simple">
+<dd><blockquote>
+<div><p>Perform learning procedure on data stream.</p>
+</div></blockquote>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+<dd class="field-odd"><dl>
+<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><blockquote>
+<div><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>stream<span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
 </dd>
-<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="simple">
+<dt>[[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</dt><dd><p>[0.945      0.94648779 0.94624912 0.94648779 0.94240838]
+[0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]
+…
+[0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]
+[0.885      0.8854889  0.88546135 0.8854889  0.87830688]
+[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><blockquote>
+<div><p>The class labels.</p>
+</div></blockquote>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">scores_</span></a><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
+geometric_mean_score, bac and f_score for
+each processed data chunk.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>

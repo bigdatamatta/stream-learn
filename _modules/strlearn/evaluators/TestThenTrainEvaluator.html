@@ -195,29 +195,51 @@
 
 <span class="sd">        Attributes</span>
 <span class="sd">        ----------</span>
+<span class="sd">        classes_ : array-like, shape (n_classes, )</span>
+<span class="sd">            The class labels.</span>
+<span class="sd">        scores_ : array-like, shape (stream.n_chunks, 5)</span>
+<span class="sd">            Values of accuracy_score, roc_auc_score,</span>
+<span class="sd">            geometric_mean_score, bac and f_score for</span>
+<span class="sd">            each processed data chunk.</span>
 
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import strlearn as sl</span>
+<span class="sd">        &gt;&gt;&gt; stream = sl.streams.StreamGenerator()</span>
+<span class="sd">        &gt;&gt;&gt; clf = sl.classifiers.AccumulatedSamplesClassifier()</span>
+<span class="sd">        &gt;&gt;&gt; evaluator = sl.evaluators.TestThenTrainEvaluator()</span>
+<span class="sd">        &gt;&gt;&gt; evaluator.process(clf, stream)</span>
+<span class="sd">        &gt;&gt;&gt; print(evaluator.scores_)</span>
+<span class="sd">        ...</span>
+<span class="sd">       [[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</span>
+<span class="sd">        [0.945      0.94648779 0.94624912 0.94648779 0.94240838]</span>
+<span class="sd">        [0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]</span>
+<span class="sd">        ...</span>
+<span class="sd">        [0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]</span>
+<span class="sd">        [0.885      0.8854889  0.88546135 0.8854889  0.87830688]</span>
+<span class="sd">        [0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scores_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
             <span class="p">(((</span><span class="n">stream</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">METRICS</span><span class="p">))</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
 
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CHUNK </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">)</span>
+            <span class="c1"># print(&quot;CHUNK %i&quot; % stream.chunk_id)</span>
 
             <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">previous_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-                <span class="bp">self</span><span class="o">.</span><span class="n">scores</span><span class="p">[</span><span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="n">metric</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">METRICS</span>
                 <span class="p">]</span>
 
-            <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)</span>
+            <span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stream</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">cut</span><span class="p">:</span>
                 <span class="k">break</span>
