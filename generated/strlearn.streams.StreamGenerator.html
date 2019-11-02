@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.streams.StreamGenerator &mdash; stream-learn 0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="strlearn.streams.ARFFParser" href="strlearn.streams.ARFFParser.html" />
+    <link rel="prev" title="stream-learn API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Instalation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>: Streams</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.StreamGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.streams.ARFFParser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.ARFFParser</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">stream-learn API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.StreamGenerator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/strlearn.streams.StreamGenerator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="strlearn-streams-streamgenerator">
+<h1><a class="reference internal" href="../api.html#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>.StreamGenerator<a class="headerlink" href="#strlearn-streams-streamgenerator" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="strlearn.streams.StreamGenerator">
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">StreamGenerator</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data streams generator for both stationary
+and drifting data streams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_chunks</strong><span class="classifier">integer, optional (default=250)</span></dt><dd><p>The number of data chunks, that the stream
+is composed of.</p>
+</dd>
+<dt><strong>chunk_size</strong><span class="classifier">integer, optional (default=200)</span></dt><dd><p>The number of instances in each data chunk.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">integer, optional (default=1410)</span></dt><dd><p>The seed used by the random number generator.</p>
+</dd>
+<dt><strong>n_drifts</strong><span class="classifier">integer, optional (default=4)</span></dt><dd><p>The number of concept changes in the data stream.</p>
+</dd>
+<dt><strong>concept_sigmoid_spacing</strong><span class="classifier">float, optional (default=10.)</span></dt><dd><p>Value that determines the shape of sigmoid function and
+how sudden is the change of concept. The higher the value,
+the more sudden the drift is.</p>
+</dd>
+<dt><strong>n_classes</strong><span class="classifier">integer, optional (default=2)</span></dt><dd><p>The number of classes in the generated data stream.</p>
+</dd>
+<dt><strong>reocurring</strong><span class="classifier">boolean, optional (default=False)</span></dt><dd><p>Determines if the streams can go back to
+the previously encountered concepts.</p>
+</dd>
+<dt><strong>weights</strong><span class="classifier">array-like, shape (n_classes, ) or tuple (only for 2 classes)</span></dt><dd><p>If array - class weight for static imbalance,
+if tuple - (n_drifts, concept_sigmoid_spacing, IR aplitude [0-1])
+for generation of dynamically imbalanced streams.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="strlearn.streams.StreamGenerator.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.streams.StreamGenerator.get_chunk">
+<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.get_chunk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.get_chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generating a data chunk of a stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>current_chunk</strong><span class="classifier">tuple {array-like, shape (n_samples, n_features),</span></dt><dd></dd>
+<dt>array-like, shape (n_samples, )}</dt><dd><p>Generated samples and target values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.streams.StreamGenerator.is_dry">
+<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.is_dry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.is_dry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checking if we have reached the end of the stream.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="strlearn.streams.ARFFParser.html" class="btn btn-neutral float-right" title="strlearn.streams.ARFFParser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api.html" class="btn btn-neutral float-left" title="stream-learn API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.streams.StreamGenerator &mdash; stream-learn 0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Instalation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">stream-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">General examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>strlearn.streams.StreamGenerator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for strlearn.streams.StreamGenerator</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Data streams generator.</span>
+
+<span class="sd">A class for generating streams with various parameters.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">logistic</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<div class="viewcode-block" id="StreamGenerator"><a class="viewcode-back" href="../../../generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator">[docs]</a><span class="k">class</span> <span class="nc">StreamGenerator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data streams generator for both stationary</span>
+<span class="sd">    and drifting data streams.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n_chunks : integer, optional (default=250)</span>
+<span class="sd">        The number of data chunks, that the stream</span>
+<span class="sd">        is composed of.</span>
+<span class="sd">    chunk_size : integer, optional (default=200)</span>
+<span class="sd">        The number of instances in each data chunk.</span>
+<span class="sd">    random_state : integer, optional (default=1410)</span>
+<span class="sd">        The seed used by the random number generator.</span>
+<span class="sd">    n_drifts : integer, optional (default=4)</span>
+<span class="sd">        The number of concept changes in the data stream.</span>
+<span class="sd">    concept_sigmoid_spacing : float, optional (default=10.)</span>
+<span class="sd">        Value that determines the shape of sigmoid function and</span>
+<span class="sd">        how sudden is the change of concept. The higher the value,</span>
+<span class="sd">        the more sudden the drift is.</span>
+<span class="sd">    n_classes : integer, optional (default=2)</span>
+<span class="sd">        The number of classes in the generated data stream.</span>
+<span class="sd">    reocurring : boolean, optional (default=False)</span>
+<span class="sd">        Determines if the streams can go back to</span>
+<span class="sd">        the previously encountered concepts.</span>
+<span class="sd">    weights : array-like, shape (n_classes, ) or tuple (only for 2 classes)</span>
+<span class="sd">        If array - class weight for static imbalance,</span>
+<span class="sd">        if tuple - (n_drifts, concept_sigmoid_spacing, IR aplitude [0-1])</span>
+<span class="sd">        for generation of dynamically imbalanced streams.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StreamGenerator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">1410</span><span class="p">,</span>
+        <span class="n">n_drifts</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">reocurring</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">incremental</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Wyższy spacing, bardziej nagły</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">=</span> <span class="n">n_chunks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">=</span> <span class="n">chunk_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">=</span> <span class="n">n_drifts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concept_sigmoid_spacing</span> <span class="o">=</span> <span class="n">concept_sigmoid_spacing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="n">n_classes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_classification_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reocurring</span> <span class="o">=</span> <span class="n">reocurring</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">incremental</span> <span class="o">=</span> <span class="n">incremental</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="StreamGenerator.is_dry"><a class="viewcode-back" href="../../../generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator.is_dry">[docs]</a>    <span class="k">def</span> <span class="nf">is_dry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checking if we have reached the end of the stream.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chunk_id&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigmoid_spacing</span><span class="p">,</span> <span class="n">n_drifts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Funkcja, która generuje okresowy sigmoid zgodnie z wymaganiami.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">period</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_drifts</span><span class="p">))</span> <span class="k">if</span> <span class="n">n_drifts</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">css</span> <span class="o">=</span> <span class="n">sigmoid_spacing</span> <span class="k">if</span> <span class="n">sigmoid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">9999</span>
+        <span class="n">_probabilities</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">logistic</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+                            <span class="o">-</span><span class="n">css</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">css</span><span class="p">,</span> <span class="n">css</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">else</span> <span class="o">-</span><span class="n">css</span><span class="p">,</span> <span class="n">period</span>
+                        <span class="p">)</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_drifts</span><span class="p">)</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">n_drifts</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Szybka naprawa, żeby dało się przepuścić podzielną z resztą liczbę dryfów</span>
+        <span class="n">probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">)</span> <span class="o">*</span> <span class="n">_probabilities</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">probabilities</span><span class="p">[:</span> <span class="n">_probabilities</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">_probabilities</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_make_classification</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="c1"># To jest dziwna koncepcja z wagami z wierszy macierzy diagonalnej ale działa.</span>
+        <span class="c1"># Jak coś działa to jest dobre.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">[</span>
+                    <span class="n">make_classification</span><span class="p">(</span>
+                        <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">make_classification_kwargs</span><span class="p">,</span>
+                        <span class="n">n_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">,</span>
+                        <span class="n">n_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
+                        <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                        <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+                    <span class="k">for</span> <span class="n">weights</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)))</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reocurring</span> <span class="k">else</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Prepare concept sigmoids if there are drifts</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Get period and probabilities</span>
+            <span class="n">period</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">concept_sigmoid_spacing</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Szum</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concept_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span>
+
+            <span class="c1"># Inkrementalny</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">incremental</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">a_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">b_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+                <span class="c1"># Reocurring</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reocurring</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">):</span>
+                        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">period</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">period</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">a_ind</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">b_ind</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+
+                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a_ind</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">)</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b_ind</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">)</span>
+
+                <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span><span class="p">)</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span><span class="p">)</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+            <span class="c1"># Gradualny</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Selekcja klas</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">concept_probabilities</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">concept_noise</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+                <span class="c1"># Reocurring drift</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reocurring</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span><span class="p">):</span>
+                        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">period</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">period</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                        <span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">start</span>
+                        <span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Selekcja klas na potrzeby doboru balansu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span>
+
+        <span class="c1"># Case of same size of all classes</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">balance_noise</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="c1"># If static balance is given</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">balance_noise</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">accumulator</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">treshold</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">):</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance_noise</span> <span class="o">&gt;</span> <span class="n">accumulator</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="n">accumulator</span> <span class="o">+=</span> <span class="n">treshold</span>
+        <span class="c1"># If dynamic balance is given</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_balance_drifts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_sigmoid_spacing</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance_amplitude</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weights</span>
+            <span class="p">)</span>
+
+            <span class="n">period</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">class_sigmoid_spacing</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_balance_drifts</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Amplitude correction</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_probabilities</span> <span class="o">-=</span> <span class="mf">0.5</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_probabilities</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance_amplitude</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_probabilities</span> <span class="o">+=</span> <span class="mf">0.5</span>
+
+            <span class="c1"># Will it work?</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">class_probabilities</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance_noise</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="c1"># Przypisanie klas i etykiet</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_drifts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Jeśli dryfy, przypisz koncepty</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">incremental</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concept_selector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Jeśli nie, przecież jest jeden, więc spłaszcz</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">)</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_selector</span>
+
+        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<div class="viewcode-block" id="StreamGenerator.get_chunk"><a class="viewcode-back" href="../../../generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator.get_chunk">[docs]</a>    <span class="k">def</span> <span class="nf">get_chunk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generating a data chunk of a stream.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        current_chunk : tuple {array-like, shape (n_samples, n_features),</span>
+<span class="sd">        array-like, shape (n_samples, )}</span>
+<span class="sd">            Generated samples and target values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">previous_chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_chunk</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_classification</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">previous_chunk</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_chunks</span><span class="p">:</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_id</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_chunk</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_chunk</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

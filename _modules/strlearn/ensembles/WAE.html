@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.ensembles.WAE &mdash; stream-learn 0.5.1 documentation</title>
+  <title>strlearn.ensembles.WAE &mdash; stream-learn 0.7 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.5.1
+                0.7
               </div>
             
           
@@ -164,24 +164,21 @@
 
 <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="k">import</span> <span class="n">check_X_y</span><span class="p">,</span> <span class="n">check_array</span><span class="p">,</span> <span class="n">check_is_fitted</span>
-<span class="c1"># from sklearn.utils import check_random_state</span>
-<span class="c1"># from sklearn.utils.multiclass import unique_labels</span>
-<span class="c1"># from sklearn.utils.multiclass import check_classification_targets</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.multiclass</span> <span class="k">import</span> <span class="n">_check_partial_fit_first_call</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">base</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">neighbors</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">..ensembles</span> <span class="k">import</span> <span class="n">pruning</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;always&#39;</span><span class="p">)</span>
+<span class="n">WEIGHT_CALCULATION</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;same_for_each&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;proportional_to_accuracy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kuncheva&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pta_related_to_whole&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bell_curve&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">WEIGHT_CALCULATION</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;same_for_each&#39;</span><span class="p">,</span> <span class="s1">&#39;proportional_to_accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;kuncheva&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;pta_related_to_whole&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;bell_curve&#39;</span><span class="p">)</span>
-
-<span class="n">AGING_METHOD</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;weights_proportional&#39;</span><span class="p">,</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;gaussian&#39;</span><span class="p">)</span>
+<span class="n">AGING_METHOD</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;weights_proportional&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="WAE"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE">[docs]</a><span class="k">class</span> <span class="nc">WAE</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
@@ -198,10 +195,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="WAE.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">theta</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
-                 <span class="n">post_pruning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pruning_criterion</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
-                 <span class="n">weight_calculation_method</span><span class="o">=</span><span class="s1">&#39;kuncheva&#39;</span><span class="p">,</span>
-                 <span class="n">aging_method</span><span class="o">=</span><span class="s1">&#39;weights_proportional&#39;</span><span class="p">,</span> <span class="n">rejuvenation_power</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+<div class="viewcode-block" id="WAE.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">theta</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">post_pruning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">pruning_criterion</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+        <span class="n">weight_calculation_method</span><span class="o">=</span><span class="s2">&quot;kuncheva&quot;</span><span class="p">,</span>
+        <span class="n">aging_method</span><span class="o">=</span><span class="s2">&quot;weights_proportional&quot;</span><span class="p">,</span>
+        <span class="n">rejuvenation_power</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pruning_criterion</span> <span class="o">=</span> <span class="n">pruning_criterion</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span> <span class="o">=</span> <span class="n">ensemble_size</span>
@@ -217,8 +220,9 @@
 
     <span class="k">def</span> <span class="nf">_prune</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span>
-        <span class="n">pruner</span> <span class="o">=</span> <span class="n">pruning</span><span class="o">.</span><span class="n">OneOffPruner</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_support_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>
-                                      <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pruning_criterion</span><span class="p">)</span>
+        <span class="n">pruner</span> <span class="o">=</span> <span class="n">pruning</span><span class="o">.</span><span class="n">OneOffPruner</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_support_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pruning_criterion</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter_ensemble</span><span class="p">(</span><span class="n">pruner</span><span class="o">.</span><span class="n">best_permutation</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_filter_ensemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">combination</span><span class="p">):</span>
@@ -229,7 +233,7 @@
     <span class="c1"># Fitting</span>
 <div class="viewcode-block" id="WAE.fit"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fitting.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_base_clf&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_base_clf&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_base_clf</span><span class="p">()</span>
 
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -250,7 +254,7 @@
 
 <div class="viewcode-block" id="WAE.partial_fit"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.partial_fit">[docs]</a>    <span class="k">def</span> <span class="nf">partial_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Partial fitting.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_base_clf&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_base_clf&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_base_clf</span><span class="p">()</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
@@ -266,10 +270,7 @@
 
         <span class="sd">&quot;&quot;&quot;Partial fitting&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span>
-            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span><span class="p">)</span>
 
         <span class="c1"># Pre-pruning</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">post_pruning</span><span class="p">:</span>
@@ -301,52 +302,59 @@
 
     <span class="k">def</span> <span class="nf">_accuracies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">m_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span><span class="p">)</span>
-             <span class="k">for</span> <span class="n">m_clf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">])</span>
+            <span class="p">[</span><span class="n">m_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span><span class="p">)</span> <span class="k">for</span> <span class="n">m_clf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">]</span>
+        <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s1">&#39;same_for_each&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s2">&quot;same_for_each&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">))</span>
 
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s1">&#39;kuncheva&#39;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s2">&quot;kuncheva&quot;</span><span class="p">:</span>
                 <span class="n">accuracies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accuracies</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">accuracies</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0000001</span> <span class="o">-</span> <span class="n">accuracies</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s1">&#39;pta_related_to_whole&#39;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s2">&quot;pta_related_to_whole&quot;</span><span class="p">:</span>
                 <span class="n">accuracies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accuracies</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="n">accuracies</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s1">&#39;bell_curve&#39;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_calculation_method</span> <span class="o">==</span> <span class="s2">&quot;bell_curve&quot;</span><span class="p">:</span>
                 <span class="n">accuracies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accuracies</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
-                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span> <span class="o">-</span> <span class="n">accuracies</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="mf">1.0</span>
+                    <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+                    <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span> <span class="o">-</span> <span class="n">accuracies</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+                <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_aging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s1">&#39;weights_proportional&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s2">&quot;weights_proportional&quot;</span><span class="p">:</span>
                 <span class="n">accuracies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accuracies</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="n">accuracies</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_</span><span class="p">)</span>
 
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s1">&#39;constant&#39;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s2">&quot;constant&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations_</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> \
-                    <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">==</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="mf">1.0</span>
+                    <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+                    <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations_</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+                <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_rejuvenate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rejuvenation_power</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span> <span class="o">&gt;</span> <span class="n">w</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">iterations_</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rejuvenation_power</span> <span class="o">*</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span>
+            <span class="p">)</span>
             <span class="c1"># TODO do przemyslenia</span>
 
     <span class="k">def</span> <span class="nf">_extinct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -356,17 +364,17 @@
 
 <div class="viewcode-block" id="WAE.ensemble_support_matrix"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.ensemble_support_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">ensemble_support_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;ESM.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">member_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-                         <span class="k">for</span> <span class="n">member_clf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">member_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">member_clf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="WAE.predict_proba"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Aposteriori probabilities.&quot;&quot;&quot;</span>
         <span class="c1"># Check is fit had been called</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;classes_&#39;</span><span class="p">)</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;classes_&quot;</span><span class="p">)</span>
 
         <span class="c1"># Weight support before acumulation</span>
-        <span class="n">weighted_support</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_support_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[</span>
-            <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="n">weighted_support</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_support_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="p">)</span>
 
         <span class="c1"># Acumulate supports</span>
         <span class="n">acumulated_weighted_support</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weighted_support</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -375,12 +383,12 @@
 <div class="viewcode-block" id="WAE.predict"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Hard decision.&quot;&quot;&quot;</span>
         <span class="c1"># Check is fit had been called</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;classes_&#39;</span><span class="p">)</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;classes_&quot;</span><span class="p">)</span>
 
         <span class="c1"># Input validation</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;number of features does not match&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number of features does not match&quot;</span><span class="p">)</span>
 
         <span class="n">supports</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="n">prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">supports</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>

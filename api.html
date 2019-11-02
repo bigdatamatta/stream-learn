@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="strlearn.evaluators.TestThenTrainEvaluator" href="generated/strlearn.evaluators.TestThenTrainEvaluator.html" />
+    <link rel="next" title="strlearn.streams.StreamGenerator" href="generated/strlearn.streams.StreamGenerator.html" />
     <link rel="prev" title="Instalation" href="install.html" /> 
 </head>
 
@@ -92,12 +92,22 @@
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">stream-learn API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>: Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.streams.StreamGenerator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.StreamGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.streams.ARFFParser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.ARFFParser</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.TestThenTrainEvaluator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.TestThenTrainEvaluator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.PrequentialEvaluator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.PrequentialEvaluator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.ChunkBasedEnsemble.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.ChunkBasedEnsemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.WAE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -170,6 +180,23 @@
             
   <div class="section" id="stream-learn-api">
 <h1>stream-learn API<a class="headerlink" href="#stream-learn-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-strlearn.streams">
+<span id="strlearn-streams-streams"></span><h2><a class="reference internal" href="#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>: Streams<a class="headerlink" href="#module-strlearn.streams" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator" title="strlearn.streams.StreamGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">streams.StreamGenerator</span></code></a>([n_chunks, …])</p></td>
+<td><p>Data streams generator for both stationary and drifting data streams.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.streams.ARFFParser.html#strlearn.streams.ARFFParser" title="strlearn.streams.ARFFParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">streams.ARFFParser</span></code></a>(path[, chunk_size, n_chunks])</p></td>
+<td><p>Stream-aware parser of datasets in ARFF format.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="module-strlearn.evaluators">
 <span id="strlearn-evaluators-evaluators"></span><h2><a class="reference internal" href="#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>: Evaluators<a class="headerlink" href="#module-strlearn.evaluators" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
@@ -187,6 +214,23 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="module-strlearn.classifiers">
+<span id="strlearn-classifiers-classifiers"></span><h2><a class="reference internal" href="#module-strlearn.classifiers" title="strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code></a>: Classifiers<a class="headerlink" href="#module-strlearn.classifiers" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classifiers.TestThenTrainEvaluator</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classifiers.PrequentialEvaluator</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="module-strlearn.ensembles">
 <span id="strlearn-ensembles-ensembles"></span><h2><a class="reference internal" href="#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>: Ensembles<a class="headerlink" href="#module-strlearn.ensembles" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
@@ -195,8 +239,11 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.DumbEnsemble</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.ensembles.ChunkBasedEnsemble.html#strlearn.ensembles.ChunkBasedEnsemble" title="strlearn.ensembles.ChunkBasedEnsemble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.ChunkBasedEnsemble</span></code></a>([ensemble_size])</p></td>
+<td><p>Chunk based ensemble classifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE" title="strlearn.ensembles.WAE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.WAE</span></code></a>([ensemble_size, theta, …])</p></td>
+<td><p>Weighted Aging Ensemble.</p></td>
 </tr>
 </tbody>
 </table>
@@ -211,7 +258,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/strlearn.evaluators.TestThenTrainEvaluator.html" class="btn btn-neutral float-right" title="strlearn.evaluators.TestThenTrainEvaluator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/strlearn.streams.StreamGenerator.html" class="btn btn-neutral float-right" title="strlearn.streams.StreamGenerator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="install.html" class="btn btn-neutral float-left" title="Instalation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
