@@ -181,6 +181,35 @@
 <p>Implementation of test-then-train evaluation procedure,
 where each individual data chunk is first used to test
 the classifier and then it is used for training.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">evaluators</span><span class="o">.</span><span class="n">TestThenTrainEvaluator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</span>
+<span class="go">[0.945      0.94648779 0.94624912 0.94648779 0.94240838]</span>
+<span class="go">[0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]</span>
+<span class="gp">...</span>
+<span class="go">[0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]</span>
+<span class="go">[0.885      0.8854889  0.88546135 0.8854889  0.87830688]</span>
+<span class="go">[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><p>The class labels.</p>
+</dd>
+<dt><strong>scores_</strong><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
+geometric_mean_score, bac and f_score for
+each processed data chunk.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cut=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
@@ -189,45 +218,14 @@ the classifier and then it is used for training.</p>
 
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7f8ccc34d840&gt;</em>, <em class="sig-param">&lt;function bac at 0x7f8cc9767048&gt;)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Perform learning procedure on data stream.</p>
-</div></blockquote>
-<dl class="field-list">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7f8323ac6840&gt;</em>, <em class="sig-param">&lt;function bac at 0x7f8320ee1048&gt;)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform learning procedure on data stream.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><blockquote>
-<div><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>stream<span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
 </dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="simple">
-<dt>[[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</dt><dd><p>[0.945      0.94648779 0.94624912 0.94648779 0.94240838]
-[0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]
-…
-[0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]
-[0.885      0.8854889  0.88546135 0.8854889  0.87830688]
-[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</p>
-</dd>
-</dl>
-<dl class="field-list">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl>
-<dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><blockquote>
-<div><p>The class labels.</p>
-</div></blockquote>
-<dl class="simple">
-<dt><a href="#id1"><span class="problematic" id="id2">scores_</span></a><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
-geometric_mean_score, bac and f_score for
-each processed data chunk.</p>
-</dd>
-</dl>
+<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
 </dd>
 </dl>
 </dd>

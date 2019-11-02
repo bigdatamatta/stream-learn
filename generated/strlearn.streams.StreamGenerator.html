@@ -207,6 +207,24 @@ for generation of dynamically imbalanced streams.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<p>Data stream with 2 gradual non-recurring drifts and 20% of minority class.
+&gt;&gt;&gt; import strlearn as sl
+&gt;&gt;&gt; stream = sl.streams.StreamGenerator(n_drifts=2, weights=[0.2, 0.8], concept_sigmoid_spacing=5)
+&gt;&gt;&gt; clf = sl.classifiers.AccumulatedSamplesClassifier()
+&gt;&gt;&gt; evaluator = sl.evaluators.PrequentialEvaluator()
+&gt;&gt;&gt; evaluator.process(clf, stream)
+&gt;&gt;&gt; print(<a href="#id1"><span class="problematic" id="id2">evaluator.scores_</span></a>)
+…
+[[0.955      0.93655817 0.93601827 0.93655817 0.97142857]</p>
+<blockquote>
+<div><p>[0.94       0.91397849 0.91275313 0.91397849 0.96129032]
+[0.9        0.85565271 0.85234488 0.85565271 0.93670886]
+…
+[0.815      0.72584133 0.70447376 0.72584133 0.8802589 ]
+[0.83       0.69522145 0.65223303 0.69522145 0.89570552]
+[0.845      0.67267706 0.61257135 0.67267706 0.90855457]]</p>
+</div></blockquote>
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>

@@ -179,7 +179,29 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
+<span class="sd">    classes_ : array-like, shape (n_classes, )</span>
+<span class="sd">        The class labels.</span>
+<span class="sd">    scores_ : array-like, shape (stream.n_chunks, 5)</span>
+<span class="sd">        Values of accuracy_score, roc_auc_score,</span>
+<span class="sd">        geometric_mean_score, bac and f_score for</span>
+<span class="sd">        each processed data chunk.</span>
 
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import strlearn as sl</span>
+<span class="sd">    &gt;&gt;&gt; stream = sl.streams.StreamGenerator()</span>
+<span class="sd">    &gt;&gt;&gt; clf = sl.classifiers.AccumulatedSamplesClassifier()</span>
+<span class="sd">    &gt;&gt;&gt; evaluator = sl.evaluators.PrequentialEvaluator()</span>
+<span class="sd">     &gt;&gt;&gt; evaluator.process(clf, stream, interval=50)</span>
+<span class="sd">    &gt;&gt;&gt; print(evaluator.scores_)</span>
+<span class="sd">    ...</span>
+<span class="sd">    [[0.95       0.9483469  0.94805282 0.9483469  0.95412844]</span>
+<span class="sd">    [0.96       0.95728313 0.95696445 0.95728313 0.96460177]</span>
+<span class="sd">    [0.96       0.95858586 0.95848154 0.95858586 0.96396396]</span>
+<span class="sd">    ...</span>
+<span class="sd">    [0.92       0.91987179 0.91986621 0.91987179 0.91666667]</span>
+<span class="sd">    [0.91       0.91065705 0.91050889 0.91065705 0.90816327]</span>
+<span class="sd">    [0.925      0.92567027 0.9250634  0.92567027 0.92610837]]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PrequentialEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.PrequentialEvaluator.html#strlearn.evaluators.PrequentialEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -198,32 +220,6 @@
 <span class="sd">        interval: integer, optional (default=100)</span>
 <span class="sd">            The number of instances by which the sliding window</span>
 <span class="sd">            moves before the next evaluation and training steps.</span>
-
-<span class="sd">        Attributes</span>
-<span class="sd">        ----------</span>
-<span class="sd">        classes_ : array-like, shape (n_classes, )</span>
-<span class="sd">            The class labels.</span>
-<span class="sd">        scores_ : array-like, shape (stream.n_chunks, 5)</span>
-<span class="sd">            Values of accuracy_score, roc_auc_score,</span>
-<span class="sd">            geometric_mean_score, bac and f_score for</span>
-<span class="sd">            each processed data chunk.</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; import strlearn as sl</span>
-<span class="sd">        &gt;&gt;&gt; stream = sl.streams.StreamGenerator()</span>
-<span class="sd">        &gt;&gt;&gt; clf = sl.classifiers.AccumulatedSamplesClassifier()</span>
-<span class="sd">        &gt;&gt;&gt; evaluator = sl.evaluators.PrequentialEvaluator()</span>
-<span class="sd">        &gt;&gt;&gt; evaluator.process(clf, stream, interval=50)</span>
-<span class="sd">        &gt;&gt;&gt; print(evaluator.scores_)</span>
-<span class="sd">        ...</span>
-<span class="sd">       [[0.95       0.9483469  0.94805282 0.9483469  0.95412844]</span>
-<span class="sd">        [0.96       0.95728313 0.95696445 0.95728313 0.96460177]</span>
-<span class="sd">        [0.96       0.95858586 0.95848154 0.95858586 0.96396396]</span>
-<span class="sd">        ...</span>
-<span class="sd">        [0.92       0.91987179 0.91986621 0.91987179 0.91666667]</span>
-<span class="sd">        [0.91       0.91065705 0.91050889 0.91065705 0.90816327]</span>
-<span class="sd">        [0.925      0.92567027 0.9250634  0.92567027 0.92610837]]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>

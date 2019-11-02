@@ -202,6 +202,23 @@
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Data stream with 2 gradual non-recurring drifts and 20% of minority class.</span>
+<span class="sd">    &gt;&gt;&gt; import strlearn as sl</span>
+<span class="sd">    &gt;&gt;&gt; stream = sl.streams.StreamGenerator(n_drifts=2, weights=[0.2, 0.8], concept_sigmoid_spacing=5)</span>
+<span class="sd">    &gt;&gt;&gt; clf = sl.classifiers.AccumulatedSamplesClassifier()</span>
+<span class="sd">    &gt;&gt;&gt; evaluator = sl.evaluators.PrequentialEvaluator()</span>
+<span class="sd">    &gt;&gt;&gt; evaluator.process(clf, stream)</span>
+<span class="sd">    &gt;&gt;&gt; print(evaluator.scores_)</span>
+<span class="sd">    ...</span>
+<span class="sd">    [[0.955      0.93655817 0.93601827 0.93655817 0.97142857]</span>
+<span class="sd">     [0.94       0.91397849 0.91275313 0.91397849 0.96129032]</span>
+<span class="sd">     [0.9        0.85565271 0.85234488 0.85565271 0.93670886]</span>
+<span class="sd">     ...</span>
+<span class="sd">     [0.815      0.72584133 0.70447376 0.72584133 0.8802589 ]</span>
+<span class="sd">     [0.83       0.69522145 0.65223303 0.69522145 0.89570552]</span>
+<span class="sd">     [0.845      0.67267706 0.61257135 0.67267706 0.90855457]]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="StreamGenerator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
