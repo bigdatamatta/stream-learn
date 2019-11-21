@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.SampleWeightedMetaEstimator
+============================================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: SampleWeightedMetaEstimator
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.SampleWeightedMetaEstimator.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>
