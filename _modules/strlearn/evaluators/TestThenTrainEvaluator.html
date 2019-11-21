@@ -214,13 +214,17 @@
 <span class="sd">        stream : object</span>
 <span class="sd">            Data stream as an object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Verify if pool of classifiers or one</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clfs</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">clfs</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clfs</span> <span class="o">=</span> <span class="n">clfs</span>
+
+        <span class="c1"># Assign parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">metrics</span>
 
+        <span class="c1"># Prepare scores table</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scores_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clfs</span><span class="p">),</span>
@@ -229,7 +233,7 @@
             <span class="p">)</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">classes</span>  <span class="c1"># np.array(range(stream.n_classes))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">classes</span>
 
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_chunk</span><span class="p">()</span>
