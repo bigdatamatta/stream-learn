@@ -161,9 +161,9 @@
 <span></span><span class="sd">&quot;&quot;&quot;Test Than Train evaluator.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">geometric_mean_score</span><span class="p">,</span> <span class="n">recall</span>
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">ClassifierMixin</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">geometric_mean_score</span><span class="p">,</span> <span class="n">recall</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="k">import</span> <span class="n">ClassifierMixin</span>
 
 
 <div class="viewcode-block" id="TestThenTrainEvaluator"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator">[docs]</a><span class="k">class</span> <span class="nc">TestThenTrainEvaluator</span><span class="p">:</span>
@@ -201,7 +201,7 @@
 <span class="sd">    [0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="TestThenTrainEvaluator.__init__"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">=</span> <span class="n">cut</span></div>
 
 <div class="viewcode-block" id="TestThenTrainEvaluator.process"><a class="viewcode-back" href="../../../generated/strlearn.evaluators.TestThenTrainEvaluator.html#strlearn.evaluators.TestThenTrainEvaluator.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">clfs</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">bac</span><span class="p">)):</span>

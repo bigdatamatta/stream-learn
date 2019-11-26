@@ -160,10 +160,10 @@
   <h1>Source code for strlearn.ensembles.UOB</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Undersampling-based Online Bagging.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">,</span> <span class="n">clone</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_X_y</span><span class="p">,</span> <span class="n">check_array</span><span class="p">,</span> <span class="n">check_is_fitted</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">,</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="k">import</span> <span class="n">check_X_y</span><span class="p">,</span> <span class="n">check_array</span><span class="p">,</span> <span class="n">check_is_fitted</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
 
 
 <div class="viewcode-block" id="UOB"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.UOB.html#strlearn.ensembles.UOB">[docs]</a><span class="k">class</span> <span class="nc">UOB</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
@@ -171,7 +171,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="UOB.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.UOB.html#strlearn.ensembles.UOB.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">time_decay_factor</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+<div class="viewcode-block" id="UOB.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.UOB.html#strlearn.ensembles.UOB.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">time_decay_factor</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span> <span class="o">=</span> <span class="n">ensemble_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time_decay_factor</span> <span class="o">=</span> <span class="n">time_decay_factor</span></div>
