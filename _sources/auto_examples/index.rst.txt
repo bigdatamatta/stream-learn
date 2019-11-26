@@ -19,9 +19,9 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_test_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_test_thumb.png
 
-        :ref:`sphx_glr_auto_examples_test.py`
+     :ref:`sphx_glr_auto_examples_test.py`
 
 .. raw:: html
 
@@ -39,9 +39,9 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_stream_animator_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_stream_animator_thumb.png
 
-        :ref:`sphx_glr_auto_examples_stream_animator.py`
+     :ref:`sphx_glr_auto_examples_stream_animator.py`
 
 .. raw:: html
 
@@ -59,9 +59,9 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_same_stream_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_same_stream_thumb.png
 
-        :ref:`sphx_glr_auto_examples_same_stream.py`
+     :ref:`sphx_glr_auto_examples_same_stream.py`
 
 .. raw:: html
 
@@ -79,9 +79,9 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_drift_plotter_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_drift_plotter_thumb.png
 
-        :ref:`sphx_glr_auto_examples_drift_plotter.py`
+     :ref:`sphx_glr_auto_examples_drift_plotter.py`
 
 .. raw:: html
 
@@ -94,7 +94,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
    /auto_examples/drift_plotter
 .. raw:: html
 
-    <div style='clear:both'></div>
+    <div class="sphx-glr-clear"></div>
 
 
 
