@@ -10,8 +10,8 @@ from sklearn.utils import check_X_y, check_array
 from strlearn.base import ClassifierSupplier
 from strlearn.base.exceptions import BaseClassifierDoesNotSupportPartialFitting
 from strlearn.base.types import Classifier
-from strlearn.ensembles.voting.SupportsExtractor import SupportsExtractor
-from strlearn.ensembles.voting.WeightedMajorityPredictionCombiner import WeightedMajorityPredictionCombiner
+from strlearn.ensembles.fuzers.SupportsExtractor import SupportsExtractor
+from strlearn.ensembles.fuzers.WeightedMajorityFuzer import WeightedMajorityFuzer
 
 
 @attrs(auto_attribs=True)
@@ -92,7 +92,7 @@ class OALE(BaseEstimator, ClassifierMixin):
 
         ensemble, weights = self._get_compact_ensemble_with_weights()
 
-        return WeightedMajorityPredictionCombiner(
+        return WeightedMajorityFuzer(
             ensemble=ensemble,
             weights=weights,
             classes=self._classes) \
@@ -103,7 +103,7 @@ class OALE(BaseEstimator, ClassifierMixin):
 
         ensemble, weights = self._get_compact_ensemble_with_weights()
 
-        return WeightedMajorityPredictionCombiner(
+        return WeightedMajorityFuzer(
             ensemble=ensemble,
             weights=weights,
             classes=self._classes) \

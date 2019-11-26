@@ -1,16 +1,19 @@
+from typing import List
+
 import numpy as np
 from attr import attrs, attrib
+from sklearn.base import BaseEstimator
 from sklearn.utils import check_array
 
-from strlearn.ensembles.voting.SupportsExtractor import SupportsExtractor
-from strlearn.ensembles.voting.api.BaseEnsemblePredictionCombiner import BaseEnsemblePredictionCombiner
+from strlearn.ensembles.fuzers.SupportsExtractor import SupportsExtractor
+from strlearn.ensembles.fuzers.api.BaseEnsemblePredictionFuzer import BaseEnsemblePredictionFuzer
 
 
-@attrs
-class WeightedMajorityPredictionCombiner(BaseEnsemblePredictionCombiner):
-    _ensemble = attrib()
-    _weights = attrib()
-    _classes = attrib()
+@attrs(auto_attribs=True)
+class WeightedMajorityFuzer(BaseEnsemblePredictionFuzer):
+    _ensemble: List[BaseEstimator] = attrib()
+    _weights: List[float] = attrib()
+    _classes: List = attrib()
 
     def get_supports(self, x):
         return SupportsExtractor(self._ensemble, self._weights, self._classes).extract(x)

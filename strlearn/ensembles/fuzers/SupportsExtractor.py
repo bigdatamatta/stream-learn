@@ -2,14 +2,13 @@ from typing import List
 
 import numpy as np
 from attr import attrs
+from sklearn.base import BaseEstimator
 from sklearn.preprocessing import normalize
-
-from strlearn.base.types import Classifier
 
 
 @attrs(auto_attribs=True, frozen=True)
 class SupportsExtractor:
-    _ensemble: List[Classifier] = None
+    _ensemble: List[BaseEstimator] = None
     _weights: List[int] = None
     _classes: List = None
     _normalized: bool = False
