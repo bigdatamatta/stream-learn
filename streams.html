@@ -271,7 +271,7 @@ the concept used to generate the data stream. Due to this, the drift may be iden
 some time. The severity of changes, and hence the speed of transition of one concept into another,
 is described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -283,7 +283,7 @@ is described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
 <p>Situations when previous concepts reappear after some time are separately treated
 and analyzed as recurrent drifts. …</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -329,7 +329,7 @@ and analyzed as recurrent drifts. …</p>
 <h2>Dynamically Imbalanced Stream with Concept Oscillation (DISCO)<a class="headerlink" href="#dynamically-imbalanced-stream-with-concept-oscillation-disco" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
     <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">reocurring</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 </pre></div>
 </div>
