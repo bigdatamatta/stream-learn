@@ -191,10 +191,10 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.UOB<a class="headerlink" href="#strlearn-ensembles-uob" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.ensembles.UOB">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="strlearn.ensembles.UOB.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
@@ -264,12 +264,6 @@ each label set be correctly predicted.</p>
 <dt>score<span class="classifier">float</span></dt><dd><p>Mean accuracy of self.predict(X) wrt. y.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.ensembles.UOB.set_base_clf">
-<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.set_base_clf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.set_base_clf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establishing base classifier.</p>
 </dd></dl>
 
 <dl class="method">

@@ -171,28 +171,21 @@
   <h1>Source code for strlearn.ensembles.OnlineBagging</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Online Bagging.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">,</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">ClassifierMixin</span><span class="p">,</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaseEnsemble</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_X_y</span><span class="p">,</span> <span class="n">check_array</span><span class="p">,</span> <span class="n">check_is_fitted</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
 
 
-<div class="viewcode-block" id="OnlineBagging"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging">[docs]</a><span class="k">class</span> <span class="nc">OnlineBagging</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="OnlineBagging"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging">[docs]</a><span class="k">class</span> <span class="nc">OnlineBagging</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="OnlineBagging.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ensemble_size</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="OnlineBagging.__init__"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialization.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span> <span class="o">=</span> <span class="n">ensemble_size</span></div>
-
-<div class="viewcode-block" id="OnlineBagging.set_base_clf"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging.set_base_clf">[docs]</a>    <span class="k">def</span> <span class="nf">set_base_clf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Establishing base classifier.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span> <span class="o">=</span> <span class="n">base_clf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span><span class="p">())</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_estimator</span> <span class="o">=</span> <span class="n">base_estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span></div>
 
 <div class="viewcode-block" id="OnlineBagging.fit"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fitting.&quot;&quot;&quot;</span>
@@ -202,8 +195,11 @@
 <div class="viewcode-block" id="OnlineBagging.partial_fit"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging.partial_fit">[docs]</a>    <span class="k">def</span> <span class="nf">partial_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Partial fitting.&quot;&quot;&quot;</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_base_clf&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_base_clf</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;ensemble_&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_estimator</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">)</span>
+            <span class="p">]</span>
 
         <span class="c1"># Check feature consistency</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;X_&quot;</span><span class="p">):</span>
@@ -218,14 +214,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span><span class="p">)])</span>
+            <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">)]</span>
+            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 
-
         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">base_model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_</span><span class="p">):</span>
-            <span class="n">base_model</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+            <span class="n">base_model</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">w</span><span class="p">]</span>
+            <span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
