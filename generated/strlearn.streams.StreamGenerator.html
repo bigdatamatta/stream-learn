@@ -33,7 +33,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -93,7 +92,7 @@
 </ul>
 <p class="caption"><span class="caption-text">User guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../streams.html">Stream generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../streams.html">Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../evaluators.html">Evaluators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ensembles.html">Ensembles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classifiers.html">Classifiers</a></li>
@@ -185,40 +184,35 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>.StreamGenerator<a class="headerlink" href="#strlearn-streams-streamgenerator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.streams.StreamGenerator">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">StreamGenerator</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">StreamGenerator</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data streams generator for both stationary
 and drifting data streams.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>n_chunks</strong><span class="classifier">integer, optional (default=250)</span></dt><dd><p>The number of data chunks, that the stream
+<dl class="simple">
+<dt>n_chunks<span class="classifier">integer, optional (default=250)</span></dt><dd><p>The number of data chunks, that the stream
 is composed of.</p>
 </dd>
-<dt><strong>chunk_size</strong><span class="classifier">integer, optional (default=200)</span></dt><dd><p>The number of instances in each data chunk.</p>
+<dt>chunk_size<span class="classifier">integer, optional (default=200)</span></dt><dd><p>The number of instances in each data chunk.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">integer, optional (default=1410)</span></dt><dd><p>The seed used by the random number generator.</p>
+<dt>random_state<span class="classifier">integer, optional (default=1410)</span></dt><dd><p>The seed used by the random number generator.</p>
 </dd>
-<dt><strong>n_drifts</strong><span class="classifier">integer, optional (default=4)</span></dt><dd><p>The number of concept changes in the data stream.</p>
+<dt>n_drifts<span class="classifier">integer, optional (default=4)</span></dt><dd><p>The number of concept changes in the data stream.</p>
 </dd>
-<dt><strong>concept_sigmoid_spacing</strong><span class="classifier">float, optional (default=10.)</span></dt><dd><p>Value that determines the shape of sigmoid function and
+<dt>concept_sigmoid_spacing<span class="classifier">float, optional (default=10.)</span></dt><dd><p>Value that determines the shape of sigmoid function and
 how sudden is the change of concept. The higher the value,
 the more sudden the drift is.</p>
 </dd>
-<dt><strong>n_classes</strong><span class="classifier">integer, optional (default=2)</span></dt><dd><p>The number of classes in the generated data stream.</p>
+<dt>n_classes<span class="classifier">integer, optional (default=2)</span></dt><dd><p>The number of classes in the generated data stream.</p>
 </dd>
-<dt><strong>y_flip: integer or tuple (default=0.01)</strong></dt><dd><p>Label noise for whole dataset or separate classes.</p>
+<dt>y_flip: integer or tuple (default=0.01)</dt><dd><p>Label noise for whole dataset or separate classes.</p>
 </dd>
-<dt><strong>reocurring</strong><span class="classifier">boolean, optional (default=False)</span></dt><dd><p>Determines if the streams can go back to
+<dt>reocurring<span class="classifier">boolean, optional (default=False)</span></dt><dd><p>Determines if the streams can go back to
 the previously encountered concepts.</p>
 </dd>
-<dt><strong>weights</strong><span class="classifier">array-like, shape (n_classes, ) or tuple (only for 2 classes)</span></dt><dd><p>If array - class weight for static imbalance,
+<dt>weights<span class="classifier">array-like, shape (n_classes, ) or tuple (only for 2 classes)</span></dt><dd><p>If array - class weight for static imbalance,
 if tuple - (n_drifts, concept_sigmoid_spacing, IR aplitude [0-1])
 for generation of dynamically imbalanced streams.</p>
 </dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
 <p>Data stream with 2 gradual non-recurring drifts and 20% of minority class.
 &gt;&gt;&gt; import strlearn as sl
 &gt;&gt;&gt; stream = sl.streams.StreamGenerator(n_drifts=2, weights=[0.2, 0.8], concept_sigmoid_spacing=5)
@@ -238,28 +232,24 @@ for generation of dynamically imbalanced streams.</p>
 </div></blockquote>
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.get_chunk">
-<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.get_chunk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.get_chunk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.get_chunk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generating a data chunk of a stream.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>current_chunk</strong><span class="classifier">tuple {array-like, shape (n_samples, n_features),</span></dt><dd></dd>
-<dt>array-like, shape (n_samples, )}</dt><dd><p>Generated samples and target values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>current_chunk : tuple {array-like, shape (n_samples, n_features),
+array-like, shape (n_samples, )}</p>
+<blockquote>
+<div><p>Generated samples and target values.</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.is_dry">
-<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.is_dry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.is_dry" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.is_dry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checking if we have reached the end of the stream.</p>
 </dd></dl>
 
@@ -287,7 +277,7 @@ for generation of dynamically imbalanced streams.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
 
     </p>
   </div>

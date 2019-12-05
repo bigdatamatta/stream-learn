@@ -33,7 +33,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -93,7 +92,7 @@
 </ul>
 <p class="caption"><span class="caption-text">User guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../streams.html">Stream generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../streams.html">Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../evaluators.html">Evaluators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ensembles.html">Ensembles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classifiers.html">Classifiers</a></li>
@@ -185,12 +184,19 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.TestThenTrainEvaluator<a class="headerlink" href="#strlearn-evaluators-testthentrainevaluator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrainEvaluator</code><span class="sig-paren">(</span><em class="sig-param">cut=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrainEvaluator</code><span class="sig-paren">(</span><em class="sig-param">cut=0</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test Than Train data stream evaluator.</p>
 <p>Implementation of test-then-train evaluation procedure,
 where each individual data chunk is first used to test
 the classifier and then it is used for training.</p>
-<p class="rubric">Examples</p>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">classes_</span></a><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><p>The class labels.</p>
+</dd>
+<dt><a href="#id3"><span class="problematic" id="id4">scores_</span></a><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
+geometric_mean_score, bac and f_score for
+each processed data chunk.</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
@@ -207,36 +213,20 @@ the classifier and then it is used for training.</p>
 <span class="go">[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><p>The class labels.</p>
-</dd>
-<dt><strong>scores_</strong><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
-geometric_mean_score, bac and f_score for
-each processed data chunk.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cut=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">cut=0</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrainEvaluator.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7fe96660d620&gt;</em>, <em class="sig-param">&lt;function bac at 0x7fe963c177b8&gt;)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/TestThenTrainEvaluator.html#TestThenTrainEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function bac&gt;)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrainEvaluator.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform learning procedure on data stream.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+<dl class="simple">
+<dt>clf<span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
 </dd>
-<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
-</dd>
-</dl>
+<dt>stream<span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -265,7 +255,7 @@ each processed data chunk.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
 
     </p>
   </div>
