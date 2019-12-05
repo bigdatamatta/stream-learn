@@ -191,13 +191,13 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.ChunkBasedEnsemble<a class="headerlink" href="#strlearn-ensembles-chunkbasedensemble" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.ensembles.ChunkBasedEnsemble">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">ChunkBasedEnsemble</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/ChunkBasedEnsemble.html#ChunkBasedEnsemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.ChunkBasedEnsemble" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">ChunkBasedEnsemble</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/ChunkBasedEnsemble.html#ChunkBasedEnsemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.ChunkBasedEnsemble" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Chunk based ensemble classifier.</p>
 <p>Ensemble classifier composed of estimators trained on the fixed
 number of previously seen data chunks.</p>
 <dl class="simple">
-<dt>ensemble_size<span class="classifier">integer, optional (default=5)</span></dt><dd><p>The maximum number of estimators trained using consecutive data chunks
+<dt>n_estimators<span class="classifier">integer, optional (default=5)</span></dt><dd><p>The maximum number of estimators trained using consecutive data chunks
 and maintained in the ensemble.</p>
 </dd>
 </dl>
@@ -228,7 +228,7 @@ and maintained in the ensemble.</p>
 </dl>
 <dl class="method">
 <dt id="strlearn.ensembles.ChunkBasedEnsemble.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/ChunkBasedEnsemble.html#ChunkBasedEnsemble.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.ChunkBasedEnsemble.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/ChunkBasedEnsemble.html#ChunkBasedEnsemble.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.ChunkBasedEnsemble.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
@@ -298,12 +298,6 @@ each label set be correctly predicted.</p>
 <dt>score<span class="classifier">float</span></dt><dd><p>Mean accuracy of self.predict(X) wrt. y.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.ensembles.ChunkBasedEnsemble.set_base_clf">
-<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/ChunkBasedEnsemble.html#ChunkBasedEnsemble.set_base_clf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.ChunkBasedEnsemble.set_base_clf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establishing base classifier.</p>
 </dd></dl>
 
 <dl class="method">
