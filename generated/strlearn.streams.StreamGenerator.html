@@ -47,13 +47,16 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
             <a href="../index.html" class="icon icon-home"> stream-learn
           
 
+          
+            
+            <img src="../_static/logo2.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -135,7 +138,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -184,7 +187,7 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>.StreamGenerator<a class="headerlink" href="#strlearn-streams-streamgenerator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.streams.StreamGenerator">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">StreamGenerator</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">StreamGenerator</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data streams generator for both stationary
 and drifting data streams.</p>
 <dl class="simple">
@@ -232,13 +235,13 @@ for generation of dynamically imbalanced streams.</p>
 </div></blockquote>
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">n_chunks=250</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">random_state=1410</em>, <em class="sig-param">n_drifts=0</em>, <em class="sig-param">concept_sigmoid_spacing=None</em>, <em class="sig-param">n_classes=2</em>, <em class="sig-param">reocurring=False</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">incremental=False</em>, <em class="sig-param">y_flip=0.01</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.get_chunk">
-<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.get_chunk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.get_chunk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.get_chunk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generating a data chunk of a stream.</p>
 <p>current_chunk : tuple {array-like, shape (n_samples, n_features),
 array-like, shape (n_samples, )}</p>
@@ -249,7 +252,7 @@ array-like, shape (n_samples, )}</p>
 
 <dl class="method">
 <dt id="strlearn.streams.StreamGenerator.is_dry">
-<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.streams.StreamGenerator.is_dry" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/StreamGenerator.html#StreamGenerator.is_dry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.StreamGenerator.is_dry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checking if we have reached the end of the stream.</p>
 </dd></dl>
 

@@ -47,13 +47,16 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
             <a href="../index.html" class="icon icon-home"> stream-learn
           
 
+          
+            
+            <img src="../_static/logo2.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -138,7 +141,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -187,22 +190,22 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.UOB<a class="headerlink" href="#strlearn-ensembles-uob" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.ensembles.UOB">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="strlearn.ensembles.UOB.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ensemble_size=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.ensemble_support_matrix">
-<code class="sig-name descname">ensemble_support_matrix</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.ensemble_support_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ensemble_support_matrix</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.ensemble_support_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.ensemble_support_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensemble support matrix.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fitting.</p>
 </dd></dl>
 
@@ -223,13 +226,13 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.partial_fit">
-<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.partial_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.partial_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partial fitting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
 <dl class="simple">
 <dt>X<span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>The training input samples.</p>
@@ -264,7 +267,7 @@ each label set be correctly predicted.</p>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.set_base_clf">
-<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.ensembles.UOB.set_base_clf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/ensembles/UOB.html#UOB.set_base_clf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.set_base_clf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Establishing base classifier.</p>
 </dd></dl>
 

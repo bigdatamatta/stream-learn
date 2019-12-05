@@ -47,13 +47,16 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
             <a href="../index.html" class="icon icon-home"> stream-learn
           
 
+          
+            
+            <img src="../_static/logo2.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -135,7 +138,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -184,7 +187,7 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.PrequentialEvaluator<a class="headerlink" href="#strlearn-evaluators-prequentialevaluator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.evaluators.PrequentialEvaluator">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">PrequentialEvaluator</code><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">PrequentialEvaluator</code><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prequential data stream evaluator.</p>
 <p>Implementation of prequential evaluation procedure, based
 on sliding windows instead of separate data chunks. Window
@@ -218,13 +221,13 @@ each processed data chunk.</p>
 </div>
 <dl class="method">
 <dt id="strlearn.evaluators.PrequentialEvaluator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.evaluators.PrequentialEvaluator.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">interval=100</em>, <em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function bac&gt;)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.process" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">interval=100</em>, <em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function bac&gt;)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/evaluators/PrequentialEvaluator.html#PrequentialEvaluator.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.PrequentialEvaluator.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform learning procedure on data stream.</p>
 <dl class="simple">
 <dt>clf<span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>

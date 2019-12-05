@@ -33,7 +33,6 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -46,13 +45,16 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
             <a href="../../../index.html" class="icon icon-home"> stream-learn
           
 
+          
+            
+            <img src="../../../_static/logo2.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -91,9 +93,9 @@
 </ul>
 <p class="caption"><span class="caption-text">User guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../streams.html">Stream generator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../evaluators.html">Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ensembles.html">Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ensembles.html">Classifier Ensembles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../classifiers.html">Classifiers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
@@ -124,7 +126,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -223,9 +225,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">aging_method</span> <span class="o">=</span> <span class="n">aging_method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rejuvenation_power</span> <span class="o">=</span> <span class="n">rejuvenation_power</span></div>
 
-    <span class="k">def</span> <span class="nf">set_base_clf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_clf</span><span class="o">=</span><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">()):</span>
+<div class="viewcode-block" id="WAE.set_base_clf"><a class="viewcode-back" href="../../../generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE.set_base_clf">[docs]</a>    <span class="k">def</span> <span class="nf">set_base_clf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_clf</span><span class="o">=</span><span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">()):</span>
         <span class="sd">&quot;&quot;&quot;Establish base classifier.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span> <span class="o">=</span> <span class="n">base_clf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_clf</span> <span class="o">=</span> <span class="n">base_clf</span></div>
 
     <span class="k">def</span> <span class="nf">_prune</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">previous_y</span>
@@ -415,7 +417,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
 
     </p>
   </div>
