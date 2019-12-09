@@ -25,15 +25,17 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,7 +59,7 @@
 
           
             
-            <img src="_static/logo2.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -146,7 +148,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
         
           
 
@@ -205,7 +207,7 @@ stream may be generated with a clean generator call, without any additional para
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/0_stationary.gif" src="_images/0_stationary.gif" />
+<img alt="_images/0_stationary.png" src="_images/0_stationary.png" />
 <p>The above animation contains the scatter plot of a two-dimensional stationary stream with the problem of
 three classes. The <cite>StreamGenerator</cite> class in the initializer accepts almost all standard attributes of
 the <cite>make_classification()</cite> function, so to get exactly the distribution as above, the exact used call was:</p>
@@ -257,7 +259,7 @@ function simulating an abrupt change in the data stream.</p>
 <span class="pre">StreamGenerator(n_classes=3,</span> <span class="pre">n_drifts=1)</span>
 <span class="pre">`</span></code></p>
 <img alt="_images/1_sudden.png" src="_images/1_sudden.png" />
-<img alt="_images/1_sudden.gif" src="_images/1_sudden.gif" />
+<img alt="_images/1_sudden.png" src="_images/1_sudden.png" />
 </div>
 <div class="section" id="gradual-drift">
 <h3>Gradual drift<a class="headerlink" href="#gradual-drift" title="Permalink to this headline">¶</a></h3>
@@ -273,7 +275,7 @@ selecting which concept is active at a given time.</p>
 </pre></div>
 </div>
 <img alt="_images/2_gradual.png" src="_images/2_gradual.png" />
-<img alt="_images/2_incremental.gif" src="_images/2_incremental.gif" />
+<img alt="plots/2_incremental.png" src="plots/2_incremental.png" />
 </div>
 <div class="section" id="incremental-stepwise-drift">
 <h3>Incremental (Stepwise) drift<a class="headerlink" href="#incremental-stepwise-drift" title="Permalink to this headline">¶</a></h3>
@@ -287,7 +289,7 @@ is described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
 </pre></div>
 </div>
 <img alt="_images/3_incremental.png" src="_images/3_incremental.png" />
-<img alt="_images/3_gradual.gif" src="_images/3_gradual.gif" />
+<img alt="plots/3_gradual.png" src="plots/3_gradual.png" />
 </div>
 <div class="section" id="recurrent-gradual-drift">
 <h3>Recurrent gradual drift<a class="headerlink" href="#recurrent-gradual-drift" title="Permalink to this headline">¶</a></h3>
@@ -299,7 +301,7 @@ and analyzed as recurrent drifts. …</p>
 </pre></div>
 </div>
 <img alt="_images/4_reocurring.png" src="_images/4_reocurring.png" />
-<img alt="_images/4_reocurring.gif" src="_images/4_reocurring.gif" />
+<img alt="_images/4_reocurring.png" src="_images/4_reocurring.png" />
 </div>
 <div class="section" id="non-reocurring-gradual-drift">
 <h3>Non-reocurring gradual drift<a class="headerlink" href="#non-reocurring-gradual-drift" title="Permalink to this headline">¶</a></h3>
@@ -309,7 +311,7 @@ and analyzed as recurrent drifts. …</p>
 </pre></div>
 </div>
 <img alt="_images/5_nonreocurring.png" src="_images/5_nonreocurring.png" />
-<img alt="_images/5_nonreocurring.gif" src="_images/5_nonreocurring.gif" />
+<img alt="_images/5_nonreocurring.png" src="_images/5_nonreocurring.png" />
 </div>
 </div>
 <div class="section" id="class-imbalance">
@@ -318,14 +320,14 @@ and analyzed as recurrent drifts. …</p>
 </pre></div>
 </div>
 <img alt="_images/6_balanced.png" src="_images/6_balanced.png" />
-<img alt="_images/6_balanced.gif" src="_images/6_balanced.gif" />
+<img alt="_images/6_balanced.png" src="_images/6_balanced.png" />
 <div class="section" id="stationary-imbalanced-stream">
 <h3>Stationary imbalanced stream<a class="headerlink" href="#stationary-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 </pre></div>
 </div>
 <img alt="_images/7_static_imbalanced.png" src="_images/7_static_imbalanced.png" />
-<img alt="_images/7_static_imbalanced.gif" src="_images/7_static_imbalanced.gif" />
+<img alt="_images/7_static_imbalanced.png" src="_images/7_static_imbalanced.png" />
 </div>
 <div class="section" id="dynamically-imbalanced-stream">
 <h3>Dynamically imbalanced stream<a class="headerlink" href="#dynamically-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
@@ -333,7 +335,7 @@ and analyzed as recurrent drifts. …</p>
 </pre></div>
 </div>
 <img alt="_images/8_dynamic_imbalanced.png" src="_images/8_dynamic_imbalanced.png" />
-<img alt="_images/8_dynamic_imbalanced.gif" src="_images/8_dynamic_imbalanced.gif" />
+<img alt="_images/8_dynamic_imbalanced.png" src="_images/8_dynamic_imbalanced.png" />
 </div>
 </div>
 <div class="section" id="dynamically-imbalanced-stream-with-concept-oscillation-disco">
@@ -345,7 +347,7 @@ and analyzed as recurrent drifts. …</p>
 </pre></div>
 </div>
 <img alt="_images/9_first.png" src="_images/9_first.png" />
-<img alt="_images/9_disco.gif" src="_images/9_disco.gif" />
+<img alt="_images/9_disco.png" src="_images/9_disco.png" />
 </div>
 </div>
 

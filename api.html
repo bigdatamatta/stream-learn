@@ -25,15 +25,17 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,7 +59,7 @@
 
           
             
-            <img src="_static/logo2.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -109,7 +111,11 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/strlearn.streams.ARFFParser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.ARFFParser</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.TestThenTrain.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.TestThenTrain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.Prequential.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.Prequential</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/strlearn.classifiers.AccumulatedSamplesClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.AccumulatedSamplesClassifier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/strlearn.classifiers.SampleWeightedMetaEstimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.SampleWeightedMetaEstimator</a></li>
@@ -150,7 +156,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
         
           
 
@@ -220,11 +226,11 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.TestThenTrainEvaluator</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.evaluators.TestThenTrain.html#strlearn.evaluators.TestThenTrain" title="strlearn.evaluators.TestThenTrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.TestThenTrain</span></code></a>([metrics])</p></td>
+<td><p>Test Than Train data stream evaluator.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.PrequentialEvaluator</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.evaluators.Prequential.html#strlearn.evaluators.Prequential" title="strlearn.evaluators.Prequential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.Prequential</span></code></a>([metrics])</p></td>
+<td><p>Prequential data stream evaluator.</p></td>
 </tr>
 </tbody>
 </table>

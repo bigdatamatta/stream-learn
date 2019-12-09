@@ -25,19 +25,21 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/stream-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="strlearn.classifiers.AccumulatedSamplesClassifier" href="strlearn.classifiers.AccumulatedSamplesClassifier.html" />
+    <link rel="next" title="strlearn.evaluators.TestThenTrain" href="strlearn.evaluators.TestThenTrain.html" />
     <link rel="prev" title="strlearn.streams.StreamGenerator" href="strlearn.streams.StreamGenerator.html" /> 
 </head>
 
@@ -57,7 +59,7 @@
 
           
             
-            <img src="../_static/logo2.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -139,7 +141,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
         
           
 
@@ -188,29 +190,27 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>.ARFFParser<a class="headerlink" href="#strlearn-streams-arffparser" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.streams.ARFFParser">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">ARFFParser</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">n_chunks=250</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/ARFFParser.html#ARFFParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.streams.</code><code class="sig-name descname">ARFFParser</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">n_chunks=250</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/652f6ab/strlearn/streams/ARFFParser.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Stream-aware parser of datasets in ARFF format.</p>
+</div></blockquote>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>path</strong><span class="classifier">string</span></dt><dd><blockquote>
+<div><p>Path to the ARFF file.</p>
+</div></blockquote>
 <dl class="simple">
-<dt>path<span class="classifier">string</span></dt><dd><p>Path to the ARFF file.</p>
-</dd>
 <dt>chunk_size<span class="classifier">integer, optional (default=200)</span></dt><dd><p>The number of instances in each data chunk.</p>
 </dd>
 <dt>n_chunks<span class="classifier">integer, optional (default=250)</span></dt><dd><p>The number of data chunks, that the stream
 is composed of.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">ARFFParser</span><span class="p">(</span><span class="s2">&quot;Agrawal.arff&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">evaluators</span><span class="o">.</span><span class="n">PrequentialEvaluator</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
-<span class="gp">...</span>
-</pre></div>
-</div>
-</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="simple">
 <dt>[[0.855      0.80815508 0.79478582 0.80815508 0.89679715]</dt><dd><p>[0.795      0.75827674 0.7426779  0.75827674 0.84644195]
 [0.8        0.75313899 0.73559983 0.75313899 0.85507246]
@@ -222,25 +222,25 @@ is composed of.</p>
 </dl>
 <dl class="method">
 <dt id="strlearn.streams.ARFFParser.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">n_chunks=250</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/ARFFParser.html#ARFFParser.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em>, <em class="sig-param">chunk_size=200</em>, <em class="sig-param">n_chunks=250</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/652f6ab/strlearn/streams/ARFFParser.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializer.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.ARFFParser.get_chunk">
-<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/ARFFParser.html#ARFFParser.get_chunk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.get_chunk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_chunk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/652f6ab/strlearn/streams/ARFFParser.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.get_chunk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get Chunk of size.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.ARFFParser.is_dry">
-<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/ARFFParser.html#ARFFParser.is_dry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.is_dry" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_dry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/652f6ab/strlearn/streams/ARFFParser.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.is_dry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checking if we have reached the end of the stream.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.streams.ARFFParser.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/streams/ARFFParser.html#ARFFParser.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/652f6ab/strlearn/streams/ARFFParser.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.streams.ARFFParser.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset processed stream and close ARFF file.</p>
 </dd></dl>
 
@@ -256,7 +256,7 @@ is composed of.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="strlearn.classifiers.AccumulatedSamplesClassifier.html" class="btn btn-neutral float-right" title="strlearn.classifiers.AccumulatedSamplesClassifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="strlearn.evaluators.TestThenTrain.html" class="btn btn-neutral float-right" title="strlearn.evaluators.TestThenTrain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="strlearn.streams.StreamGenerator.html" class="btn btn-neutral float-left" title="strlearn.streams.StreamGenerator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
