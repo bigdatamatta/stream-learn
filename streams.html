@@ -266,7 +266,7 @@ function simulating an abrupt change in the data stream.</p>
 <p>Unlike sudden drifts, gradual ones are associated with a slower change rate, which can be noticed
 during a longer observation of the data stream. This kind of drift refers to the transition phase
 where the probability of getting instances from the first concept decreases while the probability
-of sampling from the next concept increases. The <a href="#id1"><span class="problematic" id="id2">`</span></a>StreamGenerator`class simulates gradual drift by
+of sampling from the next concept increases. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class simulates gradual drift by
 comparing the concept probabilities with the generated random noise and, depending on the result,
 selecting which concept is active at a given time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
@@ -275,7 +275,7 @@ selecting which concept is active at a given time.</p>
 </pre></div>
 </div>
 <img alt="_images/2_gradual.png" src="_images/2_gradual.png" />
-<img alt="plots/2_incremental.png" src="plots/2_incremental.png" />
+<img alt="_images/3_incremental.png" src="_images/3_incremental.png" />
 </div>
 <div class="section" id="incremental-stepwise-drift">
 <h3>Incremental (Stepwise) drift<a class="headerlink" href="#incremental-stepwise-drift" title="Permalink to this headline">¶</a></h3>
@@ -289,7 +289,7 @@ is described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
 </pre></div>
 </div>
 <img alt="_images/3_incremental.png" src="_images/3_incremental.png" />
-<img alt="plots/3_gradual.png" src="plots/3_gradual.png" />
+<img alt="_images/2_gradual.png" src="_images/2_gradual.png" />
 </div>
 <div class="section" id="recurrent-gradual-drift">
 <h3>Recurrent gradual drift<a class="headerlink" href="#recurrent-gradual-drift" title="Permalink to this headline">¶</a></h3>
