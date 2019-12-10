@@ -103,9 +103,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#test-then-train-evaluator">Test-Then-Train Evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prequential-evaluator">Prequential Evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#recall">Recall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#precision">Precision</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#f-score">f-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recall-true-positive-rate">Recall / True positive rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precision-positive-predictive-value">Precision / Positive predictive value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f1-score">F1 score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#balanced-accuracy-bac">Balanced accuracy (BAC)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-g-mean">Geometric mean score (G-mean)</a></li>
 </ul>
@@ -191,30 +191,42 @@
 <h1>Stream Evaluators<a class="headerlink" href="#stream-evaluators" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="test-then-train-evaluator">
 <h2>Test-Then-Train Evaluator<a class="headerlink" href="#test-then-train-evaluator" title="Permalink to this headline">¶</a></h2>
-<img alt="_images/evaluators_ttt.png" src="_images/evaluators_ttt.png" />
+<a class="reference internal image-reference" href="_images/evaluators_ttt.png"><img alt="_images/evaluators_ttt.png" class="align-center" src="_images/evaluators_ttt.png" style="width: 800px;" /></a>
 </div>
 <div class="section" id="prequential-evaluator">
 <h2>Prequential Evaluator<a class="headerlink" href="#prequential-evaluator" title="Permalink to this headline">¶</a></h2>
-<img alt="_images/evaluators_pr.png" src="_images/evaluators_pr.png" />
+<a class="reference internal image-reference" href="_images/evaluators_pr.png"><img alt="_images/evaluators_pr.png" class="align-center" src="_images/evaluators_pr.png" style="width: 800px;" /></a>
 </div>
 <div class="section" id="metrics">
 <h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="recall">
-<h3>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="precision">
-<h3>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="f-score">
-<h3>f-score<a class="headerlink" href="#f-score" title="Permalink to this headline">¶</a></h3>
-</div>
+<img alt="_images/confusion_matrix.png" class="align-center" src="_images/confusion_matrix.png" />
+<div class="section" id="recall-true-positive-rate">
+<h3>Recall / True positive rate<a class="headerlink" href="#recall-true-positive-rate" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><span class="math">Recall = \frac{tp}{tp + fn}</span></p>
+</div></div>
+<div class="section" id="precision-positive-predictive-value">
+<h3>Precision / Positive predictive value<a class="headerlink" href="#precision-positive-predictive-value" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><span class="math">Precision = \frac{tp}{tp + fp}</span></p>
+</div></div>
+<div class="section" id="f1-score">
+<h3>F1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><span class="math">F1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
+</div></div>
 <div class="section" id="balanced-accuracy-bac">
 <h3>Balanced accuracy (BAC)<a class="headerlink" href="#balanced-accuracy-bac" title="Permalink to this headline">¶</a></h3>
-</div>
+<div class="math">
+<p><span class="math">Specificity = \frac{tn}{tn + fp}</span></p>
+</div><div class="math">
+<p><span class="math">BAC = \frac{Recall * Specificity}{2}</span></p>
+</div></div>
 <div class="section" id="geometric-mean-score-g-mean">
 <h3>Geometric mean score (G-mean)<a class="headerlink" href="#geometric-mean-score-g-mean" title="Permalink to this headline">¶</a></h3>
-<p><span class="math">\frac{ \sum_{t=0}^{N}f(t,k) }{N}</span></p>
-</div>
+<div class="math">
+<p><span class="math">Gmean = \sqrt{Recall * Specificity}</span></p>
+</div></div>
 </div>
 </div>
 
