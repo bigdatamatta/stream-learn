@@ -196,6 +196,9 @@ of the <code class="docutils literal notranslate"><span class="pre">stream-learn
 described in the literature in their block-based versions.</p>
 <div class="section" id="test-then-train-evaluator">
 <h2>Test-Then-Train Evaluator<a class="headerlink" href="#test-then-train-evaluator" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">TestThenTrain</span></code> class implements the <cite>Test-Then-Train</cite> evaluation procedure,
+in which each individual data chunk is first used to test the classifier before
+it is used for updating the existing model using its <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> function.</p>
 <a class="reference internal image-reference" href="_images/evaluators_ttt.png"><img alt="_images/evaluators_ttt.png" class="align-center" src="_images/evaluators_ttt.png" style="width: 800px;" /></a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
 <span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
@@ -213,6 +216,13 @@ described in the literature in their block-based versions.</p>
 </div>
 <div class="section" id="prequential-evaluator">
 <h2>Prequential Evaluator<a class="headerlink" href="#prequential-evaluator" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>Prequential</cite> procedure of assessing the predictive performance of stream
+learning algorithms is implemented by the <code class="docutils literal notranslate"><span class="pre">Prequential</span></code> class. This estimation
+technique is based on a forgetting mechanism in the form of a sliding window
+instead of a separate data chunks. Window moves by a fixed number of instances
+determined by the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter for the <code class="docutils literal notranslate"><span class="pre">process</span></code> function. After each
+step, samples that are currently in the window are used to test the classifier
+and then for updating the model.</p>
 <a class="reference internal image-reference" href="_images/evaluators_pr.png"><img alt="_images/evaluators_pr.png" class="align-center" src="_images/evaluators_pr.png" style="width: 800px;" /></a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
 <span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
