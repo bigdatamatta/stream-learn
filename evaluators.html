@@ -103,8 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#test-then-train-evaluator">Test-Then-Train Evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prequential-evaluator">Prequential Evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#recall-true-positive-rate">Recall / True positive rate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#precision-positive-predictive-value">Precision / Positive predictive value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recall">Recall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precision">Precision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#f1-score">F1 score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#balanced-accuracy-bac">Balanced accuracy (BAC)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-g-mean">Geometric mean score (G-mean)</a></li>
@@ -263,48 +263,68 @@ the instance of <code class="docutils literal notranslate"><span class="pre">Str
 of imbalanced binary problems, which can be found in the <code class="docutils literal notranslate"><span class="pre">utils.metrics</span></code> module.
 All implemented metrics are based on the confusion matrix.</p>
 <img alt="_images/confusion_matrix.png" class="align-center" src="_images/confusion_matrix.png" />
-<div class="section" id="recall-true-positive-rate">
-<h3>Recall / True positive rate<a class="headerlink" href="#recall-true-positive-rate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="recall">
+<h3>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
+<p>Recall (also known as sensitivity or true positive rate) represents the
+classifier’s ability to find all the positive data samples in the dataset
+(e.g. the minority class instances) and is denoted as</p>
+<div class="math">
+<p><span class="math">Recall = \frac{tp}{tp + fn}</span></p>
+</div><p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">recall</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="precision">
+<h3>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
+<p>Precision (also called positive predictive value) expresses the probability
+of correct detection of positive samples and is denoted as</p>
 <div class="math">
-<p><span class="math">Recall = \frac{tp}{tp + fn}</span></p>
-</div></div>
-<div class="section" id="precision-positive-predictive-value">
-<h3>Precision / Positive predictive value<a class="headerlink" href="#precision-positive-predictive-value" title="Permalink to this headline">¶</a></h3>
+<p><span class="math">Precision = \frac{tp}{tp + fp}</span></p>
+</div><p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">precision</span>
 </pre></div>
 </div>
-<div class="math">
-<p><span class="math">Precision = \frac{tp}{tp + fp}</span></p>
-</div></div>
+</div>
 <div class="section" id="f1-score">
 <h3>F1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
+<p>The F1 score can be interpreted as a harmonic mean of precision and
+recall taking both metrics into account and punishing extreme values.
+The formula for the F1 score is</p>
+<div class="math">
+<p><span class="math">F1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
+</div><p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">f_score</span>
 </pre></div>
 </div>
-<div class="math">
-<p><span class="math">F1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
-</div></div>
+</div>
 <div class="section" id="balanced-accuracy-bac">
 <h3>Balanced accuracy (BAC)<a class="headerlink" href="#balanced-accuracy-bac" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span>
-</pre></div>
-</div>
+<p>The balanced accuracy for the multiclass problems is defined as the average of
+recall obtained on each class. For binary problems it is denoted by the average
+of recall and specificity (also called true negative rate).</p>
 <div class="math">
 <p><span class="math">Specificity = \frac{tn}{tn + fp}</span></p>
 </div><div class="math">
 <p><span class="math">BAC = \frac{Recall * Specificity}{2}</span></p>
-</div></div>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="geometric-mean-score-g-mean">
 <h3>Geometric mean score (G-mean)<a class="headerlink" href="#geometric-mean-score-g-mean" title="Permalink to this headline">¶</a></h3>
+<p>The geometric mean (G-mean) tries to maximize the accuracy on each of the
+classes while keeping these accuracies balanced. For N-class problems it is
+a N root of the product of class-wise recall. For binary classification
+G-mean is denoted as the squared root of the product of the recall and specificity.</p>
+<div class="math">
+<p><span class="math">Gmean = \sqrt{Recall * Specificity}</span></p>
+</div><p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score</span>
 </pre></div>
 </div>
-<div class="math">
-<p><span class="math">Gmean = \sqrt{Recall * Specificity}</span></p>
-</div></div>
+</div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" id="bibtex-bibliography-evaluators-0" start="1">
