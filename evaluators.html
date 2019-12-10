@@ -198,19 +198,31 @@ described in the literature in their block-based versions.</p>
 <h2>Test-Then-Train Evaluator<a class="headerlink" href="#test-then-train-evaluator" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TestThenTrain</span></code> class implements the <cite>Test-Then-Train</cite> evaluation procedure,
 in which each individual data chunk is first used to test the classifier before
-it is used for updating the existing model using its <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> function.</p>
+it is used for updating the existing model.</p>
 <a class="reference internal image-reference" href="_images/evaluators_ttt.png"><img alt="_images/evaluators_ttt.png" class="align-center" src="_images/evaluators_ttt.png" style="width: 800px;" /></a>
+<p>The performance metrics returned by the evaluator are determined by the
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter which accepts a tuple containing the names of preferred
+measures and can be specified during initialization.</p>
+<p>Processing of the data stream is started by calling the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function
+which accepts two parameters (i.e. <code class="docutils literal notranslate"><span class="pre">stream</span></code> and <code class="docutils literal notranslate"><span class="pre">clfs</span></code>) responsible for
+defining the data stream and classifier, or a tuple of classifiers, employing
+the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> function. The size of each data chunk is determined by
+the <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> parameter from the <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class. The results
+of evaluation can be accessed using the <code class="docutils literal notranslate"><span class="pre">scores</span></code> attribute, which is a
+three-dimensional array of shape (n_classifiers, n_chunks, n_metrics).</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
 <span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 
-<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 
 <span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -220,10 +232,15 @@ it is used for updating the existing model using its <code class="docutils liter
 learning algorithms is implemented by the <code class="docutils literal notranslate"><span class="pre">Prequential</span></code> class. This estimation
 technique is based on a forgetting mechanism in the form of a sliding window
 instead of a separate data chunks. Window moves by a fixed number of instances
-determined by the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter for the <code class="docutils literal notranslate"><span class="pre">process</span></code> function. After each
+determined by the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter for the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function. After each
 step, samples that are currently in the window are used to test the classifier
 and then for updating the model.</p>
 <a class="reference internal image-reference" href="_images/evaluators_pr.png"><img alt="_images/evaluators_pr.png" class="align-center" src="_images/evaluators_pr.png" style="width: 800px;" /></a>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">TestThenTrain</span></code> evaluator, the object of the <code class="docutils literal notranslate"><span class="pre">Prequential</span></code>
+class can be initialized with a <code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter containing metrics names
+and the size of the sliding window is equal to the <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> parameter from
+the instance of <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class.</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
 <span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
@@ -235,6 +252,7 @@ and then for updating the model.</p>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 
 <span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
