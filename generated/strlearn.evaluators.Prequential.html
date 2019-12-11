@@ -93,7 +93,7 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Instalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User guide</span></p>
@@ -101,6 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../streams.html">Data Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../evaluators.html">Stream Evaluators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ensembles.html#chunk-based-ensembles-for-data-streams">Chunk-based Ensembles for Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ensembles.html#online-ensembles-for-data-streams">Online Ensembles for Data Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classifiers.html">Classifiers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
@@ -191,7 +193,7 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.Prequential<a class="headerlink" href="#strlearn-evaluators-prequential" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.evaluators.Prequential">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">Prequential</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function bac&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/6e1983c/strlearn/evaluators/Prequential.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">Prequential</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function bac&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1fec0e1/strlearn/evaluators/Prequential.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prequential data stream evaluator.</p>
 <p>Implementation of prequential evaluation procedure, based
 on sliding windows instead of separate data chunks. Window
@@ -230,13 +232,13 @@ each processed data chunk.</p>
 </dl>
 <dl class="method">
 <dt id="strlearn.evaluators.Prequential.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7efb8ea41c80&gt;</em>, <em class="sig-param">&lt;function bac at 0x7efb8b007598&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/6e1983c/strlearn/evaluators/Prequential.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7fa3dce8cc80&gt;</em>, <em class="sig-param">&lt;function bac at 0x7fa3d9452598&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1fec0e1/strlearn/evaluators/Prequential.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.evaluators.Prequential.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">interval=100</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/6e1983c/strlearn/evaluators/Prequential.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential.process" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em>, <em class="sig-param">interval=100</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1fec0e1/strlearn/evaluators/Prequential.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.Prequential.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform learning procedure on data stream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
