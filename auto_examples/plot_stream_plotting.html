@@ -112,6 +112,15 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_basic.html">Basic example of stationary synthetic stream processing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting example data streams</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#processing">Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stationary-stream">Stationary stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sudden-drift">Sudden drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradual-drift">Gradual drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incremental-drift">Incremental drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recurrent">Recurrent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-recurrent">Non-recurrent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#static-imbalanced">Static-imbalanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-imbalanced">Dynamic-imbalanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disco">DISCO</a></li>
 </ul>
 </li>
 </ul>
@@ -240,7 +249,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Stationary stream</p>
+</div>
+<div class="section" id="stationary-stream">
+<h2>Stationary stream<a class="headerlink" href="#stationary-stream" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">)</span>
 
@@ -248,7 +259,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_001.png" />
-<p>Sudden drift</p>
+</div>
+<div class="section" id="sudden-drift">
+<h2>Sudden drift<a class="headerlink" href="#sudden-drift" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -256,7 +269,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_002.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_002.png" />
-<p>Gradual drift</p>
+</div>
+<div class="section" id="gradual-drift">
+<h2>Gradual drift<a class="headerlink" href="#gradual-drift" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span>
     <span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span>
@@ -266,7 +281,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_003.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_003.png" />
-<p>Incremental drift</p>
+</div>
+<div class="section" id="incremental-drift">
+<h2>Incremental drift<a class="headerlink" href="#incremental-drift" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span>
     <span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
@@ -276,7 +293,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_004.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_004.png" />
-<p>Recurrent</p>
+</div>
+<div class="section" id="recurrent">
+<h2>Recurrent<a class="headerlink" href="#recurrent" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -284,7 +303,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_005.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_005.png" />
-<p>Non-recurrent</p>
+</div>
+<div class="section" id="non-recurrent">
+<h2>Non-recurrent<a class="headerlink" href="#non-recurrent" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -292,7 +313,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_006.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_006.png" />
-<p>Static-imbalanced</p>
+</div>
+<div class="section" id="static-imbalanced">
+<h2>Static-imbalanced<a class="headerlink" href="#static-imbalanced" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 
@@ -300,7 +323,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_007.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_007.png" />
-<p>Dynamic-imbalanced</p>
+</div>
+<div class="section" id="dynamic-imbalanced">
+<h2>Dynamic-imbalanced<a class="headerlink" href="#dynamic-imbalanced" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span><span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
 
@@ -310,7 +335,9 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_008.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_008.png" />
-<p>DISCO</p>
+</div>
+<div class="section" id="disco">
+<h2>DISCO<a class="headerlink" href="#disco" title="Permalink to this headline">¶</a></h2>
 <p>inne</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">(</span>
     <span class="o">**</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">concept_kwargs</span></a><span class="p">,</span>
@@ -327,7 +354,7 @@ pariatur ullamco, an export excepteur fidelissimae.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_plot_stream_plotting_009.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_stream_plotting_009.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.645 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.375 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-stream-plotting-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/210d1e7049b5593576cdb92a944ffbf5/plot_stream_plotting.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_stream_plotting.py</span></code></a></p>
