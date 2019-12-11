@@ -201,7 +201,7 @@ in which each individual data chunk is first used to test the classifier before
 it is used for updating the existing model.</p>
 <a class="reference internal image-reference" href="_images/evaluators_ttt.png"><img alt="_images/evaluators_ttt.png" class="align-center" src="_images/evaluators_ttt.png" style="width: 800px;" /></a>
 <p>The performance metrics returned by the evaluator are determined by the
-<code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter which accepts a tuple containing the names of preferred
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter which accepts a tuple containing the functions of preferred quality
 measures and can be specified during initialization.</p>
 <p>Processing of the data stream is started by calling the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function
 which accepts two parameters (i.e. <code class="docutils literal notranslate"><span class="pre">stream</span></code> and <code class="docutils literal notranslate"><span class="pre">clfs</span></code>) responsible for
