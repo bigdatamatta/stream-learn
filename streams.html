@@ -105,7 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#gradual-drift">Gradual drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#incremental-stepwise-drift">Incremental (Stepwise) drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recurrent-drift">Recurrent drift</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#non-reocurring-gradual-drift">Non-reocurring gradual drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-recurring-gradual-drift">Non-recurring gradual drift</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#class-imbalance">Class imbalance</a><ul>
@@ -264,19 +264,19 @@ comparing the concept probabilities with the generated random noise and, dependi
 </div>
 <div class="section" id="recurrent-drift">
 <h3>Recurrent drift<a class="headerlink" href="#recurrent-drift" title="Permalink to this headline">¶</a></h3>
-<p>Situations when previous concepts reappear after some time are separately treated
-and analyzed as recurrent drifts. …</p>
+<p>The cyclic repetition of class distributions is a completely different property of concept drifts. If after another drift, the concept earlier present in the stream returns, we are dealing with a <em>recurrent drift</em>. We can get this kind of data stream by setting the <code class="docutils literal notranslate"><span class="pre">recurring</span></code> flag in the generator.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/recurring.png" src="_images/recurring.png" />
 </div>
-<div class="section" id="non-reocurring-gradual-drift">
-<h3>Non-reocurring gradual drift<a class="headerlink" href="#non-reocurring-gradual-drift" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="non-recurring-gradual-drift">
+<h3>Non-recurring gradual drift<a class="headerlink" href="#non-recurring-gradual-drift" title="Permalink to this headline">¶</a></h3>
+<p>The default mode of consecutive concept occurences is a non-recurring drift, where in each concept drift we are generating a completely new, previously unseen  class distribution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span>
+    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 </pre></div>
 </div>
