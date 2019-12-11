@@ -259,7 +259,38 @@ inne
 
 
 
+
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_008.png
+    :class: sphx-glr-single-img
+
+
+
+
+
+DISCO
+
+inne
+
+
+.. code-block:: default
+
+
+    stream = sl.streams.StreamGenerator(
+        **concept_kwargs,
+        weights=(2, 5, 0.9),
+        n_drifts=3,
+        concept_sigmoid_spacing=5,
+        recurring=True,
+        incremental=True
+    )
+
+    plot_stream(
+        stream, "disco", "Dynamically Imbalanced Stream with Concept Oscillation (DISCO)"
+    )
+
+
+
+.. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_009.png
     :class: sphx-glr-single-img
 
 
@@ -269,7 +300,7 @@ inne
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.964 seconds)
+   **Total running time of the script:** ( 0 minutes  10.453 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_stream_plotting.py:

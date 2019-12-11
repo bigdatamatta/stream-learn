@@ -105,7 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#gradual-drift">Gradual drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#incremental-stepwise-drift">Incremental (Stepwise) drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recurrent-drift">Recurrent drift</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#non-recurring-gradual-drift">Non-recurring gradual drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-recurring-drift">Non-recurring drift</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#class-imbalance">Class imbalance</a><ul>
@@ -113,6 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#dynamically-imbalanced-stream">Dynamically imbalanced stream</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#mixing-drift-properties">Mixing drift properties</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
@@ -272,8 +273,8 @@ comparing the concept probabilities with the generated random noise and, dependi
 </div>
 <img alt="_images/recurring.png" src="_images/recurring.png" />
 </div>
-<div class="section" id="non-recurring-gradual-drift">
-<h3>Non-recurring gradual drift<a class="headerlink" href="#non-recurring-gradual-drift" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="non-recurring-drift">
+<h3>Non-recurring drift<a class="headerlink" href="#non-recurring-drift" title="Permalink to this headline">¶</a></h3>
 <p>The default mode of consecutive concept occurences is a non-recurring drift, where in each concept drift we are generating a completely new, previously unseen  class distribution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
     <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span>
@@ -285,8 +286,14 @@ comparing the concept probabilities with the generated random noise and, dependi
 </div>
 <div class="section" id="class-imbalance">
 <h2>Class imbalance<a class="headerlink" href="#class-imbalance" title="Permalink to this headline">¶</a></h2>
+<p>Another area of data stream properties, different from the concept drift phenomenon, is the a priori probability of problem classes. By default, a balanced stream is generated, i.e. one in which patterns of all classes are present in a similar number.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/stationary.png" src="_images/stationary.png" />
 <div class="section" id="stationary-imbalanced-stream">
 <h3>Stationary imbalanced stream<a class="headerlink" href="#stationary-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
+<p>The basic type of problem in which we are dealing with disturbed class distribution is a <em>dataset imbalanced stationary</em>, where the classes maintain a predetermined proportion in each chunk of data stream. To acquire this type of a stream, one should pass the <code class="docutils literal notranslate"><span class="pre">list</span></code> to the <code class="docutils literal notranslate"><span class="pre">weights</span></code> parameter of the generator (i) consisting of as many elements as the classes in the problem and (ii) adding to one.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -294,11 +301,28 @@ comparing the concept probabilities with the generated random noise and, dependi
 </div>
 <div class="section" id="dynamically-imbalanced-stream">
 <h3>Dynamically imbalanced stream<a class="headerlink" href="#dynamically-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
+<p>A less common type of <em>imbalanced data</em>, impossible to obtain in static datasets, is <em>data imbalanced dynamically</em>. In this case, the class distribution is not constant throughout the course of a stream, but changes over time, similar to changing the concept presence in gradual streams. To get this type of data stream, we pass a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> of three numeric values to the <code class="docutils literal notranslate"><span class="pre">weights</span></code> parameter of the generator:</p>
+<ul class="simple">
+<li><p>the number of cycles of distribution changes,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concept_sigmoid_spacing</span></code> parameter, deciding about the dynamics of changes on the same principle as in gradual and incremental drifts,</p></li>
+<li><p>range within which oscillation is to take place.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
 </pre></div>
 </div>
 <img alt="_images/dynamic-imbalanced.png" src="_images/dynamic-imbalanced.png" />
 </div>
+</div>
+<div class="section" id="mixing-drift-properties">
+<h2>Mixing drift properties<a class="headerlink" href="#mixing-drift-properties" title="Permalink to this headline">¶</a></h2>
+<p>Of course, when generating data streams, we don’t have to limit ourselves to just one modification of their properties. We can easily prepare a stream with many drifts, any dynamics of changes, a selected type of drift and a diverse, dynamic imbalanced ratio. The last example in this chapter of User Guide is such proposition, namely, DISCO (Dynamically Imbalanced Stream with Concept Oscillation).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
+    <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">recurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/disco.png" src="_images/disco.png" />
 </div>
 </div>
 
