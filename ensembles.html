@@ -100,17 +100,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="streams.html">Data Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Classifier Ensembles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#chunk-based-ensembles-for-data-streams">Chunk-based Ensembles for Data Streams</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#chunk-based-ensemble">Chunk-Based Ensemble</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#weighted-aging-ensemble-wae">Weighted Aging Ensemble (WAE)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classifier Ensembles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#chunk-based-ensembles-for-data-streams">Chunk-based Ensembles for Data Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chunk-based-ensemble">Chunk-Based Ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weighted-aging-ensemble-wae">Weighted Aging Ensemble (WAE)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#online-ensembles-for-data-streams">Online Ensembles for Data Streams</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#online-bagging-ob">Online Bagging (OB)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#oversamping-based-online-bagging-oob">Oversamping-Based Online Bagging (OOB)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#undersampling-based-online-bagging-uob">Undersampling-Based Online Bagging (UOB)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#online-ensembles-for-data-streams">Online Ensembles for Data Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#online-bagging-ob">Online Bagging (OB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oversamping-based-online-bagging-oob">Oversamping-Based Online Bagging (OOB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#undersampling-based-online-bagging-uob">Undersampling-Based Online Bagging (UOB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="classifiers.html">Classifiers</a></li>
@@ -201,37 +203,37 @@ models.</p>
 ensembles can be categorized as <cite>chunk-based</cite> or <cite>online</cite>. The <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code>
 package implements various ensemble methods for data stream classification,
 which can be found in the <code class="docutils literal notranslate"><span class="pre">ensembles</span></code> module.</p>
-</div>
 <div class="section" id="chunk-based-ensembles-for-data-streams">
-<h1>Chunk-based Ensembles for Data Streams<a class="headerlink" href="#chunk-based-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h1>
+<h2>Chunk-based Ensembles for Data Streams<a class="headerlink" href="#chunk-based-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h2>
 <p>Chunk-based approaches process successively incoming data chunks containing a predetermined number of instances. The learning algorithm can repeatedly process training samples located in a given data chunk to learn base models. It is worth noting that this does not mean that batch processing can only be used when new instances arrive in chunks. These approaches can also be used when instances arrive individually, if we store each new sample in a buffer until its size is equal to the size of the chunk.</p>
 <div class="section" id="chunk-based-ensemble">
-<h2>Chunk-Based Ensemble<a class="headerlink" href="#chunk-based-ensemble" title="Permalink to this headline">¶</a></h2>
+<h3>Chunk-Based Ensemble<a class="headerlink" href="#chunk-based-ensemble" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="weighted-aging-ensemble-wae">
-<h2>Weighted Aging Ensemble (WAE)<a class="headerlink" href="#weighted-aging-ensemble-wae" title="Permalink to this headline">¶</a></h2>
+<h3>Weighted Aging Ensemble (WAE)<a class="headerlink" href="#weighted-aging-ensemble-wae" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="online-ensembles-for-data-streams">
-<h1>Online Ensembles for Data Streams<a class="headerlink" href="#online-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h1>
+<h2>Online Ensembles for Data Streams<a class="headerlink" href="#online-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h2>
 <p>Online approaches, unlike those based on batch processing, process each new sample separately. These methods have been developed for applications with memory and computational limitations (i.e. where the amount of incoming data is extensive). Online methods can also be used in cases where data samples do not arrive separately. These types of methods can process each instances of data chunk are individually and can therefore be used in an environment where data arrives in batches.</p>
 <div class="section" id="online-bagging-ob">
-<h2>Online Bagging (OB)<a class="headerlink" href="#online-bagging-ob" title="Permalink to this headline">¶</a></h2>
+<h3>Online Bagging (OB)<a class="headerlink" href="#online-bagging-ob" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="oversamping-based-online-bagging-oob">
-<h2>Oversamping-Based Online Bagging (OOB)<a class="headerlink" href="#oversamping-based-online-bagging-oob" title="Permalink to this headline">¶</a></h2>
+<h3>Oversamping-Based Online Bagging (OOB)<a class="headerlink" href="#oversamping-based-online-bagging-oob" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="undersampling-based-online-bagging-uob">
-<h2>Undersampling-Based Online Bagging (UOB)<a class="headerlink" href="#undersampling-based-online-bagging-uob" title="Permalink to this headline">¶</a></h2>
+<h3>Undersampling-Based Online Bagging (UOB)<a class="headerlink" href="#undersampling-based-online-bagging-uob" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" id="bibtex-bibliography-ensembles-0" start="1">
 <li><p>Bartosz Krawczyk, Leandro Minku, João Gama, Jerzy Stefanowski, and Michal Wozniak. Ensemble learning for data stream analysis: a survey. <em>Information Fusion</em>, 37:132–156, 09 2017.</p></li>
 <li><p>Michał Woźniak, Andrzej Kasprzak, and Piotr Cal. Weighted aging classifier ensemble for the incremental drifted data streams. In Henrik Legind Larsen, Maria J. Martin-Bautista, María Amparo Vila, Troels Andreasen, and Henning Christiansen, editors, <em>Flexible Query Answering Systems</em>, 579–588. Berlin, Heidelberg, 2013. Springer Berlin Heidelberg.</p></li>
 <li><p>N. C. Oza. Online bagging and boosting. In <em>2005 IEEE International Conference on Systems, Man and Cybernetics</em>, volume 3, 2340–2345 Vol. 3. Oct 2005.</p></li>
 <li><p>S. Wang, L. L. Minku, and X. Yao. Resampling-based ensemble methods for online class imbalance learning. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 27(5):1356–1368, May 2015.</p></li>
 </ol>
+</div>
 </div>
 </div>
 
