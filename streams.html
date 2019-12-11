@@ -104,7 +104,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#sudden-abrupt-drift">Sudden (Abrupt) drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gradual-drift">Gradual drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#incremental-stepwise-drift">Incremental (Stepwise) drift</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#recurrent-gradual-drift">Recurrent gradual drift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recurrent-drift">Recurrent drift</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#non-reocurring-gradual-drift">Non-reocurring gradual drift</a></li>
 </ul>
 </li>
@@ -113,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#dynamically-imbalanced-stream">Dynamically imbalanced stream</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#dynamically-imbalanced-stream-with-concept-oscillation-disco">Dynamically Imbalanced Stream with Concept Oscillation (DISCO)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
@@ -194,24 +193,16 @@
             
   <div class="section" id="data-streams">
 <h1>Data Streams<a class="headerlink" href="#data-streams" title="Permalink to this headline">¶</a></h1>
-<p>A key element of the <cite>stream-learn</cite> package is a data stream generator that allows to prepare a
-repetitive, according to the given <cite>random_state</cite> value, classification dataset based on a default
-class distributions for the <cite>scikit-learn</cite> package from the <cite>make_classification()</cite> function. These
-types of distributions try to reproduce the rules for generating the <cite>Madelon</cite> set. The <cite>StreamGenerator</cite>
-is capable of preparing any variation of the data stream known in the general  taxonomy of data streams.</p>
+<p>ZDEFINIOWAĆ <code class="docutils literal notranslate"><span class="pre">CONCEPT</span></code>.</p>
+<p>A key element of the <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> package is a generator that allows to prepare a replicable (according to the given <code class="docutils literal notranslate"><span class="pre">random_state</span></code> value) classification dataset with class distribution changing over the course of stream, with base concepts build on a default class distributions for the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package from the <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code> function. These types of distributions try to reproduce the rules for generating the <code class="docutils literal notranslate"><span class="pre">Madelon</span></code> set. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> is capable of preparing any variation of the data stream known in the general taxonomy of data streams.</p>
 <div class="section" id="stationary-stream">
 <h2>Stationary stream<a class="headerlink" href="#stationary-stream" title="Permalink to this headline">¶</a></h2>
-<p>The simplest variation of data streams are <em>stationary streams</em>. They contain one basic concept, common
-for the whole course of the processing. Chunks differ from each other in terms of the patterns inside,
-but the decision boundaries of the models built on them themselves should not be different. This type of
-stream may be generated with a clean generator call, without any additional parameters.</p>
+<p>The simplest variation of data streams are <em>stationary streams</em>. They contain one basic concept, static for the whole course of the processing. Chunks differ from each other in terms of the patterns inside, but the decision boundaries of the models built on them should not be statistically different. This type of stream may be generated with a clean generator call, without any additional parameters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/0_stationary.png" src="_images/0_stationary.png" />
-<p>The above animation contains the scatter plot of a two-dimensional stationary stream with the problem of
-three classes. The <cite>StreamGenerator</cite> class in the initializer accepts almost all standard attributes of
-the <cite>make_classification()</cite> function, so to get exactly the distribution as above, the exact used call was:</p>
+<img alt="_images/stationary.png" src="_images/stationary.png" />
+<p>The above illustration contains the series of scatter plots for a two-dimensional stationary stream with the binary problem. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class in the initializer accepts almost all standard attributes of the <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code> function, so to get exactly the distribution as above, the used call was:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span>
   <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
   <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -219,90 +210,66 @@ the <cite>make_classification()</cite> function, so to get exactly the distribut
   <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
   <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
   <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-  <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
   <span class="n">random_state</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
   <span class="n">n_chunks</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
   <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>What’s very important, contrary to the typical call to <cite>make_classification()</cite>, we don’t specify the
-<cite>n_samples</cite> parameter here, which determines the number of patterns in the set, but instead we provide
+<p>What’s very important, contrary to the typical call to <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code>, we don’t specify the
+<code class="docutils literal notranslate"><span class="pre">n_samples</span></code> parameter here, which determines the number of patterns in the set, but instead we provide
 two new attributes of data stream:</p>
 <ul class="simple">
-<li><p><cite>n_chunks</cite> — to determine the number of chunks in a data stream,</p></li>
-<li><p><cite>chunk_size</cite> — to dermine number of patterns in each chunk of data stream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_chunks</span></code> — to determine the number of chunks in a data stream,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> — to dermine number of patterns in each chunk of data stream.</p></li>
 </ul>
-<p><strong>Not yet implemented</strong></p>
-<p>Additionally, data streams may contain noise which, while not considered as concept drift,
-provides additional challenge during the data stream analysis and data stream classifiers
-should be robust to it. The <cite>StreamGenerator`class implements noise by inverting the class labels
-of a given percentage of incoming instances in the data stream. This percentage can be defined by
-a `y_flip</cite> parameter.</p>
-<img alt="_images/0_stationary.png" src="_images/0_stationary.png" />
+<p>Additionally, data streams may contain noise which, while not considered as concept drift, provides additional challenge during the data stream analysis and data stream classifiers
+should be robust to it. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class implements noise by inverting the class labels of a given percentage of incoming instances in the data stream. This percentage can be defined by a <code class="docutils literal notranslate"><span class="pre">y_flip</span></code> parameter, like in standard <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code> call.</p>
 </div>
 <div class="section" id="streams-containing-concept-drifts">
 <h2>Streams containing concept drifts<a class="headerlink" href="#streams-containing-concept-drifts" title="Permalink to this headline">¶</a></h2>
-<p>The most commonly studied nature of data streams is their variability in time.
-Responsible for this is the phenomenon of the <em>concept drift</em>, where class distributions
-change over time with different dynamics, which necessitates the rebuilding of already
-fitted classification models. The <cite>stream-learn</cite> package tries to meet the need to synthesize
-all basic variations of this phenomenon (i.e. <em>sudden</em> (abrupt) and <em>gradual</em> drifts).</p>
+<p>The most commonly studied nature of data streams is their variability in time. Responsible for this is the phenomenon of the <em>concept drift</em>, where class distributions change over time with different dynamics, which necessitates the rebuilding of already
+fitted classification models. The <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> package tries to meet the need to synthesize all basic variations of this phenomenon (i.e. <em>sudden</em> (abrupt) and <em>gradual</em> drifts).</p>
 <div class="section" id="sudden-abrupt-drift">
 <h3>Sudden (Abrupt) drift<a class="headerlink" href="#sudden-abrupt-drift" title="Permalink to this headline">¶</a></h3>
-<p>This type of drift occurs when the concept from which the data stream is generated is suddenly
-replaced by another one. Concept probabilities used by the <cite>StreamGenerator`class are created based
-on sigmoid function, which is generated using `concept_sigmoid_spacing</cite> parameter, which determines
-the function shape and how sudden the change of concept is. The higher the value, the more sudden the
-drift. Here, this parameter takes the default value of 999, which allows us for a generation of sigmoid
-function simulating an abrupt change in the data stream.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">StreamGenerator(n_classes=3,</span> <span class="pre">n_drifts=1)</span>
-<span class="pre">`</span></code></p>
-<img alt="_images/1_sudden.png" src="_images/1_sudden.png" />
-<img alt="_images/1_sudden.png" src="_images/1_sudden.png" />
+<p>This type of drift occurs when the concept from which the data stream is generated is suddenly replaced by another one. Concept probabilities used by the <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class are created based on sigmoid function, which is generated using <code class="docutils literal notranslate"><span class="pre">concept_sigmoid_spacing</span></code> parameter, which determines the function shape and how sudden the change of concept is. The higher the value, the more sudden the drift becames. Here, this parameter takes the default value of 999, which allows us for a generation of sigmoid function simulating an abrupt change in the data stream.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/sudden.png" src="_images/sudden.png" />
 </div>
 <div class="section" id="gradual-drift">
 <h3>Gradual drift<a class="headerlink" href="#gradual-drift" title="Permalink to this headline">¶</a></h3>
-<p>Unlike sudden drifts, gradual ones are associated with a slower change rate, which can be noticed
-during a longer observation of the data stream. This kind of drift refers to the transition phase
-where the probability of getting instances from the first concept decreases while the probability
-of sampling from the next concept increases. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class simulates gradual drift by
-comparing the concept probabilities with the generated random noise and, depending on the result,
-selecting which concept is active at a given time.</p>
+<p>Unlike sudden drifts, gradual ones are associated with a slower change rate, which can be noticed during a longer observation of the data stream. This kind of drift refers to the transition phase
+where the probability of getting instances from the first concept decreases while the probability of sampling from the next concept increases. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class simulates gradual drift by
+comparing the concept probabilities with the generated random noise and, depending on the result, selecting which concept is active at a given time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span>
+    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/2_gradual.png" src="_images/2_gradual.png" />
-<img alt="_images/3_incremental.png" src="_images/3_incremental.png" />
+<img alt="_images/gradual.png" src="_images/gradual.png" />
 </div>
 <div class="section" id="incremental-stepwise-drift">
 <h3>Incremental (Stepwise) drift<a class="headerlink" href="#incremental-stepwise-drift" title="Permalink to this headline">¶</a></h3>
-<p>The incremental drift occurs when we are dealing with a series of barely noticeable changes in
-the concept used to generate the data stream. Due to this, the drift may be identified only after
-some time. The severity of changes, and hence the speed of transition of one concept into another,
-is described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
+<p>The incremental drift occurs when we are dealing with a series of barely noticeable changes in the concept used to generate the data stream, in opposite of gradual drift, where we are mixing samples from different concepts without changing them. Due to this, the drift may be identified only after some time. The severity of changes, and hence the speed of transition of one concept into another, is, like in previous example, described by the <cite>concept_sigmoid_spacing</cite> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/3_incremental.png" src="_images/3_incremental.png" />
-<img alt="_images/2_gradual.png" src="_images/2_gradual.png" />
+<img alt="_images/incremental.png" src="_images/incremental.png" />
 </div>
-<div class="section" id="recurrent-gradual-drift">
-<h3>Recurrent gradual drift<a class="headerlink" href="#recurrent-gradual-drift" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="recurrent-drift">
+<h3>Recurrent drift<a class="headerlink" href="#recurrent-drift" title="Permalink to this headline">¶</a></h3>
 <p>Situations when previous concepts reappear after some time are separately treated
 and analyzed as recurrent drifts. …</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">n_drifts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/4_reocurring.png" src="_images/4_reocurring.png" />
-<img alt="_images/4_reocurring.png" src="_images/4_reocurring.png" />
+<img alt="_images/recurring.png" src="_images/recurring.png" />
 </div>
 <div class="section" id="non-reocurring-gradual-drift">
 <h3>Non-reocurring gradual drift<a class="headerlink" href="#non-reocurring-gradual-drift" title="Permalink to this headline">¶</a></h3>
@@ -311,44 +278,25 @@ and analyzed as recurrent drifts. …</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/5_nonreocurring.png" src="_images/5_nonreocurring.png" />
-<img alt="_images/5_nonreocurring.png" src="_images/5_nonreocurring.png" />
+<img alt="_images/nonrecurring.png" src="_images/nonrecurring.png" />
 </div>
 </div>
 <div class="section" id="class-imbalance">
 <h2>Class imbalance<a class="headerlink" href="#class-imbalance" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">()</span>
-</pre></div>
-</div>
-<img alt="_images/6_balanced.png" src="_images/6_balanced.png" />
-<img alt="_images/6_balanced.png" src="_images/6_balanced.png" />
 <div class="section" id="stationary-imbalanced-stream">
 <h3>Stationary imbalanced stream<a class="headerlink" href="#stationary-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 </pre></div>
 </div>
-<img alt="_images/7_static_imbalanced.png" src="_images/7_static_imbalanced.png" />
-<img alt="_images/7_static_imbalanced.png" src="_images/7_static_imbalanced.png" />
+<img alt="_images/static-imbalanced.png" src="_images/static-imbalanced.png" />
 </div>
 <div class="section" id="dynamically-imbalanced-stream">
 <h3>Dynamically imbalanced stream<a class="headerlink" href="#dynamically-imbalanced-stream" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
 </pre></div>
 </div>
-<img alt="_images/8_dynamic_imbalanced.png" src="_images/8_dynamic_imbalanced.png" />
-<img alt="_images/8_dynamic_imbalanced.png" src="_images/8_dynamic_imbalanced.png" />
+<img alt="_images/dynamic-imbalanced.png" src="_images/dynamic-imbalanced.png" />
 </div>
-</div>
-<div class="section" id="dynamically-imbalanced-stream-with-concept-oscillation-disco">
-<h2>Dynamically Imbalanced Stream with Concept Oscillation (DISCO)<a class="headerlink" href="#dynamically-imbalanced-stream-with-concept-oscillation-disco" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StreamGenerator</span><span class="p">(</span>
-    <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="n">n_drifts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">concept_sigmoid_spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">reocurring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">incremental</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-<img alt="_images/9_first.png" src="_images/9_first.png" />
-<img alt="_images/9_disco.png" src="_images/9_disco.png" />
 </div>
 </div>
 
