@@ -181,11 +181,60 @@
             
   <div class="section" id="classifiers">
 <h1>Classifiers<a class="headerlink" href="#classifiers" title="Permalink to this headline">¶</a></h1>
+<p>In addition, the <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> library also implements a simple single
+classifier model implementing the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> method and a Meta estimator
+adapted to be used with some of the ensemble methods found in the <code class="docutils literal notranslate"><span class="pre">ensembles</span></code>
+module. Those two models can be found in the <code class="docutils literal notranslate"><span class="pre">classifiers</span></code> module.</p>
 <div class="section" id="accumulated-samples-classifier">
 <h2>Accumulated Samples Classifier<a class="headerlink" href="#accumulated-samples-classifier" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">AccumulatedSamplesClassifier</span></code> class takes the base classifier as a
+<code class="docutils literal notranslate"><span class="pre">base_clf</span></code> parameter during initialization and extends the given model with
+the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> function adapted for data streams classification.
+This function concatenates observed data chunks, and in each step fits
+the model on all samples encountered so far.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.classifiers</span> <span class="kn">import</span> <span class="n">AccumulatedSamplesClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">AccumulatedSamplesClassifier</span><span class="p">(</span><span class="n">base_clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="sample-weighted-meta-estimator">
 <h2>Sample-Weighted Meta Estimator<a class="headerlink" href="#sample-weighted-meta-estimator" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">SampleWeightedMetaEstimator</span></code> class implements a meta estimator designed
+to allow the use of a wider range of classification models as base classifiers
+in ensemble methods based on <cite>online bagging</cite>. It extends the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code>
+method of a given model by an additional  <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter which
+allows for using classifiers such as <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>
+package as base models for <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code>, <code class="docutils literal notranslate"><span class="pre">OOB</span></code> and <code class="docutils literal notranslate"><span class="pre">UOB</span></code> from
+<code class="docutils literal notranslate"><span class="pre">ensembles</span></code> module.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.classifiers</span> <span class="kn">import</span> <span class="n">SampleWeightedMetaEstimator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OOB</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_chunks</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">SampleWeightedMetaEstimator</span><span class="p">(</span><span class="n">base_classifier</span><span class="o">=</span><span class="n">MLPClassifier</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">OOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
