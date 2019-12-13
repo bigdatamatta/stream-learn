@@ -214,6 +214,22 @@ arrive individually, if we store each new sample in a buffer until its size is
 equal to the size of the chunk.</p>
 <div class="section" id="chunk-based-ensemble">
 <h3>Chunk-Based Ensemble<a class="headerlink" href="#chunk-based-ensemble" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">ChunkBasedEnsemble</span></code> class implements a basic multi classifier approach for data stream classification. This model takes the base classifier as the <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> parameter and the pool size as the <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>. A single base classifier is trained on each observed data chunk and added to the ensemble. If the fixed pool size is exceeded, the oldest model is removed. The final decision is obtained by accumulating the supports of base classifiers.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="weighted-aging-ensemble-wae">
 <h3>Weighted Aging Ensemble (WAE)<a class="headerlink" href="#weighted-aging-ensemble-wae" title="Permalink to this headline">¶</a></h3>
