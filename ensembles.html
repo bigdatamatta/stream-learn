@@ -107,8 +107,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#online-ensembles-for-data-streams">Online Ensembles for Data Streams</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#online-bagging-ob">Online Bagging (OB)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#oversamping-based-online-bagging-oob">Oversamping-Based Online Bagging (OOB)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#undersampling-based-online-bagging-uob">Undersampling-Based Online Bagging (UOB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob">Oversamping-Based Online Bagging (OOB) &amp; Undersampling-Based Online Bagging (UOB)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -222,7 +221,7 @@ equal to the size of the chunk.</p>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
 
 <span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
@@ -245,12 +244,43 @@ chunk are individually and can therefore be used in an environment where data
 arrives in batches.</p>
 <div class="section" id="online-bagging-ob">
 <h3>Online Bagging (OB)<a class="headerlink" href="#online-bagging-ob" title="Permalink to this headline">¶</a></h3>
+<p><cite>Online Bagging</cite> is an ensemble learning algorithm for data streams classification, based on the concept of offline <cite>Bagging</cite>. It maintains a pool of base estimators and with the appearance of a new instance, each model is trained on it K times, where K comes from the <cite>Poisson(λ= 1)</cite> distribution. It is implemented in the <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code> class which accepts <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> and <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> parameters, respectively responsible for the base classifier type and the fixed classifier pool size.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OnlineBagging</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">OnlineBagging</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="oversamping-based-online-bagging-oob">
-<h3>Oversamping-Based Online Bagging (OOB)<a class="headerlink" href="#oversamping-based-online-bagging-oob" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="undersampling-based-online-bagging-uob">
-<h3>Undersampling-Based Online Bagging (UOB)<a class="headerlink" href="#undersampling-based-online-bagging-uob" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob">
+<h3>Oversamping-Based Online Bagging (OOB) &amp; Undersampling-Based Online Bagging (UOB)<a class="headerlink" href="#oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob" title="Permalink to this headline">¶</a></h3>
+<p><cite>Oversampling-Based Online Bagging</cite> (implemented by the <code class="docutils literal notranslate"><span class="pre">OOB</span></code> class) and <cite>Undersampling-Based Online Bagging</cite> (implemented by the <code class="docutils literal notranslate"><span class="pre">UOB</span></code> class) are methods integrating resampling with <cite>Online Bagging</cite>. Resampling is based on the change in λ values for the Poisson distribution. <cite>OOB</cite> uses oversampling to increase the chance of training minority class instances, while UOB uses undersampling to reduce the chance of training majority class instances. Implementations refer to the improved versions of both algorithms in which the λ value depends on the size ratio between classes. When the problem becomes balanced, the methods are automatically reduced to online bagging. Both methods take the same parameters as the <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code> class.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OOB</span><span class="p">,</span> <span class="n">UOB</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">oob</span> <span class="o">=</span> <span class="n">OOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">uob</span> <span class="o">=</span> <span class="n">UOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">oob</span><span class="p">,</span> <span class="n">uob</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clfs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
