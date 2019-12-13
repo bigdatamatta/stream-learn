@@ -231,6 +231,34 @@ equal to the size of the chunk.</p>
 </div>
 <div class="section" id="weighted-aging-ensemble-wae">
 <h3>Weighted Aging Ensemble (WAE)<a class="headerlink" href="#weighted-aging-ensemble-wae" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">WAE</span></code> class implements an algorithm called Weighted Aging Ensemble, which can adapt to changes in data stream class distribution. The method was inspired by Accuracy Weighted Ensemble (AWE) algorithm to which it introduces two main modifications: (I) classifier weights depend on the individual classifier accuracies and time they have been spending in the ensemble, (II) individual classifier are chosen on the basis on the non-pairwise diversity measure. The <code class="docutils literal notranslate"><span class="pre">WAE</span></code> class accepts the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> – Base classifier type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> – Fixed pool size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theta</span></code> – Threshold for weight calculation method and aging procedure control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_pruning</span></code> – Whether the pruning is conducted before or after adding the classifier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pruning_criterion</span></code> – accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight_calculation_method</span></code> – same_for_each, proportional_to_accuracy, kuncheva, pta_related_to_whole, bell_curve,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aging_method</span></code> – weights_proportional, constant, gaussian.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rejuvenation_power</span></code> – Rejuvenation dynamics control of classifiers with high prediction accuracy.</p></li>
+</ul>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">WAE</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">ensembles</span><span class="o">.</span><span class="n">WAE</span><span class="p">(</span>
+      <span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">weight_calculation_method</span><span class="o">=</span><span class="s2">&quot;proportional_to_accuracy&quot;</span>
+  <span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="online-ensembles-for-data-streams">
