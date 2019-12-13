@@ -184,6 +184,16 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<img alt="_images/incremental.png" src="_images/incremental.png" />
+<p>The <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> module is a set of tools necessary for processing data streams using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> estimators. The batch processing approach is used here, where the dataset is passed to the classifier in smaller, consecutive subsets called <cite>chunks</cite>. The module consists of five sub-modules:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="streams.html">streams</a> - containing a data stream generator that allows obtaining both stationary and dynamic distributions in accordance with various types of concept drift (also in the field of a priori probability, i.e. dynamically unbalanced data) and a parser of the standard ARFF file format.</p></li>
+<li><p><a class="reference external" href="evaluators.html">evaluators</a> - containing classes for running experiments on stream data in accordance with the Test-Then-Train and Prequential methodology.</p></li>
+<li><p><a class="reference external" href="classifiers.html">classifiers</a> - containing sample stream classifiers,</p></li>
+<li><p><a class="reference external" href="ensembles.html">ensembles</a> - containing standard team models of stream data classification,</p></li>
+<li><p>utils - containing typical classification quality metrics in data streams.</p></li>
+</ul>
+<p>You can read more about each module in the User Guide.</p>
 <div class="section" id="id1">
 <h2><a class="reference external" href="install.html">Getting started</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Information to install and usage of the package.</p>
