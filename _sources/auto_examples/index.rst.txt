@@ -19,6 +19,26 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 
 .. only:: html
 
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_simplest_thumb.png
+
+     :ref:`sphx_glr_auto_examples_plot_simplest.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_simplest
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lorem impsum.">
+
+.. only:: html
+
  .. figure:: /auto_examples/images/thumb/sphx_glr_plot_basic_thumb.png
 
      :ref:`sphx_glr_auto_examples_plot_basic.py`
