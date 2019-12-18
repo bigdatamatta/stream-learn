@@ -104,9 +104,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#recall">Recall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#precision">Precision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-beta-score">F-beta score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#f1-score">F1 score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#balanced-accuracy-bac">Balanced accuracy (BAC)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-g-mean">Geometric mean score (G-mean)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-1-g-mean1">Geometric mean score 1 (G-mean1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-2-g-mean2">Geometric mean score 2 (G-mean2)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -321,15 +323,26 @@ of correct detection of positive samples and is denoted as</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="f-beta-score">
+<h3>F-beta score<a class="headerlink" href="#f-beta-score" title="Permalink to this headline">¶</a></h3>
+<p>The F-beta score can be interpreted as a weighted harmonic mean of precision and
+recall taking both metrics into account and punishing extreme values. The <code class="docutils literal notranslate"><span class="pre">beta</span></code> parameter determines the recall’s weight. <code class="docutils literal notranslate"><span class="pre">beta</span></code> &lt; 1 gives more weight to precision, while <code class="docutils literal notranslate"><span class="pre">beta</span></code> &gt; 1 prefers recall.
+The formula for the F-beta score is</p>
+<div class="math">
+<p><span class="math">F_\beta = (1+\beta^2) * \frac{Precision * Recall}{(\beta^2 * Precision) + Recall}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">fbeta_score</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="f1-score">
 <h3>F1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
-<p>The F1 score can be interpreted as a harmonic mean of precision and
-recall taking both metrics into account and punishing extreme values.
+<p>The F1 score can be interpreted as a F-beta score, where <span class="math">\beta</span> parameter equals 1. It is a harmonic mean of precision and recall.
 The formula for the F1 score is</p>
 <div class="math">
-<p><span class="math">F1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
+<p><span class="math">F_1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
 </div><p><strong>Example</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">f_score</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
 </pre></div>
 </div>
 </div>
@@ -347,22 +360,34 @@ of recall and specificity (also called true negative rate).</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="geometric-mean-score-g-mean">
-<h3>Geometric mean score (G-mean)<a class="headerlink" href="#geometric-mean-score-g-mean" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="geometric-mean-score-1-g-mean1">
+<h3>Geometric mean score 1 (G-mean1)<a class="headerlink" href="#geometric-mean-score-1-g-mean1" title="Permalink to this headline">¶</a></h3>
 <p>The geometric mean (G-mean) tries to maximize the accuracy on each of the
 classes while keeping these accuracies balanced. For N-class problems it is
 a N root of the product of class-wise recall. For binary classification
 G-mean is denoted as the squared root of the product of the recall and specificity.</p>
 <div class="math">
-<p><span class="math">Gmean = \sqrt{Recall * Specificity}</span></p>
+<p><span class="math">Gmean1 = \sqrt{Recall * Specificity}</span></p>
 </div><p><strong>Example</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score_1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometric-mean-score-2-g-mean2">
+<h3>Geometric mean score 2 (G-mean2)<a class="headerlink" href="#geometric-mean-score-2-g-mean2" title="Permalink to this headline">¶</a></h3>
+<p>The alternative definition of G-mean measure. For binary classification
+G-mean is denoted as the squared root of the product of the recall and precision.</p>
+<div class="math">
+<p><span class="math">Gmean2 = \sqrt{Recall * Precision}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score_2</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" id="bibtex-bibliography-evaluators-0" start="1">
+<li><p>Ricardo A. Baeza-Yates and Berthier Ribeiro-Neto. <em>Modern Information Retrieval</em>. Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA, 1999. ISBN 020139829X.</p></li>
 <li><p>Ricardo Barandela, Josep Sánchez, Vicente García, and E. Rangel. Strategies for learning in class imbalance problems. <em>Pattern Recognition</em>, 36:849–851, 03 2003.</p></li>
 <li><p>Kay Henning Brodersen, Cheng Soon Ong, Klaas Enno Stephan, and Joachim M. Buhmann. The balanced accuracy and its posterior distribution. In <em>Proceedings of the 2010 20th International Conference on Pattern Recognition</em>, ICPR ‘10, 3121–3124. Washington, DC, USA, 2010. IEEE Computer Society.</p></li>
 <li><p>Joao Gama. <em>Knowledge Discovery from Data Streams</em>. Chapman &amp; Hall/CRC, 1st edition, 2010. ISBN 1439826110, 9781439826119.</p></li>
