@@ -219,11 +219,10 @@
 <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> parameter here, which determines the number of patterns in the set, but instead we provide
 two new attributes of data stream:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">n_chunks</span></code> — to determine the number of chunks in a data stream,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> — to dermine number of patterns in each chunk of data stream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_chunks</span></code> — to determine the number of chunks in a data stream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> — to determine the number of patterns in each data chunk.</p></li>
 </ul>
-<p>Additionally, data streams may contain noise which, while not considered as concept drift, provides additional challenge during the data stream analysis and data stream classifiers
-should be robust to it. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class implements noise by inverting the class labels of a given percentage of incoming instances in the data stream. This percentage can be defined by a <code class="docutils literal notranslate"><span class="pre">y_flip</span></code> parameter, like in standard <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code> call.</p>
+<p>Additionally, data streams may contain noise which, while not considered as concept drift, provides additional challenge during the data stream analysis and data stream classifiers should be robust to it. The <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class implements noise by inverting the class labels of a given percentage of incoming instances in the data stream. This percentage can be defined by a <code class="docutils literal notranslate"><span class="pre">y_flip</span></code> parameter, like in standard <code class="docutils literal notranslate"><span class="pre">make_classification()</span></code> call. If a single float is given as the parameter value, the percentage of noise refers to combined instances from all classes, while if we specify a tuple of floats, the noise occurs within each class separately using the given percentages.</p>
 </div>
 <div class="section" id="streams-containing-concept-drifts">
 <h2>Streams containing concept drifts<a class="headerlink" href="#streams-containing-concept-drifts" title="Permalink to this headline">¶</a></h2>

@@ -194,29 +194,29 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.UOB<a class="headerlink" href="#strlearn-ensembles-uob" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.ensembles.UOB">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">UOB</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Undersampling-Based Online Bagging.</p>
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=5</em>, <em class="sig-param">time_decay_factor=0.9</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.ensemble_support_matrix">
-<code class="sig-name descname">ensemble_support_matrix</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.ensemble_support_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ensemble_support_matrix</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.ensemble_support_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensemble support matrix.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fitting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -237,13 +237,13 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.partial_fit">
-<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.partial_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partial fitting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/ensembles/UOB.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/ensembles/UOB.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -263,7 +263,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -290,7 +290,7 @@ each label set be correctly predicted.</p>
 
 <dl class="method">
 <dt id="strlearn.ensembles.UOB.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/0f481dc/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/3a016e5/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.UOB.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
