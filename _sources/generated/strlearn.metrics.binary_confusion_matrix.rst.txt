@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.binary_confusion_matrix
+============================================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: binary_confusion_matrix
+
+.. include:: strlearn.metrics.binary_confusion_matrix.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

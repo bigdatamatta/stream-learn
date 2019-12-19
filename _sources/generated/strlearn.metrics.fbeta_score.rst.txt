@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.fbeta_score
+================================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: fbeta_score
+
+.. include:: strlearn.metrics.fbeta_score.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>
