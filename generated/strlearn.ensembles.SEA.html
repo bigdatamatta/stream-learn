@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.classifiers.AccumulatedSamplesClassifier &mdash; stream-learn 0.8.4 documentation</title>
+  <title>strlearn.ensembles.SEA &mdash; stream-learn 0.8.4 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="strlearn.classifiers.SampleWeightedMetaEstimator" href="strlearn.classifiers.SampleWeightedMetaEstimator.html" />
-    <link rel="prev" title="strlearn.evaluators.Prequential" href="strlearn.evaluators.Prequential.html" /> 
+    <link rel="next" title="strlearn.ensembles.OnlineBagging" href="strlearn.ensembles.OnlineBagging.html" />
+    <link rel="prev" title="strlearn.classifiers.SampleWeightedMetaEstimator" href="strlearn.classifiers.SampleWeightedMetaEstimator.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,12 +107,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>: Streams</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.AccumulatedSamplesClassifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="strlearn.classifiers.SampleWeightedMetaEstimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.SampleWeightedMetaEstimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.SEA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.OnlineBagging.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.OnlineBagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.OOB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.OOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.UOB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.UOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.ensembles.WAE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>: Metrics</a></li>
 </ul>
 </li>
@@ -168,13 +171,13 @@
         
           <li><a href="../api.html">API</a> &raquo;</li>
         
-      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.AccumulatedSamplesClassifier</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.SEA</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/strlearn.classifiers.AccumulatedSamplesClassifier.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/strlearn.ensembles.SEA.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,53 +190,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="strlearn-classifiers-accumulatedsamplesclassifier">
-<h1><a class="reference internal" href="../api.html#module-strlearn.classifiers" title="strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code></a>.AccumulatedSamplesClassifier<a class="headerlink" href="#strlearn-classifiers-accumulatedsamplesclassifier" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="strlearn-ensembles-sea">
+<h1><a class="reference internal" href="../api.html#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>.SEA<a class="headerlink" href="#strlearn-ensembles-sea" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.classifiers.</code><code class="sig-name descname">AccumulatedSamplesClassifier</code><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accumulated samples classifier.</p>
-<p>Classifier fitted on accumulated samples from all data chunks.</p>
+<dt id="strlearn.ensembles.SEA">
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.ensembles.</code><code class="sig-name descname">SEA</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=10</em>, <em class="sig-param">metric=&lt;function accuracy_score&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chunk based ensemble classifier.</p>
+<p>Ensemble classifier composed of estimators trained on the fixed
+number of previously seen data chunks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_estimators</strong><span class="classifier">integer, optional (default=5)</span></dt><dd><p>The maximum number of estimators trained using consecutive data chunks
+and maintained in the ensemble.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">ensembles</span><span class="o">.</span><span class="n">SEA</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">evaluators</span><span class="o">.</span><span class="n">TestThenTrainEvaluator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">[[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</span>
 <span class="go">[0.945      0.94648779 0.94624912 0.94648779 0.94240838]</span>
-<span class="go">[0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]</span>
+<span class="go">[0.925      0.92364329 0.92360881 0.92364329 0.91017964]</span>
 <span class="gp">...</span>
-<span class="go">[0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]</span>
-<span class="go">[0.885      0.8854889  0.88546135 0.8854889  0.87830688]</span>
+<span class="go">[0.925      0.92427885 0.924103   0.92427885 0.92890995]</span>
+<span class="go">[0.89       0.89016179 0.89015879 0.89016179 0.88297872]</span>
 <span class="go">[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>ensemble_</strong><span class="classifier">list of classifiers</span></dt><dd><p>The collection of fitted sub-estimators.</p>
+</dd>
 <dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><p>The class labels.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=10</em>, <em class="sig-param">metric=&lt;function accuracy_score at 0x7f3ec5daa158&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.ensemble_support_matrix">
+<code class="sig-name descname">ensemble_support_matrix</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.ensemble_support_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensemble support matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.ensembles.SEA.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fitting.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.get_params">
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -253,14 +274,14 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.partial_fit">
-<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.partial_fit" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.partial_fit">
+<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.partial_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partial fitting.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/ensembles/SEA.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -279,8 +300,8 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.score" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.score">
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -306,14 +327,8 @@ each label set be correctly predicted.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.set_base_clf">
-<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/classifiers/AccumulatedSamplesClassifier.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.set_base_clf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establishing base classifier.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<dt id="strlearn.ensembles.SEA.set_params">
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/../venv/lib/python3.6/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.ensembles.SEA.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
@@ -347,10 +362,10 @@ component of a nested object.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="strlearn.classifiers.SampleWeightedMetaEstimator.html" class="btn btn-neutral float-right" title="strlearn.classifiers.SampleWeightedMetaEstimator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="strlearn.ensembles.OnlineBagging.html" class="btn btn-neutral float-right" title="strlearn.ensembles.OnlineBagging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="strlearn.evaluators.Prequential.html" class="btn btn-neutral float-left" title="strlearn.evaluators.Prequential" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="strlearn.classifiers.SampleWeightedMetaEstimator.html" class="btn btn-neutral float-left" title="strlearn.classifiers.SampleWeightedMetaEstimator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.SEA
+====================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: SEA
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.SEA.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

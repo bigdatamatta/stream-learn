@@ -213,13 +213,13 @@ of evaluation can be accessed using the <code class="docutils literal notranslat
 three-dimensional array of shape (n_classifiers, n_chunks, n_metrics).</p>
 <p><strong>Example – single classifier</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
-<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 
 <span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
@@ -228,15 +228,15 @@ three-dimensional array of shape (n_classifiers, n_chunks, n_metrics).</p>
 </div>
 <p><strong>Example – multiple classifiers</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
-<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-<span class="n">clf1</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
-<span class="n">clf2</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
 <span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">)</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 
@@ -261,13 +261,13 @@ and the size of the sliding window is equal to the <code class="docutils literal
 the instance of <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class.</p>
 <p><strong>Example – single classifer</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
-<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 
 <span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -276,15 +276,15 @@ the instance of <code class="docutils literal notranslate"><span class="pre">Str
 </div>
 <p><strong>Example – multiple classifiers</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
-<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">ChunkBasedEnsemble</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
 <span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-<span class="n">clf1</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
-<span class="n">clf2</span> <span class="o">=</span> <span class="n">ChunkBasedEnsemble</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
 <span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">)</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">Prequential</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
 

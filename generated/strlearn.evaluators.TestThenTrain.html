@@ -191,13 +191,13 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.TestThenTrain<a class="headerlink" href="#strlearn-evaluators-testthentrain" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.evaluators.TestThenTrain">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrain</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1dbf6e4/strlearn/evaluators/TestThenTrain.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrain</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/evaluators/TestThenTrain.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test Than Train data stream evaluator.</p>
 <p>Implementation of test-then-train evaluation procedure,
 where each individual data chunk is first used to test
 the classifier and then it is used for training.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">evaluators</span><span class="o">.</span><span class="n">TestThenTrainEvaluator</span><span class="p">()</span>
@@ -227,13 +227,13 @@ each processed data chunk.</p>
 </dl>
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrain.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7fcb40d37c80&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score at 0x7fcb3d2fd598&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1dbf6e4/strlearn/evaluators/TestThenTrain.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7f3ec5daa158&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score at 0x7f3f2f339950&gt;)</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/evaluators/TestThenTrain.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="strlearn.evaluators.TestThenTrain.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/1dbf6e4/strlearn/evaluators/TestThenTrain.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.process" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/w4k2/stream-learn/blob/60fdee2/strlearn/evaluators/TestThenTrain.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform learning procedure on data stream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
