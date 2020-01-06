@@ -101,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Classifier Ensembles</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#chunk-based-ensembles-for-data-streams">Chunk-based Ensembles for Data Streams</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#chunk-based-ensemble">Chunk-Based Ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-ensemble-algorithm-sea">Streaming Ensemble Algorithm (SEA)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#weighted-aging-ensemble-wae">Weighted Aging Ensemble (WAE)</a></li>
 </ul>
 </li>
@@ -210,9 +210,9 @@ noting that this does not mean that batch processing can only be used when new
 instances arrive in chunks. These approaches can also be used when instances
 arrive individually, if we store each new sample in a buffer until its size is
 equal to the size of the chunk.</p>
-<div class="section" id="chunk-based-ensemble">
-<h3>Chunk-Based Ensemble<a class="headerlink" href="#chunk-based-ensemble" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">SEA</span></code> class implements a basic multi classifier approach for data stream classification. This model takes the base classifier as the <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> parameter and the pool size as the <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>. A single base classifier is trained on each observed data chunk and added to the ensemble. If the fixed pool size is exceeded, the oldest model is removed. The final decision is obtained by accumulating the supports of base classifiers.</p>
+<div class="section" id="streaming-ensemble-algorithm-sea">
+<h3>Streaming Ensemble Algorithm (SEA)<a class="headerlink" href="#streaming-ensemble-algorithm-sea" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">SEA</span></code> class implements a basic multi classifier approach for data stream classification. This model takes the base classifier as the <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> parameter and the pool size as the <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>. A single base classifier is trained on each observed data chunk and added to the ensemble. If the fixed pool size is exceeded, the worst performing model is removed. The final decision is obtained by accumulating the supports of base classifiers.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
 <span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
@@ -314,6 +314,7 @@ arrives in batches.</p>
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" id="bibtex-bibliography-ensembles-0" start="1">
 <li><p>Bartosz Krawczyk, Leandro Minku, João Gama, Jerzy Stefanowski, and Michal Wozniak. Ensemble learning for data stream analysis: a survey. <em>Information Fusion</em>, 37:132–156, 09 2017.</p></li>
+<li><p>Nick Street and Y. Kim. A streaming ensemble algorithm (sea) for large-scale classification. <em>Proceedings of the 7Th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, pages 377–382, 01 2001.</p></li>
 <li><p>Michał Woźniak, Andrzej Kasprzak, and Piotr Cal. Weighted aging classifier ensemble for the incremental drifted data streams. In Henrik Legind Larsen, Maria J. Martin-Bautista, María Amparo Vila, Troels Andreasen, and Henning Christiansen, editors, <em>Flexible Query Answering Systems</em>, 579–588. Berlin, Heidelberg, 2013. Springer Berlin Heidelberg.</p></li>
 <li><p>N. C. Oza. Online bagging and boosting. In <em>2005 IEEE International Conference on Systems, Man and Cybernetics</em>, volume 3, 2340–2345 Vol. 3. Oct 2005.</p></li>
 <li><p>S. Wang, L. L. Minku, and X. Yao. Resampling-based ensemble methods for online class imbalance learning. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 27(5):1356–1368, May 2015.</p></li>
