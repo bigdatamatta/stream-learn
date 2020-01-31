@@ -208,8 +208,8 @@
 </div>
 <p>The third requirement of the experiment is to specify the metrics used in the evaluation of the methods. In the example, we will use the <em>accuracy</em> metric available in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and the <em>balanced accuracy</em> from the <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span>
-<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">bac</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">strlearn.metrics</span> <span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The last necessary element of processing is the evaluator, i.e. the method of conducting the experiment. For example, we will choose the <em>Test-Then-Train</em> paradigm, described in more detail in <a class="reference external" href="evaluators.html">User Guide</a>. It is important to note, that we need to provide the metrics that we will use in processing at the point of initializing the evaluator. In the case of none metrics given, it will use default pair of <em>accuracy</em> and <em>balanced accuracy</em> scores:</p>
