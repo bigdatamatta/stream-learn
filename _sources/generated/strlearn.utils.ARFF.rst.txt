@@ -1,0 +1,16 @@
+:mod:`strlearn.utils`.ARFF
+=================================
+
+.. currentmodule:: strlearn.utils
+
+.. autoclass:: ARFF
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.utils.ARFF.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.learners.TestAndTrain &mdash; stream-learn 0.5.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="strlearn.controllers.bare" href="strlearn.controllers.bare.html" />
+    <link rel="prev" title="stream-learn API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Instalation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">stream-learn API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Learners</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>.TestAndTrain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.controllers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>: Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">stream-learn API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code>.TestAndTrain</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/strlearn.learners.TestAndTrain.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="strlearn-learners-testandtrain">
+<h1><a class="reference internal" href="../api.html#module-strlearn.learners" title="strlearn.learners"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.learners</span></code></a>.TestAndTrain<a class="headerlink" href="#strlearn-learners-testandtrain" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="strlearn.learners.TestAndTrain">
+<em class="property">class </em><code class="descclassname">strlearn.learners.</code><code class="descname">TestAndTrain</code><span class="sig-paren">(</span><em>stream</em>, <em>base_classifier=MLPClassifier(activation='relu'</em>, <em>alpha=0.0001</em>, <em>batch_size='auto'</em>, <em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>early_stopping=False</em>, <em>epsilon=1e-08</em>, <em>hidden_layer_sizes=(100</em>, <em>)</em>, <em>learning_rate='constant'</em>, <em>learning_rate_init=0.001</em>, <em>max_iter=200</em>, <em>momentum=0.9</em>, <em>n_iter_no_change=10</em>, <em>nesterovs_momentum=True</em>, <em>power_t=0.5</em>, <em>random_state=None</em>, <em>shuffle=True</em>, <em>solver='adam'</em>, <em>tol=0.0001</em>, <em>validation_fraction=0.1</em>, <em>verbose=False</em>, <em>warm_start=False)</em>, <em>metric=&lt;function accuracy_score&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform learning procedure on stream.</p>
+<p>lorem ipsum of description</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>data stream as an object</p>
+</dd>
+<dt><strong>clf</strong><span class="classifier">sklearn estimator implementing a <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> method</span></dt><dd></dd>
+<dt><strong>chunk_size</strong><span class="classifier">int, optional (default=200)</span></dt><dd><p>Number of samples included in each chunk.</p>
+</dd>
+<dt><strong>evaluate_interval</strong><span class="classifier">int, optional (default=1000)</span></dt><dd><p>Interval of processed samples before every evaluation.</p>
+</dd>
+<dt><strong>controller</strong><span class="classifier">processing controller delegate object (default=</span></dt><dd></dd>
+<dt><strong>``controllers.Bare``)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">strlearn</span> <span class="k">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">controllers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">naive_bayes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">base_classifier</span> <span class="o">=</span> <span class="n">naive_bayes</span><span class="o">.</span><span class="n">GaussianNB</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;datasets/toyset.arff&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controller</span> <span class="o">=</span> <span class="n">controllers</span><span class="o">.</span><span class="n">Bare</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">base_classifier</span><span class="p">,</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">controller</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">learner</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt>
+<code class="descname">TestAndTrain.__init__(self, stream, base_classifier=MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,</code></dt>
+<dt>
+<code class="descname">beta_2=0.999, early_stopping=False, epsilon=1e-08,</code></dt>
+<dt>
+<code class="descname">hidden_layer_sizes=(100,), learning_rate='constant',</code></dt>
+<dt>
+<code class="descname">learning_rate_init=0.001, max_iter=200, momentum=0.9,</code></dt>
+<dt>
+<code class="descname">n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,</code></dt>
+<dt>
+<code class="descname">random_state=None, shuffle=True, solver='adam', tol=0.0001,</code></dt>
+<dt>
+<code class="descname">validation_fraction=0.1, verbose=False, warm_start=False), metric=&lt;function accuracy_score at 0x7f2d01e44048&gt;)</code></dt>
+<dd><p>Initializer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.learners.TestAndTrain.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start learning process.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.learners.TestAndTrain.serialize">
+<code class="descname">serialize</code><span class="sig-paren">(</span><em>self</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save obtained metrics in CSV file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">name of resulting CSV file</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.learners.TestAndTrain.test">
+<code class="descname">test</code><span class="sig-paren">(</span><em>self</em>, <em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate and return score.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.learners.TestAndTrain.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>self</em>, <em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/strlearn/learners/testAndTrain.html#TestAndTrain.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strlearn.learners.TestAndTrain.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="strlearn.controllers.bare.html" class="btn btn-neutral float-right" title="strlearn.controllers.bare" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api.html" class="btn btn-neutral float-left" title="stream-learn API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

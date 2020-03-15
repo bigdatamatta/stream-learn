@@ -1,37 +1,94 @@
 ######################
-stream-learn API
+API
 ######################
+
+:mod:`strlearn.streams`: Streams
+====================================================
+
+.. automodule:: strlearn.streams
+    :no-members:
+    :no-inherited-members:
 
 .. currentmodule:: strlearn
 
-This is the full API documentation of the `stream-learn` toolbox.
+.. autosummary::
+   :toctree: generated/
+   :template: class.rst
 
-:mod:`strlearn`: Learner
-==========================
+   streams.StreamGenerator
+   streams.ARFFParser
+
+:mod:`strlearn.evaluators`: Evaluators
+====================================================
+
+.. automodule:: strlearn.evaluators
+    :no-members:
+    :no-inherited-members:
+
+.. currentmodule:: strlearn
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
-   Learner
+   evaluators.TestThenTrain
+   evaluators.Prequential
 
-:mod:`strlearn.controllers`: Controllers
-==========================
+:mod:`strlearn.classifiers`: Classifiers
+====================================================
+
+.. automodule:: strlearn.classifiers
+    :no-members:
+    :no-inherited-members:
+
+.. currentmodule:: strlearn
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
-   controllers.Bare
-   controllers.Budget
-   controllers.BLALC
+   classifiers.AccumulatedSamplesClassifier
+   classifiers.SampleWeightedMetaEstimator
 
 :mod:`strlearn.ensembles`: Ensembles
-==========================
+====================================================
+
+.. automodule:: strlearn.ensembles
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: strlearn
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
+   ensembles.SEA
+   ensembles.OnlineBagging
+   ensembles.OOB
+   ensembles.UOB
+   ensembles.AWE
    ensembles.WAE
-   ensembles.Pruner
+
+:mod:`strlearn.metrics`: Metrics
+====================================================
+
+.. automodule:: strlearn.metrics
+  :no-members:
+  :no-inherited-members:
+
+.. currentmodule:: strlearn
+
+.. autosummary::
+  :toctree: generated/
+  :template: function.rst
+
+  metrics.binary_confusion_matrix
+  metrics.specificity
+  metrics.recall
+  metrics.precision
+  metrics.fbeta_score
+  metrics.f1_score
+  metrics.balanced_accuracy_score
+  metrics.geometric_mean_score_1
+  metrics.geometric_mean_score_2

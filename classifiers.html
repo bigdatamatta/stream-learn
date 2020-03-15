@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classifiers &mdash; stream-learn 0.8.6 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Classifier Ensembles" href="ensembles.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> stream-learn
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classifiers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accumulated-samples-classifier">Accumulated Samples Classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-weighted-meta-estimator">Sample-Weighted Meta Estimator</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other informations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Classifiers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/classifiers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="classifiers">
+<h1>Classifiers<a class="headerlink" href="#classifiers" title="Permalink to this headline">¶</a></h1>
+<p>In addition, the <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> library also implements a simple single
+classifier model implementing the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> method and a Meta estimator
+adapted to be used with some of the ensemble methods found in the <code class="docutils literal notranslate"><span class="pre">ensembles</span></code>
+module. Those two models can be found in the <code class="docutils literal notranslate"><span class="pre">classifiers</span></code> module.</p>
+<div class="section" id="accumulated-samples-classifier">
+<h2>Accumulated Samples Classifier<a class="headerlink" href="#accumulated-samples-classifier" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">AccumulatedSamplesClassifier</span></code> class takes the base classifier as a
+<code class="docutils literal notranslate"><span class="pre">base_clf</span></code> parameter during initialization and extends the given model with
+the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> function adapted for data streams classification.
+This function concatenates observed data chunks, and in each step fits
+the model on all samples encountered so far.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.classifiers</span> <span class="kn">import</span> <span class="n">AccumulatedSamplesClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">AccumulatedSamplesClassifier</span><span class="p">(</span><span class="n">base_clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-weighted-meta-estimator">
+<h2>Sample-Weighted Meta Estimator<a class="headerlink" href="#sample-weighted-meta-estimator" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">SampleWeightedMetaEstimator</span></code> class implements a meta estimator designed
+to allow the use of a wider range of classification models as base classifiers
+in ensemble methods based on <cite>online bagging</cite>. It extends the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code>
+method of a given model by an additional  <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter which
+allows for using classifiers such as <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>
+package as base models for <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code>, <code class="docutils literal notranslate"><span class="pre">OOB</span></code> and <code class="docutils literal notranslate"><span class="pre">UOB</span></code> from
+<code class="docutils literal notranslate"><span class="pre">ensembles</span></code> module.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.classifiers</span> <span class="kn">import</span> <span class="n">SampleWeightedMetaEstimator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OOB</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">n_chunks</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">SampleWeightedMetaEstimator</span><span class="p">(</span><span class="n">base_classifier</span><span class="o">=</span><span class="n">MLPClassifier</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">OOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ensembles.html" class="btn btn-neutral float-left" title="Classifier Ensembles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

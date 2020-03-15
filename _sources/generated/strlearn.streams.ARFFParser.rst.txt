@@ -1,0 +1,16 @@
+:mod:`strlearn.streams`.ARFFParser
+=========================================
+
+.. currentmodule:: strlearn.streams
+
+.. autoclass:: ARFFParser
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.streams.ARFFParser.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

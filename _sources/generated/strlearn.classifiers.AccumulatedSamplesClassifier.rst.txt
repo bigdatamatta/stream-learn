@@ -1,0 +1,16 @@
+:mod:`strlearn.classifiers`.AccumulatedSamplesClassifier
+===============================================================
+
+.. currentmodule:: strlearn.classifiers
+
+.. autoclass:: AccumulatedSamplesClassifier
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.classifiers.AccumulatedSamplesClassifier.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

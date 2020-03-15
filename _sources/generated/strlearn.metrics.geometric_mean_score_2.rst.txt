@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.geometric_mean_score_2
+===========================================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: geometric_mean_score_2
+
+.. include:: strlearn.metrics.geometric_mean_score_2.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

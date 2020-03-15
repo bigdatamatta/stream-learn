@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>stream-learn API &mdash; stream-learn 0.1.0 documentation</title>
+  <title>API &mdash; stream-learn 0.8.6 documentation</title>
   
 
   
@@ -17,36 +17,40 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Instalation" href="install.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="strlearn.streams.StreamGenerator" href="generated/strlearn.streams.StreamGenerator.html" />
+    <link rel="prev" title="Classifiers" href="classifiers.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
@@ -54,13 +58,16 @@
           
 
           
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
             
               <div class="version">
-                0.1
+                0.8.6
               </div>
             
           
@@ -86,30 +93,61 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Instalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classifiers.html">Classifiers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">stream-learn API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#strlearn-learner"><code class="docutils literal notranslate"><span class="pre">strlearn</span></code>: Learner</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>: Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.streams.StreamGenerator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.StreamGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.streams.ARFFParser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>.ARFFParser</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#strlearn-controllers-controllers"><code class="docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.TestThenTrain.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.TestThenTrain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.evaluators.Prequential.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.Prequential</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#strlearn-ensembles-ensembles"><code class="docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.classifiers.AccumulatedSamplesClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.AccumulatedSamplesClassifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.classifiers.SampleWeightedMetaEstimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>.SampleWeightedMetaEstimator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.SEA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.SEA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.OnlineBagging.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.OnlineBagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.OOB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.OOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.UOB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.UOB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.AWE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.AWE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.ensembles.WAE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>.WAE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-strlearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>: Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.binary_confusion_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.binary_confusion_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.specificity.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.recall.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.recall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.precision.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.precision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.fbeta_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.fbeta_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.f1_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.f1_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.balanced_accuracy_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.balanced_accuracy_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.geometric_mean_score_1.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.geometric_mean_score_1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/strlearn.metrics.geometric_mean_score_2.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>.geometric_mean_score_2</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<p class="caption"><span class="caption-text">Other informations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About stream-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
 </ul>
 
             
@@ -155,7 +193,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>stream-learn API</li>
+      <li>API</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -174,56 +212,122 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="stream-learn-api">
-<h1>stream-learn API<a class="headerlink" href="#stream-learn-api" title="Permalink to this headline">¶</a></h1>
-<p>This is the full API documentation of the <cite>stream-learn</cite> toolbox.</p>
-<div class="section" id="strlearn-learner">
-<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn</span></code>: Learner<a class="headerlink" href="#strlearn-learner" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-strlearn.streams">
+<span id="strlearn-streams-streams"></span><h2><a class="reference internal" href="#module-strlearn.streams" title="strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code></a>: Streams<a class="headerlink" href="#module-strlearn.streams" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Learner</span></code>(X,&nbsp;y,&nbsp;base_classifier[,&nbsp;chunk_size,&nbsp;…])</td>
-<td>Perform learning procedure on stream.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.streams.StreamGenerator.html#strlearn.streams.StreamGenerator" title="strlearn.streams.StreamGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">streams.StreamGenerator</span></code></a>([n_chunks, …])</p></td>
+<td><p>Data streams generator for both stationary and drifting data streams.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.streams.ARFFParser.html#strlearn.streams.ARFFParser" title="strlearn.streams.ARFFParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">streams.ARFFParser</span></code></a>(path[, chunk_size, n_chunks])</p></td>
+<td><p>Stream-aware parser of datasets in ARFF format.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="strlearn-controllers-controllers">
-<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.controllers</span></code>: Controllers<a class="headerlink" href="#strlearn-controllers-controllers" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<div class="section" id="module-strlearn.evaluators">
+<span id="strlearn-evaluators-evaluators"></span><h2><a class="reference internal" href="#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>: Evaluators<a class="headerlink" href="#module-strlearn.evaluators" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.Bare</span></code>()</td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.evaluators.TestThenTrain.html#strlearn.evaluators.TestThenTrain" title="strlearn.evaluators.TestThenTrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.TestThenTrain</span></code></a>([metrics])</p></td>
+<td><p>Test Than Train data stream evaluator.</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.Budget</span></code>([budget])</td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">controllers.BLALC</span></code>([budget,&nbsp;treshold])</td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.evaluators.Prequential.html#strlearn.evaluators.Prequential" title="strlearn.evaluators.Prequential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluators.Prequential</span></code></a>([metrics])</p></td>
+<td><p>Prequential data stream evaluator.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="strlearn-ensembles-ensembles">
-<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles<a class="headerlink" href="#strlearn-ensembles-ensembles" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<div class="section" id="module-strlearn.classifiers">
+<span id="strlearn-classifiers-classifiers"></span><h2><a class="reference internal" href="#module-strlearn.classifiers" title="strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code></a>: Classifiers<a class="headerlink" href="#module-strlearn.classifiers" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.WAE</span></code>([ensemble_size,&nbsp;theta,&nbsp;…])</td>
-<td>Weighted Aging Ensemble lorem ipsum</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.classifiers.AccumulatedSamplesClassifier.html#strlearn.classifiers.AccumulatedSamplesClassifier" title="strlearn.classifiers.AccumulatedSamplesClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classifiers.AccumulatedSamplesClassifier</span></code></a>()</p></td>
+<td><p>Accumulated samples classifier.</p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.Pruner</span></code></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.classifiers.SampleWeightedMetaEstimator.html#strlearn.classifiers.SampleWeightedMetaEstimator" title="strlearn.classifiers.SampleWeightedMetaEstimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classifiers.SampleWeightedMetaEstimator</span></code></a>([…])</p></td>
+<td><p>Sample Weighted Meta Estimator.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-strlearn.ensembles">
+<span id="strlearn-ensembles-ensembles"></span><h2><a class="reference internal" href="#module-strlearn.ensembles" title="strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code></a>: Ensembles<a class="headerlink" href="#module-strlearn.ensembles" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.ensembles.SEA.html#strlearn.ensembles.SEA" title="strlearn.ensembles.SEA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.SEA</span></code></a>([base_estimator, …])</p></td>
+<td><p>Streaming Ensemble Algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.ensembles.OnlineBagging.html#strlearn.ensembles.OnlineBagging" title="strlearn.ensembles.OnlineBagging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.OnlineBagging</span></code></a>([base_estimator, …])</p></td>
+<td><p>Online Bagging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.ensembles.OOB.html#strlearn.ensembles.OOB" title="strlearn.ensembles.OOB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.OOB</span></code></a>([base_estimator, …])</p></td>
+<td><p>Oversamping-Based Online Bagging.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.ensembles.UOB.html#strlearn.ensembles.UOB" title="strlearn.ensembles.UOB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.UOB</span></code></a>([base_estimator, …])</p></td>
+<td><p>Undersampling-Based Online Bagging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.ensembles.AWE.html#strlearn.ensembles.AWE" title="strlearn.ensembles.AWE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.AWE</span></code></a>([base_estimator, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.ensembles.WAE.html#strlearn.ensembles.WAE" title="strlearn.ensembles.WAE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensembles.WAE</span></code></a>([base_estimator, …])</p></td>
+<td><p>Weighted Aging Ensemble.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-strlearn.metrics">
+<span id="strlearn-metrics-metrics"></span><h2><a class="reference internal" href="#module-strlearn.metrics" title="strlearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code></a>: Metrics<a class="headerlink" href="#module-strlearn.metrics" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.metrics.binary_confusion_matrix.html#strlearn.metrics.binary_confusion_matrix" title="strlearn.metrics.binary_confusion_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.binary_confusion_matrix</span></code></a>(y_true, y_pred)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.metrics.specificity.html#strlearn.metrics.specificity" title="strlearn.metrics.specificity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.specificity</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the specificity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.metrics.recall.html#strlearn.metrics.recall" title="strlearn.metrics.recall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.recall</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the recall.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.metrics.precision.html#strlearn.metrics.precision" title="strlearn.metrics.precision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.precision</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the precision.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.metrics.fbeta_score.html#strlearn.metrics.fbeta_score" title="strlearn.metrics.fbeta_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.fbeta_score</span></code></a>(y_true, y_pred, beta)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.metrics.f1_score.html#strlearn.metrics.f1_score" title="strlearn.metrics.f1_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.f1_score</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the f1_score.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.metrics.balanced_accuracy_score.html#strlearn.metrics.balanced_accuracy_score" title="strlearn.metrics.balanced_accuracy_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.balanced_accuracy_score</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the balanced accuracy score.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/strlearn.metrics.geometric_mean_score_1.html#strlearn.metrics.geometric_mean_score_1" title="strlearn.metrics.geometric_mean_score_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.geometric_mean_score_1</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the geometric mean score.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/strlearn.metrics.geometric_mean_score_2.html#strlearn.metrics.geometric_mean_score_2" title="strlearn.metrics.geometric_mean_score_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.geometric_mean_score_2</span></code></a>(y_true, y_pred)</p></td>
+<td><p>Calculates the geometric mean score.</p></td>
 </tr>
 </tbody>
 </table>
@@ -238,8 +342,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="generated/strlearn.streams.StreamGenerator.html" class="btn btn-neutral float-right" title="strlearn.streams.StreamGenerator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="install.html" class="btn btn-neutral" title="Instalation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="classifiers.html" class="btn btn-neutral float-left" title="Classifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -248,7 +354,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz.
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
 
     </p>
   </div>
@@ -265,35 +371,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

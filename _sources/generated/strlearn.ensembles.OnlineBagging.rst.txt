@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.OnlineBagging
+==============================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: OnlineBagging
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.OnlineBagging.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

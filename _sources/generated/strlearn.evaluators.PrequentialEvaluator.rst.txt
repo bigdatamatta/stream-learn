@@ -1,0 +1,16 @@
+:mod:`strlearn.evaluators`.PrequentialEvaluator
+======================================================
+
+.. currentmodule:: strlearn.evaluators
+
+.. autoclass:: PrequentialEvaluator
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.evaluators.PrequentialEvaluator.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.specificity
+================================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: specificity
+
+.. include:: strlearn.metrics.specificity.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

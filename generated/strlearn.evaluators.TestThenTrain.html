@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.evaluators.TestThenTrain &mdash; stream-learn 0.8.6 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/stream-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="strlearn.evaluators.Prequential" href="strlearn.evaluators.Prequential.html" />
+    <link rel="prev" title="strlearn.streams.ARFFParser" href="strlearn.streams.ARFFParser.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifiers.html">Classifiers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.streams"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.streams</span></code>: Streams</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>: Evaluators</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.TestThenTrain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strlearn.evaluators.Prequential.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.Prequential</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code>: Classifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.ensembles"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.ensembles</span></code>: Ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-strlearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.metrics</span></code>: Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other informations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code>.TestThenTrain</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/strlearn.evaluators.TestThenTrain.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="strlearn-evaluators-testthentrain">
+<h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.TestThenTrain<a class="headerlink" href="#strlearn-evaluators-testthentrain" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="strlearn.evaluators.TestThenTrain">
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrain</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score&gt;)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test Than Train data stream evaluator.</p>
+<p>Implementation of test-then-train evaluation procedure,
+where each individual data chunk is first used to test
+the classifier and then it is used for training.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">strlearn</span> <span class="k">as</span> <span class="nn">sl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">AccumulatedSamplesClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">evaluators</span><span class="o">.</span><span class="n">TestThenTrainEvaluator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[[0.92       0.91879699 0.91848191 0.91879699 0.92523364]</span>
+<span class="go">[0.945      0.94648779 0.94624912 0.94648779 0.94240838]</span>
+<span class="go">[0.92       0.91936979 0.91936231 0.91936979 0.9047619 ]</span>
+<span class="gp">...</span>
+<span class="go">[0.92       0.91907051 0.91877671 0.91907051 0.9245283 ]</span>
+<span class="go">[0.885      0.8854889  0.88546135 0.8854889  0.87830688]</span>
+<span class="go">[0.935      0.93569212 0.93540766 0.93569212 0.93467337]]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>classes_</strong><span class="classifier">array-like, shape (n_classes, )</span></dt><dd><p>The class labels.</p>
+</dd>
+<dt><strong>scores_</strong><span class="classifier">array-like, shape (stream.n_chunks, 5)</span></dt><dd><p>Values of accuracy_score, roc_auc_score,
+geometric_mean_score, balanced_accuracy_score and f_score for
+each processed data chunk.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="strlearn.evaluators.TestThenTrain.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7fadecdb8d08&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score at 0x7fae55b98730&gt;)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="strlearn.evaluators.TestThenTrain.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform learning procedure on data stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
+</dd>
+<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="strlearn.evaluators.Prequential.html" class="btn btn-neutral float-right" title="strlearn.evaluators.Prequential" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="strlearn.streams.ARFFParser.html" class="btn btn-neutral float-left" title="strlearn.streams.ARFFParser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+:mod:`strlearn.utils`.minority_majority_name
+=========================================================
+
+.. currentmodule:: strlearn.utils
+
+.. autofunction:: minority_majority_name
+
+.. include:: strlearn.utils.minority_majority_name.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

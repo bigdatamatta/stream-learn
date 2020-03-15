@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classifier Ensembles &mdash; stream-learn 0.8.6 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classifiers" href="classifiers.html" />
+    <link rel="prev" title="Stream Evaluators" href="evaluators.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> stream-learn
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classifier Ensembles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#chunk-based-ensembles-for-data-streams">Chunk-based Ensembles for Data Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-ensemble-algorithm-sea">Streaming Ensemble Algorithm (SEA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weighted-aging-ensemble-wae">Weighted Aging Ensemble (WAE)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#online-ensembles-for-data-streams">Online Ensembles for Data Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#online-bagging-ob">Online Bagging (OB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob">Oversamping-Based Online Bagging (OOB) &amp; Undersampling-Based Online Bagging (UOB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classifiers.html">Classifiers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other informations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Classifier Ensembles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ensembles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="classifier-ensembles">
+<h1>Classifier Ensembles<a class="headerlink" href="#classifier-ensembles" title="Permalink to this headline">¶</a></h1>
+<p>An ensemble (also known as multiple classifier system or committee) consists of
+a set of base classifiers whose predictions are combined to label new instances.
+Combining classifiers have been proved to be an effective way of dividing
+complex learning problems into sub-problems as well as improving predictive
+accuracy. A well-tuned ensemble should contain both strong and diverse base
+models.</p>
+<p><strong>Classifier ensemble diagram</strong></p>
+<a class="reference internal image-reference" href="_images/ensemble.png"><img alt="_images/ensemble.png" class="align-center" src="_images/ensemble.png" style="width: 650px;" /></a>
+<p>Under the data stream scenario, based on the way of examples processing, the
+ensembles can be categorized as <cite>chunk-based</cite> or <cite>online</cite>. The <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code>
+package implements various ensemble methods for data stream classification,
+which can be found in the <code class="docutils literal notranslate"><span class="pre">ensembles</span></code> module.</p>
+<div class="section" id="chunk-based-ensembles-for-data-streams">
+<h2>Chunk-based Ensembles for Data Streams<a class="headerlink" href="#chunk-based-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>Chunk-based approaches process successively incoming data chunks containing a
+predetermined number of instances. The learning algorithm can repeatedly process
+training samples located in a given data chunk to learn base models. It is worth
+noting that this does not mean that batch processing can only be used when new
+instances arrive in chunks. These approaches can also be used when instances
+arrive individually, if we store each new sample in a buffer until its size is
+equal to the size of the chunk.</p>
+<div class="section" id="streaming-ensemble-algorithm-sea">
+<h3>Streaming Ensemble Algorithm (SEA)<a class="headerlink" href="#streaming-ensemble-algorithm-sea" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">SEA</span></code> class implements a basic multi classifier approach for data stream classification. This model takes the base classifier as the <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> parameter and the pool size as the <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>. A single base classifier is trained on each observed data chunk and added to the ensemble. If the fixed pool size is exceeded, the worst performing model is removed. The final decision is obtained by accumulating the supports of base classifiers.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="weighted-aging-ensemble-wae">
+<h3>Weighted Aging Ensemble (WAE)<a class="headerlink" href="#weighted-aging-ensemble-wae" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">WAE</span></code> class implements an algorithm called Weighted Aging Ensemble, which can adapt to changes in data stream class distribution. The method was inspired by Accuracy Weighted Ensemble (AWE) algorithm to which it introduces two main modifications: (I) classifier weights depend on the individual classifier accuracies and time they have been spending in the ensemble, (II) individual classifier are chosen on the basis on the non-pairwise diversity measure. The <code class="docutils literal notranslate"><span class="pre">WAE</span></code> class accepts the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> – Base classifier type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> – Fixed pool size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theta</span></code> – Threshold for weight calculation method and aging procedure control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_pruning</span></code> – Whether the pruning is conducted before or after adding the classifier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pruning_criterion</span></code> – accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight_calculation_method</span></code> – same_for_each, proportional_to_accuracy, kuncheva, pta_related_to_whole, bell_curve,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aging_method</span></code> – weights_proportional, constant, gaussian.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rejuvenation_power</span></code> – Rejuvenation dynamics control of classifiers with high prediction accuracy.</p></li>
+</ul>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">WAE</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">sl</span><span class="o">.</span><span class="n">ensembles</span><span class="o">.</span><span class="n">WAE</span><span class="p">(</span>
+      <span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">weight_calculation_method</span><span class="o">=</span><span class="s2">&quot;proportional_to_accuracy&quot;</span>
+  <span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="online-ensembles-for-data-streams">
+<h2>Online Ensembles for Data Streams<a class="headerlink" href="#online-ensembles-for-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>Online approaches, unlike those based on batch processing, process each new
+sample separately. These methods have been developed for applications with
+memory and computational limitations (i.e. where the amount of incoming data is
+extensive). Online methods can also be used in cases where data samples do not
+arrive separately. These types of methods can process each instances of data
+chunk are individually and can therefore be used in an environment where data
+arrives in batches.</p>
+<div class="section" id="online-bagging-ob">
+<h3>Online Bagging (OB)<a class="headerlink" href="#online-bagging-ob" title="Permalink to this headline">¶</a></h3>
+<p><cite>Online Bagging</cite> is an ensemble learning algorithm for data streams classification, based on the concept of offline <cite>Bagging</cite>. It maintains a pool of base estimators and with the appearance of a new instance, each model is trained on it K times, where K comes from the <cite>Poisson(λ= 1)</cite> distribution. It is implemented in the <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code> class which accepts <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> and <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> parameters, respectively responsible for the base classifier type and the fixed classifier pool size.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OnlineBagging</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">OnlineBagging</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob">
+<h3>Oversamping-Based Online Bagging (OOB) &amp; Undersampling-Based Online Bagging (UOB)<a class="headerlink" href="#oversamping-based-online-bagging-oob-undersampling-based-online-bagging-uob" title="Permalink to this headline">¶</a></h3>
+<p><cite>Oversampling-Based Online Bagging</cite> (implemented by the <code class="docutils literal notranslate"><span class="pre">OOB</span></code> class) and <cite>Undersampling-Based Online Bagging</cite> (implemented by the <code class="docutils literal notranslate"><span class="pre">UOB</span></code> class) are methods integrating resampling with <cite>Online Bagging</cite>. Resampling is based on the change in λ values for the Poisson distribution. <cite>OOB</cite> uses oversampling to increase the chance of training minority class instances, while UOB uses undersampling to reduce the chance of training majority class instances. Implementations refer to the improved versions of both algorithms in which the λ value depends on the size ratio between classes. When the problem becomes balanced, the methods are automatically reduced to online bagging. Both methods take the same parameters as the <code class="docutils literal notranslate"><span class="pre">OnlineBagging</span></code> class.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">OOB</span><span class="p">,</span> <span class="n">UOB</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">oob</span> <span class="o">=</span> <span class="n">OOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">uob</span> <span class="o">=</span> <span class="n">UOB</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">oob</span><span class="p">,</span> <span class="n">uob</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">()</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clfs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple" id="bibtex-bibliography-ensembles-0" start="1">
+<li><p>Bartosz Krawczyk, Leandro Minku, João Gama, Jerzy Stefanowski, and Michal Wozniak. Ensemble learning for data stream analysis: a survey. <em>Information Fusion</em>, 37:132–156, 09 2017.</p></li>
+<li><p>Nick Street and Y. Kim. A streaming ensemble algorithm (sea) for large-scale classification. <em>Proceedings of the 7Th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, pages 377–382, 01 2001.</p></li>
+<li><p>Michał Woźniak, Andrzej Kasprzak, and Piotr Cal. Weighted aging classifier ensemble for the incremental drifted data streams. In Henrik Legind Larsen, Maria J. Martin-Bautista, María Amparo Vila, Troels Andreasen, and Henning Christiansen, editors, <em>Flexible Query Answering Systems</em>, 579–588. Berlin, Heidelberg, 2013. Springer Berlin Heidelberg.</p></li>
+<li><p>N. C. Oza. Online bagging and boosting. In <em>2005 IEEE International Conference on Systems, Man and Cybernetics</em>, volume 3, 2340–2345 Vol. 3. Oct 2005.</p></li>
+<li><p>S. Wang, L. L. Minku, and X. Yao. Resampling-based ensemble methods for online class imbalance learning. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 27(5):1356–1368, May 2015.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="classifiers.html" class="btn btn-neutral float-right" title="Classifiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="evaluators.html" class="btn btn-neutral float-left" title="Stream Evaluators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

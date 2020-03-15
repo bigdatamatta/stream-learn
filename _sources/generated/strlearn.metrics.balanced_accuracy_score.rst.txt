@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.balanced_accuracy_score
+============================================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: balanced_accuracy_score
+
+.. include:: strlearn.metrics.balanced_accuracy_score.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

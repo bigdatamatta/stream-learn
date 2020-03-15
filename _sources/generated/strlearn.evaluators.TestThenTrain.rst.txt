@@ -1,0 +1,16 @@
+:mod:`strlearn.evaluators`.TestThenTrain
+===============================================
+
+.. currentmodule:: strlearn.evaluators
+
+.. autoclass:: TestThenTrain
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.evaluators.TestThenTrain.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

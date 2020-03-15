@@ -1,5 +1,11 @@
-##########################################
-About stream-learn
-##########################################
+########
+About us
+########
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The ``stream-learn`` package was created for the needs of the `Department of Systems and Computer Networks <http://kssk.pwr.edu.pl>`_, *Wrocław University of Science and Technology*, as part of research projects regarding the processing of imbalanced data streams and its code is used for experimental evaluation since 2017.
+
+The authors and maintainers of its current version are the employees of the unit, namely `P. Ksieniewicz <https://www.kssk.pwr.edu.pl/ksieniewicz>`_ and `P. Zyblewski <https://www.kssk.pwr.edu.pl/pzyblewski>`_.
+
+.. image:: _static/logo.png
+    :align: center
+    :width: 200px

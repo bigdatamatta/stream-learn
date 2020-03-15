@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stream Evaluators &mdash; stream-learn 0.8.6 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/stream-learn.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classifier Ensembles" href="ensembles.html" />
+    <link rel="prev" title="Data Streams" href="streams.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> stream-learn
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Data Streams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stream Evaluators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-then-train-evaluator">Test-Then-Train Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prequential-evaluator">Prequential Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recall">Recall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precision">Precision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-beta-score">F-beta score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f1-score">F1 score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#balanced-accuracy-bac">Balanced accuracy (BAC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-1-g-mean1">Geometric mean score 1 (G-mean1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometric-mean-score-2-g-mean2">Geometric mean score 2 (G-mean2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classifiers.html">Classifiers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other informations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Stream Evaluators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/evaluators.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stream-evaluators">
+<h1>Stream Evaluators<a class="headerlink" href="#stream-evaluators" title="Permalink to this headline">¶</a></h1>
+<p>To estimate prediction measures in the context of data streams with
+strict computational requirements and concept drifts, the <code class="docutils literal notranslate"><span class="pre">evaluators</span></code> module
+of the <code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> package implements two main estimation techniques
+described in the literature in their batch-based versions.</p>
+<div class="section" id="test-then-train-evaluator">
+<h2>Test-Then-Train Evaluator<a class="headerlink" href="#test-then-train-evaluator" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">TestThenTrain</span></code> class implements the <cite>Test-Then-Train</cite> evaluation procedure,
+in which each individual data chunk is first used to test the classifier before
+it is used for updating the existing model.</p>
+<a class="reference internal image-reference" href="_images/evaluators_ttt.png"><img alt="_images/evaluators_ttt.png" class="align-center" src="_images/evaluators_ttt.png" style="width: 800px;" /></a>
+<p>The performance metrics returned by the evaluator are determined by the
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter which accepts a tuple containing the functions of preferred quality
+measures and can be specified during initialization.</p>
+<p>Processing of the data stream is started by calling the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function
+which accepts two parameters (i.e. <code class="docutils literal notranslate"><span class="pre">stream</span></code> and <code class="docutils literal notranslate"><span class="pre">clfs</span></code>) responsible for
+defining the data stream and classifier, or a tuple of classifiers, employing
+the <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> function. The size of each data chunk is determined by
+the <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> parameter from the <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class. The results
+of evaluation can be accessed using the <code class="docutils literal notranslate"><span class="pre">scores</span></code> attribute, which is a
+three-dimensional array of shape (n_classifiers, n_chunks, n_metrics).</p>
+<p><strong>Example – single classifier</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
+<span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example – multiple classifiers</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">TestThenTrain</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
+<span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clfs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prequential-evaluator">
+<h2>Prequential Evaluator<a class="headerlink" href="#prequential-evaluator" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>Prequential</cite> procedure of assessing the predictive performance of stream
+learning algorithms is implemented by the <code class="docutils literal notranslate"><span class="pre">Prequential</span></code> class. This estimation
+technique is based on a forgetting mechanism in the form of a sliding window
+instead of a separate data chunks. Window moves by a fixed number of instances
+determined by the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter for the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function. After each
+step, samples that are currently in the window are used to test the classifier
+and then for updating the model.</p>
+<a class="reference internal image-reference" href="_images/evaluators_pr.png"><img alt="_images/evaluators_pr.png" class="align-center" src="_images/evaluators_pr.png" style="width: 800px;" /></a>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">TestThenTrain</span></code> evaluator, the object of the <code class="docutils literal notranslate"><span class="pre">Prequential</span></code>
+class can be initialized with a <code class="docutils literal notranslate"><span class="pre">metrics</span></code> parameter containing metrics names
+and the size of the sliding window is equal to the <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> parameter from
+the instance of <code class="docutils literal notranslate"><span class="pre">StreamGenerator</span></code> class.</p>
+<p><strong>Example – single classifer</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
+<span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">TestThenTrain</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example – multiple classifiers</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.evaluators</span> <span class="kn">import</span> <span class="n">Prequential</span>
+<span class="kn">from</span> <span class="nn">strlearn.ensembles</span> <span class="kn">import</span> <span class="n">SEA</span>
+<span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span>
+<span class="kn">from</span> <span class="nn">strlearn.streams</span> <span class="kn">import</span> <span class="n">StreamGenerator</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGenerator</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_chunks</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">())</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">SEA</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">clfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">Prequential</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">(</span><span class="n">bac</span><span class="p">,</span> <span class="n">f_score</span><span class="p">))</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">clfs</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<p>To improve the computational performance of presented evaluators, the
+<code class="docutils literal notranslate"><span class="pre">stream-learn</span></code> package uses its own implementations of metrics for classification
+of imbalanced binary problems, which can be found in the <code class="docutils literal notranslate"><span class="pre">utils.metrics</span></code> module.
+All implemented metrics are based on the confusion matrix.</p>
+<img alt="_images/confusion_matrix.png" class="align-center" src="_images/confusion_matrix.png" />
+<div class="section" id="recall">
+<h3>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
+<p>Recall (also known as sensitivity or true positive rate) represents the
+classifier’s ability to find all the positive data samples in the dataset
+(e.g. the minority class instances) and is denoted as</p>
+<div class="math">
+<p><span class="math">Recall = \frac{tp}{tp + fn}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">recall</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="precision">
+<h3>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
+<p>Precision (also called positive predictive value) expresses the probability
+of correct detection of positive samples and is denoted as</p>
+<div class="math">
+<p><span class="math">Precision = \frac{tp}{tp + fp}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">precision</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="f-beta-score">
+<h3>F-beta score<a class="headerlink" href="#f-beta-score" title="Permalink to this headline">¶</a></h3>
+<p>The F-beta score can be interpreted as a weighted harmonic mean of precision and
+recall taking both metrics into account and punishing extreme values. The <code class="docutils literal notranslate"><span class="pre">beta</span></code> parameter determines the recall’s weight. <code class="docutils literal notranslate"><span class="pre">beta</span></code> &lt; 1 gives more weight to precision, while <code class="docutils literal notranslate"><span class="pre">beta</span></code> &gt; 1 prefers recall.
+The formula for the F-beta score is</p>
+<div class="math">
+<p><span class="math">F_\beta = (1+\beta^2) * \frac{Precision * Recall}{(\beta^2 * Precision) + Recall}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">fbeta_score</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="f1-score">
+<h3>F1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
+<p>The F1 score can be interpreted as a F-beta score, where <span class="math">\beta</span> parameter equals 1. It is a harmonic mean of precision and recall.
+The formula for the F1 score is</p>
+<div class="math">
+<p><span class="math">F_1 = 2 * \frac{Precision * Recall}{Precision + Recall}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="balanced-accuracy-bac">
+<h3>Balanced accuracy (BAC)<a class="headerlink" href="#balanced-accuracy-bac" title="Permalink to this headline">¶</a></h3>
+<p>The balanced accuracy for the multiclass problems is defined as the average of
+recall obtained on each class. For binary problems it is denoted by the average
+of recall and specificity (also called true negative rate).</p>
+<div class="math">
+<p><span class="math">Specificity = \frac{tn}{tn + fp}</span></p>
+</div><div class="math">
+<p><span class="math">BAC = \frac{Recall + Specificity}{2}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">bac</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometric-mean-score-1-g-mean1">
+<h3>Geometric mean score 1 (G-mean1)<a class="headerlink" href="#geometric-mean-score-1-g-mean1" title="Permalink to this headline">¶</a></h3>
+<p>The geometric mean (G-mean) tries to maximize the accuracy on each of the
+classes while keeping these accuracies balanced. For N-class problems it is
+a N root of the product of class-wise recall. For binary classification
+G-mean is denoted as the squared root of the product of the recall and specificity.</p>
+<div class="math">
+<p><span class="math">Gmean1 = \sqrt{Recall * Specificity}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score_1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometric-mean-score-2-g-mean2">
+<h3>Geometric mean score 2 (G-mean2)<a class="headerlink" href="#geometric-mean-score-2-g-mean2" title="Permalink to this headline">¶</a></h3>
+<p>The alternative definition of G-mean measure. For binary classification
+G-mean is denoted as the squared root of the product of the recall and precision.</p>
+<div class="math">
+<p><span class="math">Gmean2 = \sqrt{Recall * Precision}</span></p>
+</div><p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">strlearn.utils.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score_2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple" id="bibtex-bibliography-evaluators-0" start="1">
+<li><p>Ricardo A. Baeza-Yates and Berthier Ribeiro-Neto. <em>Modern Information Retrieval</em>. Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA, 1999. ISBN 020139829X.</p></li>
+<li><p>Ricardo Barandela, Josep Sánchez, Vicente García, and E. Rangel. Strategies for learning in class imbalance problems. <em>Pattern Recognition</em>, 36:849–851, 03 2003.</p></li>
+<li><p>Kay Henning Brodersen, Cheng Soon Ong, Klaas Enno Stephan, and Joachim M. Buhmann. The balanced accuracy and its posterior distribution. In <em>Proceedings of the 2010 20th International Conference on Pattern Recognition</em>, ICPR ‘10, 3121–3124. Washington, DC, USA, 2010. IEEE Computer Society.</p></li>
+<li><p>Joao Gama. <em>Knowledge Discovery from Data Streams</em>. Chapman &amp; Hall/CRC, 1st edition, 2010. ISBN 1439826110, 9781439826119.</p></li>
+<li><p>João Gama, Raquel Sebastião, and Pedro Pereira Rodrigues. On evaluating stream learning algorithms. <em>Machine Learning</em>, 90(3):317–346, Mar 2013.</p></li>
+<li><p>John D. Kelleher, Brian Mac Namee, and Aoife D’Arcy. <em>Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies</em>. The MIT Press, 2015. ISBN 0262029448, 9780262029445.</p></li>
+<li><p>Miroslav Kubat and Stan Matwin. Addressing the curse of imbalanced training sets: one-sided selection. In <em>ICML</em>. 1997.</p></li>
+<li><p>David Powers and Ailab. Evaluation: from precision, recall and f-measure to roc, informedness, markedness &amp; correlation. <em>J. Mach. Learn. Technol</em>, 2:2229–3981, 01 2011.</p></li>
+<li><p>Yutaka Sasaki. The truth of the f-measure. <em>Teach Tutor Mater</em>, pages, 01 2007.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ensembles.html" class="btn btn-neutral float-right" title="Classifier Ensembles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="streams.html" class="btn btn-neutral float-left" title="Data Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.ChunkBasedEnsemble
+===================================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: ChunkBasedEnsemble
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.ChunkBasedEnsemble.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

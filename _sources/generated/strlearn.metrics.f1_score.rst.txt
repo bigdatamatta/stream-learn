@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.f1_score
+=============================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: f1_score
+
+.. include:: strlearn.metrics.f1_score.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

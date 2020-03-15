@@ -1,0 +1,16 @@
+:mod:`strlearn.controllers`.bare
+=======================================
+
+.. currentmodule:: strlearn.controllers
+
+.. autoclass:: bare
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.controllers.bare.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

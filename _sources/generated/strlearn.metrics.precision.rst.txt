@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.precision
+==============================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: precision
+
+.. include:: strlearn.metrics.precision.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

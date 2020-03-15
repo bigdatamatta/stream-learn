@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>strlearn.utils.imbalancedStreams &mdash; stream-learn 0.5.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> stream-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Instalation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">stream-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">General examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">stream-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>strlearn.utils.imbalancedStreams</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for strlearn.utils.imbalancedStreams</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="minority_majority_split"><a class="viewcode-back" href="../../../generated/strlearn.utils.minority_majority_split.html#strlearn.utils.minority_majority_split">[docs]</a><span class="k">def</span> <span class="nf">minority_majority_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">minority_name</span><span class="p">,</span> <span class="n">majority_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns minority and majority data</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array-like, shape (n_samples, n_features)</span>
+<span class="sd">        The training input samples.</span>
+<span class="sd">    y : array-like, shape (n_samples,)</span>
+<span class="sd">        The target values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    minority : array-like, shape (n_samples, n_features)</span>
+<span class="sd">        Minority class samples.</span>
+<span class="sd">    majority : array-like, shape (n_samples, n_features)</span>
+<span class="sd">        Majority class samples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">minority_ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">minority_name</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">minority</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">minority_ma</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="n">majority_ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">majority_name</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">majority</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">majority_ma</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">minority</span><span class="p">,</span> <span class="n">majority</span></div>
+
+
+<div class="viewcode-block" id="minority_majority_name"><a class="viewcode-back" href="../../../generated/strlearn.utils.minority_majority_name.html#strlearn.utils.minority_majority_name">[docs]</a><span class="k">def</span> <span class="nf">minority_majority_name</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the name of minority and majority class</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y : array-like, shape (n_samples,)</span>
+<span class="sd">        The target values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    minority_name : object</span>
+<span class="sd">        Name of minority class.</span>
+<span class="sd">    majority_name : object</span>
+<span class="sd">        Name of majority class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">counts</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">majority_name</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">minority_name</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">majority_name</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">minority_name</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">minority_name</span><span class="p">,</span> <span class="n">majority_name</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Ksieniewicz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

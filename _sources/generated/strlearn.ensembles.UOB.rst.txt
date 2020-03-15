@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.UOB
+====================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: UOB
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.UOB.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

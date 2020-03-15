@@ -1,0 +1,12 @@
+:mod:`strlearn.metrics`.recall
+===========================================
+
+.. currentmodule:: strlearn.metrics
+
+.. autofunction:: recall
+
+.. include:: strlearn.metrics.recall.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

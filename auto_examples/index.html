@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>General examples &mdash; stream-learn 0.1.0 documentation</title>
+  <title>General examples &mdash; stream-learn 0.8.6 documentation</title>
   
 
   
@@ -17,36 +17,40 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/stream-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Usage of the WAE algorithm" href="basic_learning.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="next" title="The simplest experiment example with one classifier and two metrics" href="plot_simplest.html" />
+    <link rel="prev" title="strlearn.metrics.geometric_mean_score_2" href="../generated/strlearn.metrics.geometric_mean_score_2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search"  style="background: #AF2624" >
           
 
           
@@ -54,13 +58,16 @@
           
 
           
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
             
               <div class="version">
-                0.1
+                0.8.6
               </div>
             
           
@@ -86,22 +93,28 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Instalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../streams.html">Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluators.html">Stream Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ensembles.html">Classifier Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifiers.html">Classifiers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">stream-learn API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">General examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic_learning.html">Usage of the WAE algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_simplest.html">The simplest experiment example with one classifier and two metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_basic.html">Basic example of stationary synthetic stream processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_stream_plotting.html">Plotting example data streams</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<p class="caption"><span class="caption-text">Other informations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../about.html">About stream-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
 </ul>
 
             
@@ -167,21 +180,35 @@
            <div itemprop="articleBody">
             
   <div class="section" id="general-examples">
-<span id="id1"></span><h1>General examples<a class="headerlink" href="#general-examples" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples"></span><span id="id1"></span><h1>General examples<a class="headerlink" href="#general-examples" title="Permalink to this headline">¶</a></h1>
 <p>General-purpose and introductory examples for the <cite>stream-learn</cite> toolbox.</p>
-<div class="sphx-glr-thumbcontainer" tooltip=""><div class="figure" id="id2">
-<img alt="../_images/sphx_glr_basic_learning_thumb.png" src="../_images/sphx_glr_basic_learning_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="basic_learning.html#sphx-glr-auto-examples-basic-learning-py"><span class="std std-ref">Usage of the WAE algorithm</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Lorem impsum."><div class="figure align-default" id="id2">
+<img alt="../_images/sphx_glr_plot_simplest_thumb.png" src="../_images/sphx_glr_plot_simplest_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_simplest.html#sphx-glr-auto-examples-plot-simplest-py"><span class="std std-ref">The simplest experiment example with one classifier and two metrics</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div style='clear:both'></div><div class="sphx-glr-footer docutils container">
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/auto_examples_python.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></div>
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/auto_examples_jupyter.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></div>
+<div class="sphx-glr-thumbcontainer" tooltip="Lorem impsum."><div class="figure align-default" id="id3">
+<img alt="../_images/sphx_glr_plot_basic_thumb.png" src="../_images/sphx_glr_plot_basic_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_basic.html#sphx-glr-auto-examples-plot-basic-py"><span class="std std-ref">Basic example of stationary synthetic stream processing</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Id sunt magna sint doctrina quo de enim ullamco, quorum proident adipisicing, nam summis quid m..."><div class="figure align-default" id="id4">
+<img alt="../_images/sphx_glr_plot_stream_plotting_thumb.png" src="../_images/sphx_glr_plot_stream_plotting_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_stream_plotting.html#sphx-glr-auto-examples-plot-stream-plotting-py"><span class="std std-ref">Plotting example data streams</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div><div class="sphx-glr-footer class sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/3409d9766d352cc9f9b169d4a799a87a/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/d34667f097c619f8afda4bc936e7af21/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
 
 
@@ -192,8 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="basic_learning.html" class="btn btn-neutral float-right" title="Usage of the WAE algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_simplest.html" class="btn btn-neutral float-right" title="The simplest experiment example with one classifier and two metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="../generated/strlearn.metrics.geometric_mean_score_2.html" class="btn btn-neutral float-left" title="strlearn.metrics.geometric_mean_score_2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -202,7 +231,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Paweł Ksieniewicz.
+        &copy; Copyright 2019, P. Ksieniewicz, P. Zyblewski
 
     </p>
   </div>
@@ -219,35 +248,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.DumbEnsemble
+=============================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: DumbEnsemble
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.DumbEnsemble.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>
