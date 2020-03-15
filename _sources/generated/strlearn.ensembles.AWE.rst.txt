@@ -1,0 +1,16 @@
+:mod:`strlearn.ensembles`.AWE
+====================================
+
+.. currentmodule:: strlearn.ensembles
+
+.. autoclass:: AWE
+
+   
+   .. automethod:: __init__
+   
+
+.. include:: strlearn.ensembles.AWE.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

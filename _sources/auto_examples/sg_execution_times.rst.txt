@@ -5,12 +5,12 @@
 
 Computation times
 =================
-**00:10.606** total execution time for **auto_examples** files:
+**00:10.081** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_stream_plotting.py` (``plot_stream_plotting.py``) | 00:08.111 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_stream_plotting.py` (``plot_stream_plotting.py``) | 00:08.133 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_basic.py` (``plot_basic.py``)                     | 00:01.635 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_basic.py` (``plot_basic.py``)                     | 00:01.012 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_simplest.py` (``plot_simplest.py``)               | 00:00.860 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_simplest.py` (``plot_simplest.py``)               | 00:00.936 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
