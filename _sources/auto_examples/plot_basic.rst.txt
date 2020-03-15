@@ -19,9 +19,11 @@ Lorem impsum.
 
 
 
-    import strlearn as sl
-    from sklearn.neural_network import MLPClassifier
+    import matplotlib.pyplot as plt
     from sklearn.naive_bayes import GaussianNB
+    from sklearn.neural_network import MLPClassifier
+
+    import strlearn as sl
 
     # Initialize list of scikit-learn classifiers with partial_fit() function
     clfs = [MLPClassifier(), GaussianNB()]
@@ -137,7 +139,6 @@ Plotting
 .. code-block:: default
 
 
-    import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(1, len(metrics), figsize=(12, 4))
     labels = ["MLP", "GNB"]
@@ -160,7 +161,7 @@ Plotting
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.897 seconds)
+   **Total running time of the script:** ( 0 minutes  1.699 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_basic.py:

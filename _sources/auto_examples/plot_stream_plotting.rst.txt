@@ -25,10 +25,11 @@ pariatur ullamco, an export excepteur fidelissimae.
 
 
 
-    import strlearn as sl
     import matplotlib.pyplot as plt
     import numpy as np
     from matplotlib.colors import LinearSegmentedColormap
+
+    import strlearn as sl
 
     cm = LinearSegmentedColormap.from_list(
         "lokomotiv", colors=[(0.3, 0.7, 0.3), (0.7, 0.3, 0.3)]
@@ -314,7 +315,7 @@ inne
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.188 seconds)
+   **Total running time of the script:** ( 0 minutes  8.224 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_stream_plotting.py:
