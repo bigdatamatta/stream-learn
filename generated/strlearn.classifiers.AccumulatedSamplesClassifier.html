@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.classifiers.AccumulatedSamplesClassifier &mdash; stream-learn 0.8.8 documentation</title>
+  <title>strlearn.classifiers.AccumulatedSamplesClassifier &mdash; stream-learn 0.8.9 documentation</title>
   
 
   
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                0.8.8
+                0.8.9
               </div>
             
           
@@ -193,7 +193,7 @@
 <h1><a class="reference internal" href="../api.html#module-strlearn.classifiers" title="strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code></a>.AccumulatedSamplesClassifier<a class="headerlink" href="#strlearn-classifiers-accumulatedsamplesclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="strlearn.classifiers.AccumulatedSamplesClassifier">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.classifiers.</code><code class="sig-name descname">AccumulatedSamplesClassifier</code><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.classifiers.</code><code class="sig-name descname">AccumulatedSamplesClassifier</code><span class="sig-paren">(</span><em class="sig-param">base_clf=None</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accumulated samples classifier.</p>
 <p>Classifier fitted on accumulated samples from all data chunks.</p>
 <p class="rubric">Examples</p>
@@ -223,7 +223,7 @@
 </dl>
 <dl class="method">
 <dt id="strlearn.classifiers.AccumulatedSamplesClassifier.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_clf=None</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 </dd></dl>
 
@@ -281,6 +281,26 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.predict_proba">
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict classes for X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape (n_samples, n_features)</span></dt><dd><p>The training input samples.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples, )</span></dt><dd><p>The predicted classes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="strlearn.classifiers.AccumulatedSamplesClassifier.score">
 <code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
@@ -305,12 +325,6 @@ each label set be correctly predicted.</p>
 </dl>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.classifiers.AccumulatedSamplesClassifier.set_base_clf">
-<code class="sig-name descname">set_base_clf</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_clf=&lt;class 'sklearn.naive_bayes.GaussianNB'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.AccumulatedSamplesClassifier.set_base_clf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establishing base classifier.</p>
 </dd></dl>
 
 <dl class="method">
