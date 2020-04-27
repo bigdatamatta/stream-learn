@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.evaluators.TestThenTrain &mdash; stream-learn 0.8.10 documentation</title>
+  <title>strlearn.evaluators.TestThenTrain &mdash; stream-learn 0.8.11 documentation</title>
   
 
   
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                0.8.10
+                0.8.11
               </div>
             
           
@@ -191,7 +191,7 @@
             
   <div class="section" id="strlearn-evaluators-testthentrain">
 <h1><a class="reference internal" href="../api.html#module-strlearn.evaluators" title="strlearn.evaluators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.evaluators</span></code></a>.TestThenTrain<a class="headerlink" href="#strlearn-evaluators-testthentrain" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="strlearn.evaluators.TestThenTrain">
 <em class="property">class </em><code class="sig-prename descclassname">strlearn.evaluators.</code><code class="sig-name descname">TestThenTrain</code><span class="sig-paren">(</span><em class="sig-param">metrics=(&lt;function accuracy_score&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score&gt;)</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test Than Train data stream evaluator.</p>
@@ -227,26 +227,10 @@ each processed data chunk.</p>
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="strlearn.evaluators.TestThenTrain.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7faccb54e158&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score at 0x7fad3434a488&gt;)</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">metrics=(&lt;function accuracy_score at 0x7f64e39eea60&gt;</em>, <em class="sig-param">&lt;function balanced_accuracy_score at 0x7f64dfee7378&gt;)</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.evaluators.TestThenTrain.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em>, <em class="sig-param">clfs</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.evaluators.TestThenTrain.process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform learning procedure on data stream.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>clf</strong><span class="classifier">scikit-learn estimator</span></dt><dd><p>Classifier implementing a <cite>partial_fit()</cite> method.</p>
-</dd>
-<dt><strong>stream</strong><span class="classifier">object</span></dt><dd><p>Data stream as an object.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>

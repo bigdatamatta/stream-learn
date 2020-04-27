@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strlearn.classifiers.SampleWeightedMetaEstimator &mdash; stream-learn 0.8.10 documentation</title>
+  <title>strlearn.classifiers.SampleWeightedMetaEstimator &mdash; stream-learn 0.8.11 documentation</title>
   
 
   
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                0.8.10
+                0.8.11
               </div>
             
           
@@ -190,86 +190,14 @@
             
   <div class="section" id="strlearn-classifiers-sampleweightedmetaestimator">
 <h1><a class="reference internal" href="../api.html#module-strlearn.classifiers" title="strlearn.classifiers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strlearn.classifiers</span></code></a>.SampleWeightedMetaEstimator<a class="headerlink" href="#strlearn-classifiers-sampleweightedmetaestimator" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="strlearn.classifiers.SampleWeightedMetaEstimator">
-<em class="property">class </em><code class="sig-prename descclassname">strlearn.classifiers.</code><code class="sig-name descname">SampleWeightedMetaEstimator</code><span class="sig-paren">(</span><em class="sig-param">base_classifier=GaussianNB(priors=None</em>, <em class="sig-param">var_smoothing=1e-09)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">strlearn.classifiers.</code><code class="sig-name descname">SampleWeightedMetaEstimator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_classifier</span><span class="o">=</span><span class="default_value">GaussianNB(priors=None, var_smoothing=1e-09)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample Weighted Meta Estimator.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="strlearn.classifiers.SampleWeightedMetaEstimator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_classifier=GaussianNB(priors=None</em>, <em class="sig-param">var_smoothing=1e-09)</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">base_classifier</span><span class="o">=</span><span class="default_value">GaussianNB(priors=None, var_smoothing=1e-09)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.classifiers.SampleWeightedMetaEstimator.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.classifiers.SampleWeightedMetaEstimator.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the mean accuracy on the given test data and labels.</p>
-<p>In multi-label classification, this is the subset accuracy
-which is a harsh metric since you require for each sample that
-each label set be correctly predicted.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Test samples.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>True labels for X.</p>
-</dd>
-<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Mean accuracy of self.predict(X) wrt. y.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="strlearn.classifiers.SampleWeightedMetaEstimator.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#strlearn.classifiers.SampleWeightedMetaEstimator.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as pipelines). The latter have parameters of the form
-<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
-component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
