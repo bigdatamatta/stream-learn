@@ -154,6 +154,7 @@ Plotting
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_basic_001.png
+    :alt: balanced_accuracy_score, f1_score
     :class: sphx-glr-single-img
 
 
@@ -163,7 +164,7 @@ Plotting
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.466 seconds)
+   **Total running time of the script:** ( 0 minutes  2.066 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_basic.py:

@@ -20,6 +20,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 .. only:: html
 
  .. figure:: /auto_examples/images/thumb/sphx_glr_plot_simplest_thumb.png
+     :alt: The simplest experiment example with one classifier and two metrics
 
      :ref:`sphx_glr_auto_examples_plot_simplest.py`
 
@@ -40,6 +41,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 .. only:: html
 
  .. figure:: /auto_examples/images/thumb/sphx_glr_plot_basic_thumb.png
+     :alt: Basic example of stationary synthetic stream processing
 
      :ref:`sphx_glr_auto_examples_plot_basic.py`
 
@@ -60,6 +62,7 @@ General-purpose and introductory examples for the `stream-learn` toolbox.
 .. only:: html
 
  .. figure:: /auto_examples/images/thumb/sphx_glr_plot_stream_plotting_thumb.png
+     :alt: Plotting example data streams
 
      :ref:`sphx_glr_auto_examples_plot_stream_plotting.py`
 

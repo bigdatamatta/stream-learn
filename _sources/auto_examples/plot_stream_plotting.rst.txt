@@ -109,6 +109,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_001.png
+    :alt: Stationary stream, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -132,6 +133,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_002.png
+    :alt: Stream with sudden drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -157,6 +159,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_003.png
+    :alt: Stream with gradual drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -182,6 +185,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_004.png
+    :alt: Stream with incremental drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -205,6 +209,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_005.png
+    :alt: Data stream with recurring drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -228,6 +233,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_006.png
+    :alt: Data stream with non-recurring drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -252,6 +258,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_007.png
+    :alt: Data stream with statically imbalanced drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -277,6 +284,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_008.png
+    :alt: Data stream with dynamically imbalanced drift, Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -308,6 +316,7 @@ inne
 
 
 .. image:: /auto_examples/images/sphx_glr_plot_stream_plotting_009.png
+    :alt: Dynamically Imbalanced Stream with Concept Oscillation (DISCO), Chunk 0, Chunk 14, Chunk 28, Chunk 42, Chunk 56, Chunk 70, Chunk 84, Chunk 99
     :class: sphx-glr-single-img
 
 
@@ -317,7 +326,7 @@ inne
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.420 seconds)
+   **Total running time of the script:** ( 0 minutes  11.452 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_stream_plotting.py:
